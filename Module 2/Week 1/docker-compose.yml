@@ -1,0 +1,24 @@
+services:
+  oracle-db:
+    image: gvenzl/oracle-free:23-slim-faststart
+    container_name: local-oracle_c_name
+    restart: unless-stopped
+    environment:
+      ORACLE_PASSWORD: "Oraclepass123!"
+      APP_USER: "app_user"
+      APP_USER_PASSWORD: "Userpass123!"
+    ports:
+      - "1521:1521"
+      - "5500:5500"
+    volumes:
+      - oracle_data:/opt/oracle/oradata
+    healthcheck:
+      test: ["CMD", "healthcheck.sh"]
+      interval: 30s
+      timeout: 10s
+      retries: 10
+      start_period: 60s
+
+volumes:
+  oracle_data:
+    name: oracle_data_v_name
