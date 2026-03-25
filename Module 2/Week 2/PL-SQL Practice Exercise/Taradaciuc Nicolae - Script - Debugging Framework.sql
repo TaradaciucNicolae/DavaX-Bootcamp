@@ -2,7 +2,7 @@ SET SERVEROUTPUT ON SIZE UNLIMITED;
 
 -- -> Taradaciuc Nicolae
 
--- PROIECT PL/SQL - FRAMEWORK DE DEBUGGING -> Taradaciuc Nicolae
+-- PROIECT PL/SQL - FRAMEWORK DE DEBUGGING
 --
 -- Continut / Rezumat:
 --  Pasul 0) Curata obiectele vechi, daca exista
