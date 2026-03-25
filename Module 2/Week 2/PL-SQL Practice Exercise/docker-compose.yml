@@ -1,0 +1,27 @@
+services:
+  oracle-db:
+    image: gvenzl/oracle-free:23-slim-faststart
+    container_name: c-local-oracle_debug-framework
+    restart: unless-stopped
+    environment:
+      ORACLE_PASSWORD: "Oraclepass123!"
+      APP_USER: "app_user"
+      APP_USER_PASSWORD: "Userpass123!"
+      HR_PASSWORD: "HRpass123!"
+    ports:
+      - "1522:1521"
+      - "5501:5500"
+    volumes:
+      - oracle_data:/opt/oracle/oradata
+      - ./init:/container-entrypoint-initdb.d:ro
+      - ./sample-schemas/human_resources:/opt/hr-schema:ro
+    healthcheck:
+      test: ["CMD", "healthcheck.sh"]
+      interval: 30s
+      timeout: 10s
+      retries: 10
+      start_period: 60s
+
+volumes:
+  oracle_data:
+    name: v-oracle_data_debug-framework
