@@ -1,0 +1,103 @@
+' TARADACIUC NICOLAE
+'
+
+' Scriptul ruleaza in Outlook si extrage din calendar toate meeting-urile
+' dintr-un interval de timp ales.
+'
+' Pentru fiecare meeting gasit, scriptul ia doar participantii care au dat
+' Accept si scrie informatia intr-un fisier CSV.
+
+
+Option Explicit
+
+Public Sub ExportAcceptedInvitees_WithEmail()
+
+    Dim ns As Outlook.NameSpace
+    Dim cal As Outlook.Folder
+    Dim items As Outlook.items
+    Dim filtered As Outlook.items
+    Dim obj As Object
+    Dim appt As Outlook.AppointmentItem
+    Dim rec As Outlook.Recipient
+    Dim f As Integer
+    Dim startDate As Date
+    Dim endDate As Date
+    Dim filter As String
+    Dim outFile As String
+    Dim inviteeEmail As String
+
+    startDate = DateSerial(2026, 3, 1) + TimeSerial(0, 0, 0)
+    endDate = DateSerial(2026, 4, 30) + TimeSerial(23, 59, 59)
+    outFile = "C:\Users\ntaradaciuc\OneDrive - ENDAVA\Desktop\HWs\Module 2\Week 2\ETL Theory\PythonScripts\accepted_invitees.csv"
+
+    Set ns = Application.Session
+    Set cal = ns.GetDefaultFolder(olFolderCalendar)
+    Set items = cal.items
+
+    items.Sort "[Start]"
+    items.IncludeRecurrences = True
+
+    filter = "[Start] <= '" & Format$(endDate, "ddddd h:nn AMPM") & _
+             "' AND [End] >= '" & Format$(startDate, "ddddd h:nn AMPM") & "'"
+
+    Set filtered = items.Restrict(filter)
+
+    f = FreeFile
+    Open outFile For Output As #f
+
+    Print #f, """Meeting Start"",""Meeting End"",""Subject"",""Organizer"",""Accepted Invitee"",""Accepted Invitee Email"""
+
+    For Each obj In filtered
+        If TypeName(obj) = "AppointmentItem" Then
+            Set appt = obj
+
+            If appt.MeetingStatus <> olNonMeeting Then
+                For Each rec In appt.Recipients
+                    If rec.MeetingResponseStatus = olResponseAccepted Then
+                        
+                        inviteeEmail = GetRecipientSMTPAddress(rec)
+
+                        Print #f, _
+                            CsvValue(Format$(appt.Start, "yyyy-mm-dd hh:nn:ss")) & "," & _
+                            CsvValue(Format$(appt.End, "yyyy-mm-dd hh:nn:ss")) & "," & _
+                            CsvValue(appt.Subject) & "," & _
+                            CsvValue(appt.Organizer) & "," & _
+                            CsvValue(rec.Name) & "," & _
+                            CsvValue(inviteeEmail)
+                    End If
+                Next rec
+            End If
+        End If
+    Next obj
+
+    Close #f
+    MsgBox "Gata: " & outFile, vbInformation
+
+End Sub
+
+Private Function GetRecipientSMTPAddress(ByVal rec As Outlook.Recipient) As String
+
+    ' Aceasta functie incearca sa obtina adresa SMTP reala a participantului.
+	
+    Const PR_SMTP_ADDRESS As String = "http://schemas.microsoft.com/mapi/proptag/0x39FE001E"
+    Dim pa As Outlook.PropertyAccessor
+
+    ' Daca apare o eroare la citirea proprietatii, nu vrem sa se opreasca tot macro-ul.
+	
+    On Error Resume Next
+
+    Set pa = rec.PropertyAccessor
+    GetRecipientSMTPAddress = pa.GetProperty(PR_SMTP_ADDRESS)
+
+    If Len(Trim$(GetRecipientSMTPAddress)) = 0 Then
+        GetRecipientSMTPAddress = rec.Address
+    End If
+
+    On Error GoTo 0
+End Function
+
+Private Function CsvValue(ByVal textValue As String) As String
+    textValue = Replace(textValue, """", """""")
+    CsvValue = """" & textValue & """"
+End Function
+
