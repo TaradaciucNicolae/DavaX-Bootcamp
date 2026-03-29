@@ -41,118 +41,72 @@ Structura logica a proiectului este aceasta:
 ## Ordinea de rulare
 
 
-## Ruleaza Scripturile 1,2,3,4,5 in baza de date
+### 1. Ruleaza Scripturile 1,2,3,4,5 in baza de date
 
 
+### 2. Rulezi Script 5.5 - Extragere meetinguri Outlook.otm
 
-
-
-
-## Rulezi Script 5.5 - Extragere meetinguri Outlook.otm
-
-### Pasi rulare
-
-### 1. Deschide Microsoft Outlook
-
-Aceasta solutie functioneaza in **Classic Outlook**, unde VBA este suportat.
-
-### 2. Intra in editorul VBA
-
-Apasa:
-
-```text
-Alt + F11
 ```
+Pasi rulare
 
-Se va deschide **Microsoft Visual Basic for Applications**.
+1.Deschide Microsoft Outlook
+  Aceasta solutie functioneaza in **Classic Outlook**, unde VBA este suportat.
 
-### 3. Creeaza un modul nou
+2.Intra in editorul VBA
+  Apasa: Alt + F11
+  Se va deschide **Microsoft Visual Basic for Applications**.
 
-In editorul VBA:
+3.Creeaza un modul nou
+  In editorul VBA:  - apasa Insert
+                  - selecteaza Module
 
-- apasa **Insert**
-- selecteaza **Module**
+4.Copiaza codul macro in modulul nou
+  In partea mare a ferestrei, lipeste tot codul din scriptul **Script 5.5 - Extragere meetinguri Outlook.otm**.
 
-### 4. Copiaza codul macro in modulul nou
+5.Verifica intervalul si locatia fisierului CSV
+  In cod, verifica urmatoarele valori:
+  - startDate = data de inceput a perioadei din care vrei sa extragi meeting-urile
+  - endDate = data de final a perioadei
+  - outFile = calea unde se va salva fisierul CSV rezultat
 
-In partea mare a ferestrei, lipeste tot codul din scriptul **Script 5.5 - Extragere meetinguri Outlook.otm**.
-
-### 5. Verifica intervalul si locatia fisierului CSV
-
-In cod, verifica urmatoarele valori:
-
-- `startDate` = data de inceput a perioadei din care vrei sa extragi meeting-urile
-- `endDate` = data de final a perioadei
-- `outFile` = calea unde se va salva fisierul CSV rezultat
-
-### 6. Ruleaza macro-ul
-
-Apasa:
-
-```text
-F5
-```
-
-Macro-ul va incepe sa ruleze si va parcurge meeting-urile din calendarul Outlook din intervalul ales,iar la final, Outlook va afisa un mesaj de confirmare de tipul:
-
-```text
-Gata: C:\...\accepted_invitees.csv
+6.Ruleaza macro-ul
+  Apasa: F5
+  Macro-ul va incepe sa ruleze si va parcurge meeting-urile din calendarul Outlook din intervalul ales, iar la final, Outlook va afisa un mesaj de confirmare de tipul:  Gata: C:\...\accepted_invitees.csv
 ```
 
 
+## 3. Ruleaza Script 6,7,8
 
 
-
-
-## Ruleaza Script 6,7,8
-
-
-## Configurare aplicatie web
-
-Fisier:
-`app.py`
+## 4. Configurare aplicatie web
+```
+Fisier: app.py
 
 Aplicatia este scrisa in Streamlit si citeste:
-- lista de angajati din `EMPLOYEES`
-- activitatea zilnica din `VW_EMPLOYEE_DAY_BOARD`
+  - lista de angajati din `EMPLOYEES`
+  - activitatea zilnica din `VW_EMPLOYEE_DAY_BOARD`
 
-### Creeaza un mediu virtual
+Creeaza un mediu virtual:
+  - In terminal, din folderul proiectului: (powershell)  python -m venv .venv
 
-In terminal, din folderul proiectului:
+Activeaza mediul: (powershell)  .venv\Scripts\Activate.ps1
 
-```powershell
-python -m venv .venv
-```
+Instaleaza pachetele necesare: (powershell)  pip install -r requirements.txt
 
-Activeaza mediul:
+Porneste aplicatia: (powershell)  python -m streamlit run app.py
 
-```powershell
-.venv\Scripts\Activate.ps1
-```
-
-### Instaleaza pachetele necesare
-
-```powershell
-pip install -r requirements.txt
-```
-
-### Porneste aplicatia
-
-```powershell
-python -m streamlit run app.py
-```
-
-### Deschide in browser
-
-```text
-http://localhost:8501
+Deschide in browser: http://localhost:8501
 ```
 
 
+### Dashboard:
 
-### Poza cu aplicatia
+<img width="1918" height="933" alt="Dashboard" src="https://github.com/user-attachments/assets/4baf1048-fa44-4707-b53b-8ff71663908b" />
 
 
 
-### Poza cu Diagrama / Star Schema
+
+### Star Schema / Data Model Diagram: 
+
+<img width="1142" height="689" alt="Diagram" src="https://github.com/user-attachments/assets/950b1b43-4a9b-47a4-b3c5-63bee73e373a" />
 
