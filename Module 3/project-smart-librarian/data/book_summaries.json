@@ -1,0 +1,1636 @@
+[
+  {
+    "id": "book_1984",
+    "title": "1984",
+    "author": "George Orwell",
+    "genres": [
+      "dystopian",
+      "political fiction",
+      "science fiction"
+    ],
+    "themes": [
+      "freedom",
+      "social control",
+      "surveillance",
+      "truth",
+      "resistance"
+    ],
+    "tone": [
+      "dark",
+      "serious",
+      "reflective"
+    ],
+    "audience": "adult",
+    "language": "en",
+    "short_summary": "A dystopian novel about a society ruled by surveillance, fear, and manipulated truth. Winston Smith quietly rebels against a regime that controls language, history, and even private thought.",
+    "full_summary": "George Orwell's novel presents a grim society where the state watches everything and punishes independent thinking. Winston Smith works at rewriting historical records so the regime always appears correct, but he slowly begins to question the system and search for truth. His private acts of rebellion lead him into a dangerous relationship and a deeper confrontation with political power. The story explores freedom, propaganda, fear, and the destruction of individuality.",
+    "content_for_embedding": "Title: 1984. Author: George Orwell. Genres: dystopian, political fiction, science fiction. Themes: freedom, social control, surveillance, truth, resistance. Tone: dark, serious, reflective. Summary: A dystopian novel about a society ruled by surveillance, fear, manipulated truth, and a man's attempt to resist authoritarian control."
+  },
+  {
+    "id": "book_a_wizard_of_earthsea",
+    "title": "A Wizard of Earthsea",
+    "author": "Ursula K. Le Guin",
+    "genres": [
+      "fantasy"
+    ],
+    "themes": [
+      "growth",
+      "magic",
+      "good versus evil"
+    ],
+    "tone": [
+      "magical"
+    ],
+    "audience": "children",
+    "language": "en",
+    "short_summary": "A boy grows to manhood while attempting to subdue the evil he unleashed on the world as an apprentice to the Master Wizard.",
+    "full_summary": "A boy grows to manhood while attempting to subdue the evil he unleashed on the world as an apprentice to the Master Wizard. The book fits best in fantasy. It especially explores growth, magic, good versus evil. The tone is magical, and it is best suited to children readers.",
+    "content_for_embedding": "Title: A Wizard of Earthsea. Author: Ursula K. Le Guin. Genres: fantasy. Themes: growth, magic, good versus evil. Tone: magical. Audience: children. Language: en. Short summary: A boy grows to manhood while attempting to subdue the evil he unleashed on the world as an apprentice to the Master Wizard. Full summary: A boy grows to manhood while attempting to subdue the evil he unleashed on the world as an apprentice to the Master Wizard. The book fits best in fantasy. It especially explores growth, magic, good versus evil. The tone is magical, and it is best suited to children readers."
+  },
+  {
+    "id": "book_all_quiet_on_the_western_front",
+    "title": "All Quiet on the Western Front",
+    "author": "Erich Maria Remarque",
+    "genres": [
+      "war",
+      "historical fiction",
+      "classic"
+    ],
+    "themes": [
+      "war",
+      "loss",
+      "survival",
+      "trauma",
+      "friendship"
+    ],
+    "tone": [
+      "somber",
+      "realistic",
+      "emotional"
+    ],
+    "audience": "adult",
+    "language": "en",
+    "short_summary": "A young German soldier experiences the brutal reality of World War I. The novel strips away romantic ideas about war and focuses on fear, suffering, and emotional destruction.",
+    "full_summary": "Paul Bäumer and his classmates join the army with patriotic ideals, but trench warfare quickly destroys those illusions. The novel follows the physical and psychological damage caused by constant violence, hunger, and fear. Paul depends on the companionship of fellow soldiers, yet he sees one friend after another lost to war. The story is powerful because it shows not heroic glory, but exhaustion, trauma, and the wasted lives of a generation.",
+    "content_for_embedding": "Title: All Quiet on the Western Front. Author: Erich Maria Remarque. Genres: war, historical fiction, classic. Themes: war, loss, survival, trauma, friendship. Tone: somber, realistic, emotional. Summary: A realistic anti-war novel about a young soldier facing the horror, grief, and emotional collapse caused by World War I."
+  },
+  {
+    "id": "book_all_the_missing_girls",
+    "title": "All the Missing Girls",
+    "author": "Megan Miranda",
+    "genres": [
+      "mystery",
+      "war",
+      "drama"
+    ],
+    "themes": [
+      "truth",
+      "friendship",
+      "war"
+    ],
+    "tone": [
+      "mysterious",
+      "intense"
+    ],
+    "audience": "adult",
+    "language": "en",
+    "short_summary": "\"Ten years after leaving Cooley Ridge, Nicolette Farrell returns to care for her ailing father. A decade ago, she, her brother Daniel, her boyfriend Tyler, and Corinne's boyfriend Jackson were suspects when Corinne-- Nic's best friend-- disappeared without a trace.",
+    "full_summary": "\"Ten years after leaving Cooley Ridge, Nicolette Farrell returns to care for her ailing father. A decade ago, she, her brother Daniel, her boyfriend Tyler, and Corinne's boyfriend Jackson were suspects when Corinne-- Nic's best friend-- disappeared without a trace. Within days of Nic's return, they are plunged into a shocking drama when Nic's neighbor Annaleise, who is dating Tyler and was the group's alibi ten years previously, goes missing. Told backwards from the time Annaleise disappears, the book follows Nic as she works to unravel the truth and, in the process, reveals shocking realities about her friends, her family, and what really happened to Corinne that night ten years ago\"--",
+    "content_for_embedding": "Title: All the Missing Girls. Author: Megan Miranda. Genres: mystery, war, drama. Themes: truth, friendship, war. Tone: mysterious, intense. Audience: adult. Language: en. Short summary: \"Ten years after leaving Cooley Ridge, Nicolette Farrell returns to care for her ailing father. A decade ago, she, her brother Daniel, her boyfriend Tyler, and Corinne's boyfriend Jackson were suspects when Corinne-- Nic's best friend-- disappeared without a trace. Full summary: \"Ten years after leaving Cooley Ridge, Nicolette Farrell returns to care for her ailing father. A decade ago, she, her brother Daniel, her boyfriend Tyler, and Corinne's boyfriend Jackson were suspects when Corinne-- Nic's best friend-- disappeared without a trace. Within days of Nic's return, they are plunged into a shocking drama when Nic's neighbor Annaleise, who is dating Tyler and was the group's alibi ten years previously, goes missing. Told backwards from the time Annaleise disappears, the book follows Nic as she works to unravel the truth and, in the process, reveals shocking realities about her friends, her family, and what really happened to Corinne that night ten years ago\"--"
+  },
+  {
+    "id": "book_and_then_there_were_none",
+    "title": "And Then There Were None",
+    "author": "Agatha Christie",
+    "genres": [
+      "mystery"
+    ],
+    "themes": [
+      "destiny",
+      "memory",
+      "secrets"
+    ],
+    "tone": [
+      "mysterious",
+      "intense"
+    ],
+    "audience": "adult",
+    "language": "en",
+    "short_summary": "\"First, there were ten - a curious assortment of strangers summoned as weekend guests to a private island off the coast of Devon. Their host, an eccentric millionaire unknown to all of them, is nowhere to be found.",
+    "full_summary": "\"First, there were ten - a curious assortment of strangers summoned as weekend guests to a private island off the coast of Devon. Their host, an eccentric millionaire unknown to all of them, is nowhere to be found. All that the guests have in common is a wicked past they're unwilling to reveal - and a secret that will seal their fate. For each has been marked for murder, and one by one they begin to fall prey to an unseen hand.",
+    "content_for_embedding": "Title: And Then There Were None. Author: Agatha Christie. Genres: mystery. Themes: destiny, memory, secrets. Tone: mysterious, intense. Audience: adult. Language: en. Short summary: \"First, there were ten - a curious assortment of strangers summoned as weekend guests to a private island off the coast of Devon. Their host, an eccentric millionaire unknown to all of them, is nowhere to be found. Full summary: \"First, there were ten - a curious assortment of strangers summoned as weekend guests to a private island off the coast of Devon. Their host, an eccentric millionaire unknown to all of them, is nowhere to be found. All that the guests have in common is a wicked past they're unwilling to reveal - and a secret that will seal their fate. For each has been marked for murder, and one by one they begin to fall prey to an unseen hand."
+  },
+  {
+    "id": "book_being_elizabeth",
+    "title": "Being Elizabeth",
+    "author": "Barbara Taylor Bradford",
+    "genres": [
+      "romance",
+      "war"
+    ],
+    "themes": [
+      "greed",
+      "identity",
+      "war",
+      "childhood",
+      "dreams"
+    ],
+    "tone": [
+      "serious",
+      "engaging"
+    ],
+    "audience": "adult",
+    "language": "en",
+    "short_summary": "Elizabeth Turner carries the red-gold hair and beautiful English complexion of her Deravnel ancestors. Over 800 years old, the company is a bastion of male chauvinism,and the challenges Elizabeth faces are immense - and not the least of which is a cousin who believes herself to be the rightful heir.",
+    "full_summary": "Elizabeth Turner carries the red-gold hair and beautiful English complexion of her Deravnel ancestors. She has also inherited Edward Deravenel's charismatic, fiercely ambitious, personality. Now, at twenty-five, she stands in the position she has dreamed of - inheriting the family business, Deravenels. Over 800 years old, the company is a bastion of male chauvinism,and the challenges Elizabeth faces are immense - and not the least of which is a cousin who believes herself to be the rightful heir.",
+    "content_for_embedding": "Title: Being Elizabeth. Author: Barbara Taylor Bradford. Genres: romance, war. Themes: greed, identity, war, childhood, dreams. Tone: serious, engaging. Audience: adult. Language: en. Short summary: Elizabeth Turner carries the red-gold hair and beautiful English complexion of her Deravnel ancestors. Over 800 years old, the company is a bastion of male chauvinism,and the challenges Elizabeth faces are immense - and not the least of which is a cousin who believes herself to be the rightful heir. Full summary: Elizabeth Turner carries the red-gold hair and beautiful English complexion of her Deravnel ancestors. She has also inherited Edward Deravenel's charismatic, fiercely ambitious, personality. Now, at twenty-five, she stands in the position she has dreamed of - inheriting the family business, Deravenels. Over 800 years old, the company is a bastion of male chauvinism,and the challenges Elizabeth faces are immense - and not the least of which is a cousin who believes herself to be the rightful heir."
+  },
+  {
+    "id": "book_brother_odd",
+    "title": "Brother Odd",
+    "author": "Dean Ray Koontz",
+    "genres": [
+      "fantasy",
+      "mystery",
+      "thriller",
+      "adventure"
+    ],
+    "themes": [
+      "friendship",
+      "journey",
+      "magic",
+      "identity",
+      "power"
+    ],
+    "tone": [
+      "dark",
+      "adventurous",
+      "hopeful",
+      "magical"
+    ],
+    "audience": "children",
+    "language": "en",
+    "short_summary": "Now, wielding all the power and magic of a master storyteller at the pinnacle of his craft, Dean Koontz follows Odd into a singular new world where he hopes to make a fresh beginning—but where he will meet an adversary as old and inexorable as time itself.",
+    "full_summary": "Loop me in, odd one.The words, spoken in the deep of night by a sleeping child, chill the young man watching over her. For this was a favorite phrase of Stormy Llewellyn, his lost love, and Stormy is dead, gone forever from this world. Now, wielding all the power and magic of a master storyteller at the pinnacle of his craft, Dean Koontz follows Odd into a singular new world where he hopes to make a fresh beginning—but where he will meet an adversary as old and inexorable as time itself. For Odd is about to face an enemy who eclipses any he has yet encountered, as he embarks on a journey of mystery, wonder, and sheer suspense that surpasses all that has come before.",
+    "content_for_embedding": "Title: Brother Odd. Author: Dean Ray Koontz. Genres: fantasy, mystery, thriller, adventure. Themes: friendship, journey, magic, identity, power. Tone: dark, adventurous, hopeful, magical. Audience: children. Language: en. Short summary: Now, wielding all the power and magic of a master storyteller at the pinnacle of his craft, Dean Koontz follows Odd into a singular new world where he hopes to make a fresh beginning—but where he will meet an adversary as old and inexorable as time itself. Full summary: Loop me in, odd one.The words, spoken in the deep of night by a sleeping child, chill the young man watching over her. For this was a favorite phrase of Stormy Llewellyn, his lost love, and Stormy is dead, gone forever from this world. Now, wielding all the power and magic of a master storyteller at the pinnacle of his craft, Dean Koontz follows Odd into a singular new world where he hopes to make a fresh beginning—but where he will meet an adversary as old and inexorable as time itself. For Odd is about to face an enemy who eclipses any he has yet encountered, as he embarks on a journey of mystery, wonder, and sheer suspense that surpasses all that has come before."
+  },
+  {
+    "id": "book_call_for_the_dead",
+    "title": "Call for the Dead",
+    "author": "John Le Carré",
+    "genres": [
+      "mystery"
+    ],
+    "themes": [
+      "identity",
+      "growth",
+      "storytelling"
+    ],
+    "tone": [
+      "serious",
+      "engaging"
+    ],
+    "audience": "adult",
+    "language": "en",
+    "short_summary": "\"Call for the Dead\" by John Le Carré is a mystery book for adult readers. It explores identity, growth, storytelling in a serious, engaging style.",
+    "full_summary": "\"Call for the Dead\" by John Le Carré is a mystery book aimed at adult readers. Based on the available metadata, it focuses on identity, growth, storytelling. The overall tone is serious, engaging. This summary was generated from public book metadata.",
+    "content_for_embedding": "Title: Call for the Dead. Author: John Le Carré. Genres: mystery. Themes: identity, growth, storytelling. Tone: serious, engaging. Audience: adult. Language: en. Short summary: \"Call for the Dead\" by John Le Carré is a mystery book for adult readers. It explores identity, growth, storytelling in a serious, engaging style. Full summary: \"Call for the Dead\" by John Le Carré is a mystery book aimed at adult readers. Based on the available metadata, it focuses on identity, growth, storytelling. The overall tone is serious, engaging. This summary was generated from public book metadata."
+  },
+  {
+    "id": "book_cards_on_the_table",
+    "title": "Cards on the Table",
+    "author": "Agatha Christie",
+    "genres": [
+      "mystery",
+      "crime",
+      "young adult"
+    ],
+    "themes": [
+      "greed",
+      "war"
+    ],
+    "tone": [
+      "serious",
+      "engaging"
+    ],
+    "audience": "adult",
+    "language": "en",
+    "short_summary": "As they play bridge after dinner, Shaitana is daringly murdered by someone at the party. Oliver who begins with psychological deductions from the bridge score cards.",
+    "full_summary": "Shaitana is a strange and wealthy collector of snuff boxes and other objets d'art. As they play bridge after dinner, Shaitana is daringly murdered by someone at the party. Oliver who begins with psychological deductions from the bridge score cards. After many red herrings, skeletons in the cupboard and two more deaths, Battle lays his cards on the table.",
+    "content_for_embedding": "Title: Cards on the Table. Author: Agatha Christie. Genres: mystery, crime, young adult. Themes: greed, war. Tone: serious, engaging. Audience: adult. Language: en. Short summary: As they play bridge after dinner, Shaitana is daringly murdered by someone at the party. Oliver who begins with psychological deductions from the bridge score cards. Full summary: Shaitana is a strange and wealthy collector of snuff boxes and other objets d'art. As they play bridge after dinner, Shaitana is daringly murdered by someone at the party. Oliver who begins with psychological deductions from the bridge score cards. After many red herrings, skeletons in the cupboard and two more deaths, Battle lays his cards on the table."
+  },
+  {
+    "id": "book_crime_and_punishment",
+    "title": "Crime and Punishment",
+    "author": "Fedor Mikhailovich Dostoevskii",
+    "genres": [
+      "mystery",
+      "thriller",
+      "crime"
+    ],
+    "themes": [
+      "power",
+      "knowledge",
+      "imagination",
+      "books",
+      "dreams"
+    ],
+    "tone": [
+      "playful",
+      "human",
+      "atmospheric"
+    ],
+    "audience": "adult",
+    "language": "en",
+    "short_summary": "He then must deal both with the police, and his own guilty conscience. The best known of Dostoevsky's masterpieces, Crime and Punishment can bear any amount of rereading without losin a drop of its power over our imagination.",
+    "full_summary": "He then must deal both with the police, and his own guilty conscience. Determined to overreach his humanity and assert his untrammelled individual will, Raskolnikov, an impoverished student living in the St. Petersburg of the Tsars, commits an act of murder and theft, and sets in motion a story which, for its excruciating suspense, its atmospheric vividness, and its profundity of characterization and vision, is almost unequaled in the literatures of the world. The best known of Dostoevsky's masterpieces, Crime and Punishment can bear any amount of rereading without losin a drop of its power over our imagination.",
+    "content_for_embedding": "Title: Crime and Punishment. Author: Fedor Mikhailovich Dostoevskii. Genres: mystery, thriller, crime. Themes: power, knowledge, imagination, books, dreams. Tone: playful, human, atmospheric. Audience: adult. Language: en. Short summary: He then must deal both with the police, and his own guilty conscience. The best known of Dostoevsky's masterpieces, Crime and Punishment can bear any amount of rereading without losin a drop of its power over our imagination. Full summary: He then must deal both with the police, and his own guilty conscience. Determined to overreach his humanity and assert his untrammelled individual will, Raskolnikov, an impoverished student living in the St. Petersburg of the Tsars, commits an act of murder and theft, and sets in motion a story which, for its excruciating suspense, its atmospheric vividness, and its profundity of characterization and vision, is almost unequaled in the literatures of the world. The best known of Dostoevsky's masterpieces, Crime and Punishment can bear any amount of rereading without losin a drop of its power over our imagination."
+  },
+  {
+    "id": "book_dance_upon_the_air",
+    "title": "Dance Upon the Air",
+    "author": "Nora Roberts",
+    "genres": [
+      "romance"
+    ],
+    "themes": [
+      "identity",
+      "power",
+      "knowledge",
+      "awakening",
+      "imagination"
+    ],
+    "tone": [
+      "serious",
+      "engaging"
+    ],
+    "audience": "adult",
+    "language": "en",
+    "short_summary": "When Nell Channing arrives on charming Three Sisters Island, she believes that she's finally found refuge from her abusive husband --and from the terrifying life she fled so desperately eight months ago. But even in this quiet , peaceful place, Nell never feels entirely at ease.",
+    "full_summary": "When Nell Channing arrives on charming Three Sisters Island, she believes that she's finally found refuge from her abusive husband --and from the terrifying life she fled so desperately eight months ago. Careful to conceal her true identity, she takes a job as a cook at the local bookstore cafe--and begins to explore her feelings for the island sheriff, Zack Todd. But there is a part of herself she can never reveal to him--for she must continue to guard her secrets if she wants to keep the past at bay. And now, with the help of two other strong, gifted women, and the nightmares of the past haunting her every step, she must find the power to save her home, her love, and herself.",
+    "content_for_embedding": "Title: Dance Upon the Air. Author: Nora Roberts. Genres: romance. Themes: identity, power, knowledge, awakening, imagination. Tone: serious, engaging. Audience: adult. Language: en. Short summary: When Nell Channing arrives on charming Three Sisters Island, she believes that she's finally found refuge from her abusive husband --and from the terrifying life she fled so desperately eight months ago. But even in this quiet , peaceful place, Nell never feels entirely at ease. Full summary: When Nell Channing arrives on charming Three Sisters Island, she believes that she's finally found refuge from her abusive husband --and from the terrifying life she fled so desperately eight months ago. Careful to conceal her true identity, she takes a job as a cook at the local bookstore cafe--and begins to explore her feelings for the island sheriff, Zack Todd. But there is a part of herself she can never reveal to him--for she must continue to guard her secrets if she wants to keep the past at bay. And now, with the help of two other strong, gifted women, and the nightmares of the past haunting her every step, she must find the power to save her home, her love, and herself."
+  },
+  {
+    "id": "book_devoted_in_death_an_eve_dallas_thriller_book_41",
+    "title": "Devoted in Death: An Eve Dallas Thriller (Book 41)",
+    "author": "J. D. Robb",
+    "genres": [
+      "romance",
+      "crime"
+    ],
+    "themes": [
+      "love",
+      "talent"
+    ],
+    "tone": [
+      "dark",
+      "sad"
+    ],
+    "audience": "adult",
+    "language": "en",
+    "short_summary": "It's a new year in New York city, and two star-crossed lovers have just discovered an insatiable appetite...for murder. But when a much-loved musician is found dead, Eve soon realises that his murder is part of a horrifying killing spree, stretching right across the country.",
+    "full_summary": "It's a new year in New York city, and two star-crossed lovers have just discovered an insatiable appetite...for murder. Lieutenant Eve Dallas has witnessed some grisly crimes in her career and she knows just how dark things can get on the streets. But when a much-loved musician is found dead, Eve soon realises that his murder is part of a horrifying killing spree, stretching right across the country. Eve's husband Roarke is ready to put his brains and his considerable resources behind the search.",
+    "content_for_embedding": "Title: Devoted in Death: An Eve Dallas Thriller (Book 41). Author: J. D. Robb. Genres: romance, crime. Themes: love, talent. Tone: dark, sad. Audience: adult. Language: en. Short summary: It's a new year in New York city, and two star-crossed lovers have just discovered an insatiable appetite...for murder. But when a much-loved musician is found dead, Eve soon realises that his murder is part of a horrifying killing spree, stretching right across the country. Full summary: It's a new year in New York city, and two star-crossed lovers have just discovered an insatiable appetite...for murder. Lieutenant Eve Dallas has witnessed some grisly crimes in her career and she knows just how dark things can get on the streets. But when a much-loved musician is found dead, Eve soon realises that his murder is part of a horrifying killing spree, stretching right across the country. Eve's husband Roarke is ready to put his brains and his considerable resources behind the search."
+  },
+  {
+    "id": "book_difficult_loves",
+    "title": "Difficult Loves",
+    "author": "Italo Calvino",
+    "genres": [
+      "war",
+      "young adult"
+    ],
+    "themes": [
+      "truth",
+      "greed",
+      "war",
+      "loss",
+      "love"
+    ],
+    "tone": [
+      "serious",
+      "engaging"
+    ],
+    "audience": "young_adult",
+    "language": "en",
+    "short_summary": "Confronted with a jarring moment of recognition, each of these characters discovers hidden truths beneath the surface of everyday life. This is the first edition in English to present these fifteen short stories together as Calvino originally envisioned them.",
+    "full_summary": "In this short story collection, one of Italy's greatest storytellers explores the interior lives of characters just as their most cherished illusions of love are suddenly swept away. A soldier is reduced to quivering fear by the presence of a full-figured woman in his train compartment; a young clerk leaves a lady's bed at dawn; a young woman is isolated from bathers on a beach by the loss of her bikini bottom. Confronted with a jarring moment of recognition, each of these characters discovers hidden truths beneath the surface of everyday life. This is the first edition in English to present these fifteen short stories together as Calvino originally envisioned them.",
+    "content_for_embedding": "Title: Difficult Loves. Author: Italo Calvino. Genres: war, young adult. Themes: truth, greed, war, loss, love. Tone: serious, engaging. Audience: young_adult. Language: en. Short summary: Confronted with a jarring moment of recognition, each of these characters discovers hidden truths beneath the surface of everyday life. This is the first edition in English to present these fifteen short stories together as Calvino originally envisioned them. Full summary: In this short story collection, one of Italy's greatest storytellers explores the interior lives of characters just as their most cherished illusions of love are suddenly swept away. A soldier is reduced to quivering fear by the presence of a full-figured woman in his train compartment; a young clerk leaves a lady's bed at dawn; a young woman is isolated from bathers on a beach by the loss of her bikini bottom. Confronted with a jarring moment of recognition, each of these characters discovers hidden truths beneath the surface of everyday life. This is the first edition in English to present these fifteen short stories together as Calvino originally envisioned them."
+  },
+  {
+    "id": "book_dune",
+    "title": "Dune",
+    "author": "Frank Herbert",
+    "genres": [
+      "science fiction",
+      "epic",
+      "political fiction"
+    ],
+    "themes": [
+      "power",
+      "destiny",
+      "ecology",
+      "politics",
+      "religion"
+    ],
+    "tone": [
+      "serious",
+      "epic",
+      "intense"
+    ],
+    "audience": "adult",
+    "language": "en",
+    "short_summary": "On a harsh desert planet, Paul Atreides is drawn into political conflict, prophecy, and survival. The story mixes strategy, empire, environment, and personal transformation.",
+    "full_summary": "Paul Atreides arrives on Arrakis, a desert planet of enormous political and economic importance because it produces the valuable spice melange. When betrayal destroys his family’s position, he must survive in the desert and adapt to the culture of the Fremen. As he grows into a symbolic and political figure, the story explores leadership, faith, ecological balance, and the risks of concentrated power. Dune is both an adventure and a complex study of systems, control, and destiny.",
+    "content_for_embedding": "Title: Dune. Author: Frank Herbert. Genres: science fiction, epic, political fiction. Themes: power, destiny, ecology, politics, religion. Tone: serious, epic, intense. Summary: A large-scale science fiction novel about political struggle, survival on a desert planet, and the dangerous rise of a prophetic leader."
+  },
+  {
+    "id": "book_emil_and_the_detectives_a_story_for_children",
+    "title": "Emil and the Detectives: A Story for Children",
+    "author": "Erich Kästner",
+    "genres": [
+      "mystery"
+    ],
+    "themes": [
+      "friendship"
+    ],
+    "tone": [
+      "serious",
+      "engaging"
+    ],
+    "audience": "adult",
+    "language": "en",
+    "short_summary": "On his way to Berlin to visit his grandmother Emil fell asleep and had his money stolen by the man who shared his compartment. Altho he came from the country Emil was not stupid, and he determined to get that money back.",
+    "full_summary": "On his way to Berlin to visit his grandmother Emil fell asleep and had his money stolen by the man who shared his compartment. Altho he came from the country Emil was not stupid, and he determined to get that money back. He followed the man, met the boy with the auto horn, who summoned his friends, and among them all they caught a very clever thief.",
+    "content_for_embedding": "Title: Emil and the Detectives: A Story for Children. Author: Erich Kästner. Genres: mystery. Themes: friendship. Tone: serious, engaging. Audience: adult. Language: en. Short summary: On his way to Berlin to visit his grandmother Emil fell asleep and had his money stolen by the man who shared his compartment. Altho he came from the country Emil was not stupid, and he determined to get that money back. Full summary: On his way to Berlin to visit his grandmother Emil fell asleep and had his money stolen by the man who shared his compartment. Altho he came from the country Emil was not stupid, and he determined to get that money back. He followed the man, met the boy with the auto horn, who summoned his friends, and among them all they caught a very clever thief."
+  },
+  {
+    "id": "book_endless_night",
+    "title": "Endless Night",
+    "author": "Agatha Christie",
+    "genres": [
+      "mystery",
+      "war"
+    ],
+    "themes": [
+      "good versus evil",
+      "war",
+      "dreams"
+    ],
+    "tone": [
+      "serious",
+      "engaging"
+    ],
+    "audience": "adult",
+    "language": "en",
+    "short_summary": "\"When penniless Michael Rogers discovers the beautiful house at Gipsy's Acre and then meets the heiress Ellie, it seems that all his dreams have come true at once. But he ignores an old woman's warning of an ancient curse, and evil begins to stir in paradise.",
+    "full_summary": "\"When penniless Michael Rogers discovers the beautiful house at Gipsy's Acre and then meets the heiress Ellie, it seems that all his dreams have come true at once. But he ignores an old woman's warning of an ancient curse, and evil begins to stir in paradise. As Michael soon lears: Gipysy's Acre is the place where fatal 'accidents' happen.\"--Publisher description.",
+    "content_for_embedding": "Title: Endless Night. Author: Agatha Christie. Genres: mystery, war. Themes: good versus evil, war, dreams. Tone: serious, engaging. Audience: adult. Language: en. Short summary: \"When penniless Michael Rogers discovers the beautiful house at Gipsy's Acre and then meets the heiress Ellie, it seems that all his dreams have come true at once. But he ignores an old woman's warning of an ancient curse, and evil begins to stir in paradise. Full summary: \"When penniless Michael Rogers discovers the beautiful house at Gipsy's Acre and then meets the heiress Ellie, it seems that all his dreams have come true at once. But he ignores an old woman's warning of an ancient curse, and evil begins to stir in paradise. As Michael soon lears: Gipysy's Acre is the place where fatal 'accidents' happen.\"--Publisher description."
+  },
+  {
+    "id": "book_evil_under_the_sun_a_hercule_poirot_mystery",
+    "title": "Evil Under the Sun: A Hercule Poirot Mystery",
+    "author": "Agatha Christie",
+    "genres": [
+      "mystery",
+      "thriller",
+      "classic"
+    ],
+    "themes": [
+      "good versus evil",
+      "knowledge",
+      "class",
+      "secrets"
+    ],
+    "tone": [
+      "mysterious",
+      "intense"
+    ],
+    "audience": "teen_adult",
+    "language": "en",
+    "short_summary": "The Queen of Mystery has come to Harper Collins! The classic Evil Under the Sun, one of the most famous of Christie's Poirot investigations, has the fastidious sleuth on the trail of the killer of a sun-bronzed beauty whose death brings some rather shocking secrets into the light.",
+    "full_summary": "The Queen of Mystery has come to Harper Collins! The classic Evil Under the Sun, one of the most famous of Christie's Poirot investigations, has the fastidious sleuth on the trail of the killer of a sun-bronzed beauty whose death brings some rather shocking secrets into the light.",
+    "content_for_embedding": "Title: Evil Under the Sun: A Hercule Poirot Mystery. Author: Agatha Christie. Genres: mystery, thriller, classic. Themes: good versus evil, knowledge, class, secrets. Tone: mysterious, intense. Audience: teen_adult. Language: en. Short summary: The Queen of Mystery has come to Harper Collins! The classic Evil Under the Sun, one of the most famous of Christie's Poirot investigations, has the fastidious sleuth on the trail of the killer of a sun-bronzed beauty whose death brings some rather shocking secrets into the light. Full summary: The Queen of Mystery has come to Harper Collins! The classic Evil Under the Sun, one of the most famous of Christie's Poirot investigations, has the fastidious sleuth on the trail of the killer of a sun-bronzed beauty whose death brings some rather shocking secrets into the light."
+  },
+  {
+    "id": "book_fahrenheit_451",
+    "title": "Fahrenheit 451",
+    "author": "Ray Bradbury",
+    "genres": [
+      "dystopian",
+      "science fiction",
+      "classic"
+    ],
+    "themes": [
+      "censorship",
+      "freedom",
+      "knowledge",
+      "conformity",
+      "awakening"
+    ],
+    "tone": [
+      "urgent",
+      "dark",
+      "thought-provoking"
+    ],
+    "audience": "adult",
+    "language": "en",
+    "short_summary": "In a society where books are banned and burned, a fireman begins to question the emptiness around him. The novel examines censorship, distraction, and the loss of critical thought.",
+    "full_summary": "Guy Montag works as a fireman, but in his world firemen burn books rather than save people from fires. After a series of unsettling encounters, he starts to realize how deeply his society fears independent thought and meaningful reflection. His personal awakening turns him into a target, forcing him to choose between obedience and truth. The novel is fast-moving and highly relevant for themes of censorship, media overload, and intellectual freedom.",
+    "content_for_embedding": "Title: Fahrenheit 451. Author: Ray Bradbury. Genres: dystopian, science fiction, classic. Themes: censorship, freedom, knowledge, conformity, awakening. Tone: urgent, dark, thought-provoking. Summary: A dystopian story about a man who turns against a society that burns books and suppresses critical thinking."
+  },
+  {
+    "id": "book_fallen_too_far",
+    "title": "Fallen Too Far",
+    "author": "Abbi Glines",
+    "genres": [
+      "romance"
+    ],
+    "themes": [
+      "religion",
+      "love",
+      "faith"
+    ],
+    "tone": [
+      "emotional",
+      "warm"
+    ],
+    "audience": "adult",
+    "language": "en",
+    "short_summary": "Blaire Wynn left her small farmhouse in Alabama after her mother passed away to move in with her father and his new wife in their sprawling beach house along the Florida Gulf Coast. She isn't prepared for the lifestyle change and she knows she'll never fit into this world.",
+    "full_summary": "Blaire Wynn left her small farmhouse in Alabama after her mother passed away to move in with her father and his new wife in their sprawling beach house along the Florida Gulf Coast. She isn't prepared for the lifestyle change and she knows she'll never fit into this world. Then there is her sexy stepbrother, Rush, who is as spoiled as he is gorgeous. She knows he is anything but good for her and that he'll never be faithful to anyone.",
+    "content_for_embedding": "Title: Fallen Too Far. Author: Abbi Glines. Genres: romance. Themes: religion, love, faith. Tone: emotional, warm. Audience: adult. Language: en. Short summary: Blaire Wynn left her small farmhouse in Alabama after her mother passed away to move in with her father and his new wife in their sprawling beach house along the Florida Gulf Coast. She isn't prepared for the lifestyle change and she knows she'll never fit into this world. Full summary: Blaire Wynn left her small farmhouse in Alabama after her mother passed away to move in with her father and his new wife in their sprawling beach house along the Florida Gulf Coast. She isn't prepared for the lifestyle change and she knows she'll never fit into this world. Then there is her sexy stepbrother, Rush, who is as spoiled as he is gorgeous. She knows he is anything but good for her and that he'll never be faithful to anyone."
+  },
+  {
+    "id": "book_fiance_by_friday",
+    "title": "Fiancé by Friday",
+    "author": "Catherine Bybee",
+    "genres": [
+      "science fiction",
+      "romance",
+      "horror"
+    ],
+    "themes": [
+      "survival",
+      "justice",
+      "memory",
+      "dreams"
+    ],
+    "tone": [
+      "mysterious"
+    ],
+    "audience": "adult",
+    "language": "en",
+    "short_summary": "Gwen Harrison The high-born daughter of an English duke, Gwen boasts beauty, blue blood...and an all-consuming desire for her bodyguard, enigmatic Neil MacBain. But when they return to threaten his new life, Neil's gorgeous client Gwen is caught in the crossfire.",
+    "full_summary": "Gwen Harrison The high-born daughter of an English duke, Gwen boasts beauty, blue blood...and an all-consuming desire for her bodyguard, enigmatic Neil MacBain. She came to America to run her sister-in-law's matchmaking firm. Neil MacBain Retired marine Neil thought he'd buried the ghosts of his past long ago. But when they return to threaten his new life, Neil's gorgeous client Gwen is caught in the crossfire.",
+    "content_for_embedding": "Title: Fiancé by Friday. Author: Catherine Bybee. Genres: science fiction, romance, horror. Themes: survival, justice, memory, dreams. Tone: mysterious. Audience: adult. Language: en. Short summary: Gwen Harrison The high-born daughter of an English duke, Gwen boasts beauty, blue blood...and an all-consuming desire for her bodyguard, enigmatic Neil MacBain. But when they return to threaten his new life, Neil's gorgeous client Gwen is caught in the crossfire. Full summary: Gwen Harrison The high-born daughter of an English duke, Gwen boasts beauty, blue blood...and an all-consuming desire for her bodyguard, enigmatic Neil MacBain. She came to America to run her sister-in-law's matchmaking firm. Neil MacBain Retired marine Neil thought he'd buried the ghosts of his past long ago. But when they return to threaten his new life, Neil's gorgeous client Gwen is caught in the crossfire."
+  },
+  {
+    "id": "book_for_the_sake_of_elena",
+    "title": "For the Sake of Elena",
+    "author": "Elizabeth George",
+    "genres": [
+      "mystery",
+      "war",
+      "young adult"
+    ],
+    "themes": [
+      "identity",
+      "war",
+      "innocence",
+      "memory",
+      "secrets"
+    ],
+    "tone": [
+      "dark",
+      "emotional",
+      "intense"
+    ],
+    "audience": "adult",
+    "language": "en",
+    "short_summary": "While her embittered mother fretted about her welfare from her home in London, in Cambridge—where Elena was a student at St. While his past sins make him neurotically dedicated to Elena and blind to her blacker side, present demons drive him toward betrayal.",
+    "full_summary": "Elena Weaver was a surprise to anyone meeting her for the first time. In her clingy dresses and dangling earrings she exuded a sexuality at odds with the innocence projected by the unicorn posters on her walls. While her embittered mother fretted about her welfare from her home in London, in Cambridge—where Elena was a student at St. While his past sins make him neurotically dedicated to Elena and blind to her blacker side, present demons drive him toward betrayal.",
+    "content_for_embedding": "Title: For the Sake of Elena. Author: Elizabeth George. Genres: mystery, war, young adult. Themes: identity, war, innocence, memory, secrets. Tone: dark, emotional, intense. Audience: adult. Language: en. Short summary: While her embittered mother fretted about her welfare from her home in London, in Cambridge—where Elena was a student at St. While his past sins make him neurotically dedicated to Elena and blind to her blacker side, present demons drive him toward betrayal. Full summary: Elena Weaver was a surprise to anyone meeting her for the first time. In her clingy dresses and dangling earrings she exuded a sexuality at odds with the innocence projected by the unicorn posters on her walls. While her embittered mother fretted about her welfare from her home in London, in Cambridge—where Elena was a student at St. While his past sins make him neurotically dedicated to Elena and blind to her blacker side, present demons drive him toward betrayal."
+  },
+  {
+    "id": "book_frankenstein",
+    "title": "Frankenstein",
+    "author": "Mary Shelley",
+    "genres": [
+      "adventure",
+      "horror"
+    ],
+    "themes": [
+      "friendship",
+      "journey",
+      "language",
+      "love",
+      "class"
+    ],
+    "tone": [
+      "adventurous",
+      "emotional",
+      "atmospheric"
+    ],
+    "audience": "adult",
+    "language": "en",
+    "short_summary": "Frankenstein tells the story of Victor Frankenstein, a young scientist who creates a sapient creature in an unorthodox scientific experiment that involved putting it together with different body parts. She then journeyed to the region of Geneva, Switzerland, where much of the story takes place.",
+    "full_summary": "Frankenstein; or, The Modern Prometheus is an 1818 Gothic novel written by English author Mary Shelley. Frankenstein tells the story of Victor Frankenstein, a young scientist who creates a sapient creature in an unorthodox scientific experiment that involved putting it together with different body parts. Shelley started writing the story when she was 18 and staying in Bath, and the first edition was published anonymously in London on 1 January 1818, when she was 20. She then journeyed to the region of Geneva, Switzerland, where much of the story takes place.",
+    "content_for_embedding": "Title: Frankenstein. Author: Mary Shelley. Genres: adventure, horror. Themes: friendship, journey, language, love, class. Tone: adventurous, emotional, atmospheric. Audience: adult. Language: en. Short summary: Frankenstein tells the story of Victor Frankenstein, a young scientist who creates a sapient creature in an unorthodox scientific experiment that involved putting it together with different body parts. She then journeyed to the region of Geneva, Switzerland, where much of the story takes place. Full summary: Frankenstein; or, The Modern Prometheus is an 1818 Gothic novel written by English author Mary Shelley. Frankenstein tells the story of Victor Frankenstein, a young scientist who creates a sapient creature in an unorthodox scientific experiment that involved putting it together with different body parts. Shelley started writing the story when she was 18 and staying in Bath, and the first edition was published anonymously in London on 1 January 1818, when she was 20. She then journeyed to the region of Geneva, Switzerland, where much of the story takes place."
+  },
+  {
+    "id": "book_hercule_poirot_s_christmas",
+    "title": "Hercule Poirot's Christmas",
+    "author": "Agatha Christie",
+    "genres": [
+      "mystery"
+    ],
+    "themes": [
+      "truth",
+      "loss"
+    ],
+    "tone": [
+      "serious",
+      "engaging"
+    ],
+    "audience": "adult",
+    "language": "en",
+    "short_summary": "Christmas Eve, and the Lee family¿s reunion is shattered by a deafening crash of furniture and a high-pitched wailing scream. When Hercule Poirot offers to assist, he finds an atmosphere not of mourning but of mutual suspicion.",
+    "full_summary": "Christmas Eve, and the Lee family¿s reunion is shattered by a deafening crash of furniture and a high-pitched wailing scream. Upstairs, the tyrannical Simeon Lee lies dead in a pool of blood, histhroat slashed. When Hercule Poirot offers to assist, he finds an atmosphere not of mourning but of mutual suspicion. It seems everyone had their own reason to hatethe old man.",
+    "content_for_embedding": "Title: Hercule Poirot's Christmas. Author: Agatha Christie. Genres: mystery. Themes: truth, loss. Tone: serious, engaging. Audience: adult. Language: en. Short summary: Christmas Eve, and the Lee family¿s reunion is shattered by a deafening crash of furniture and a high-pitched wailing scream. When Hercule Poirot offers to assist, he finds an atmosphere not of mourning but of mutual suspicion. Full summary: Christmas Eve, and the Lee family¿s reunion is shattered by a deafening crash of furniture and a high-pitched wailing scream. Upstairs, the tyrannical Simeon Lee lies dead in a pool of blood, histhroat slashed. When Hercule Poirot offers to assist, he finds an atmosphere not of mourning but of mutual suspicion. It seems everyone had their own reason to hatethe old man."
+  },
+  {
+    "id": "book_jane_eyre",
+    "title": "Jane Eyre",
+    "author": "Charlotte Bronte",
+    "genres": [
+      "fiction"
+    ],
+    "themes": [
+      "identity",
+      "growth",
+      "storytelling"
+    ],
+    "tone": [
+      "sad"
+    ],
+    "audience": "adult",
+    "language": "pt-br",
+    "short_summary": "Mistério, traição, escândalo e um amor que transcende o tempo. Desde o momento em que Jane Eyre colocou os olhos no proprietário de Thornfield Hall, soube que sua vida mudaria irrevogavelmente.",
+    "full_summary": "Mistério, traição, escândalo e um amor que transcende o tempo. Desde o momento em que Jane Eyre colocou os olhos no proprietário de Thornfield Hall, soube que sua vida mudaria irrevogavelmente. O homem enigmático, complexo e tentador exige tudo o que Jane tem a oferecer ao convidá-la para uma jornada dos sentidos que escandalizaria a sociedade. Em seus braços fortes, ela se rende aos desejos mais sombrios do homem amado e descobre que os dela são igualmente abrasadores, mergulhando-a em um mundo que nunca suspeitou existir, mas do qual não quer mais escapar.",
+    "content_for_embedding": "Title: Jane Eyre. Author: Charlotte Bronte. Genres: fiction. Themes: identity, growth, storytelling. Tone: sad. Audience: adult. Language: pt-br. Short summary: Mistério, traição, escândalo e um amor que transcende o tempo. Desde o momento em que Jane Eyre colocou os olhos no proprietário de Thornfield Hall, soube que sua vida mudaria irrevogavelmente. Full summary: Mistério, traição, escândalo e um amor que transcende o tempo. Desde o momento em que Jane Eyre colocou os olhos no proprietário de Thornfield Hall, soube que sua vida mudaria irrevogavelmente. O homem enigmático, complexo e tentador exige tudo o que Jane tem a oferecer ao convidá-la para uma jornada dos sentidos que escandalizaria a sociedade. Em seus braços fortes, ela se rende aos desejos mais sombrios do homem amado e descobre que os dela são igualmente abrasadores, mergulhando-a em um mundo que nunca suspeitou existir, mas do qual não quer mais escapar."
+  },
+  {
+    "id": "book_journey_to_the_center_of_the_earth",
+    "title": "Journey to the Center of the Earth",
+    "author": "Jules Verne",
+    "genres": [
+      "science fiction",
+      "adventure",
+      "young adult"
+    ],
+    "themes": [
+      "journey",
+      "empathy",
+      "secrets"
+    ],
+    "tone": [
+      "adventurous",
+      "human"
+    ],
+    "audience": "young_adult",
+    "language": "en",
+    "short_summary": "The intrepid Professor Lindenbrock embarks upon the strangest expedition of the nineteenth century: a journey down an extinct Icelandic volcano to the Earth's very core.",
+    "full_summary": "The intrepid Professor Lindenbrock embarks upon the strangest expedition of the nineteenth century: a journey down an extinct Icelandic volcano to the Earth's very core. In his quest to penetrate the planet's primordial secrets, the geologist—together with his quaking nephew Axel and their devoted guide, Hans—discovers an astonishing subterranean menagerie of prehistoric proportions. Verne's imaginative tale is at once the ultimate science fiction adventure and a reflection on the perfectibility of human understanding and the psychology of the questor. As David Brin notes in his Introduction, though Verne never knew the term \"science fiction,\" Journey to the Centre of the Earth is \"inarguably one of the wellsprings from which it all began.\"",
+    "content_for_embedding": "Title: Journey to the Center of the Earth. Author: Jules Verne. Genres: science fiction, adventure, young adult. Themes: journey, empathy, secrets. Tone: adventurous, human. Audience: young_adult. Language: en. Short summary: The intrepid Professor Lindenbrock embarks upon the strangest expedition of the nineteenth century: a journey down an extinct Icelandic volcano to the Earth's very core. Full summary: The intrepid Professor Lindenbrock embarks upon the strangest expedition of the nineteenth century: a journey down an extinct Icelandic volcano to the Earth's very core. In his quest to penetrate the planet's primordial secrets, the geologist—together with his quaking nephew Axel and their devoted guide, Hans—discovers an astonishing subterranean menagerie of prehistoric proportions. Verne's imaginative tale is at once the ultimate science fiction adventure and a reflection on the perfectibility of human understanding and the psychology of the questor. As David Brin notes in his Introduction, though Verne never knew the term \"science fiction,\" Journey to the Centre of the Earth is \"inarguably one of the wellsprings from which it all began.\""
+  },
+  {
+    "id": "book_kokoro_hints_and_echoes_of_japanese_inner_life",
+    "title": "Kokoro: Hints and Echoes of Japanese Inner Life",
+    "author": "Lafcadio Hearn",
+    "genres": [
+      "literary fiction",
+      "war",
+      "classic"
+    ],
+    "themes": [
+      "identity",
+      "war",
+      "power",
+      "knowledge",
+      "language"
+    ],
+    "tone": [
+      "playful"
+    ],
+    "audience": "teen_adult",
+    "language": "en",
+    "short_summary": "The 15 classic essays collected in Kokoro examine the inner spiritual life of Japan. \"Kimiko\" paints the portrait of a beautiful geisha; \"By Force of Karma\" tells the story of a Buddhist monk; and in \"A Conservative,\" we come to know the thoughts and actions of a Samurai.",
+    "full_summary": "The 15 classic essays collected in Kokoro examine the inner spiritual life of Japan. The title itself can be translated as \"heart,\" \"spirit\" or \"inner meaning,\" and that's exactly what this collection teaches us about Japan. \"Kimiko\" paints the portrait of a beautiful geisha; \"By Force of Karma\" tells the story of a Buddhist monk; and in \"A Conservative,\" we come to know the thoughts and actions of a Samurai. His numerous books about that country were read with a fascination that was a tribute to his keen powers of observation and the vividness of his descriptions.",
+    "content_for_embedding": "Title: Kokoro: Hints and Echoes of Japanese Inner Life. Author: Lafcadio Hearn. Genres: literary fiction, war, classic. Themes: identity, war, power, knowledge, language. Tone: playful. Audience: teen_adult. Language: en. Short summary: The 15 classic essays collected in Kokoro examine the inner spiritual life of Japan. \"Kimiko\" paints the portrait of a beautiful geisha; \"By Force of Karma\" tells the story of a Buddhist monk; and in \"A Conservative,\" we come to know the thoughts and actions of a Samurai. Full summary: The 15 classic essays collected in Kokoro examine the inner spiritual life of Japan. The title itself can be translated as \"heart,\" \"spirit\" or \"inner meaning,\" and that's exactly what this collection teaches us about Japan. \"Kimiko\" paints the portrait of a beautiful geisha; \"By Force of Karma\" tells the story of a Buddhist monk; and in \"A Conservative,\" we come to know the thoughts and actions of a Samurai. His numerous books about that country were read with a fascination that was a tribute to his keen powers of observation and the vividness of his descriptions."
+  },
+  {
+    "id": "book_little_black_sambo",
+    "title": "Little Black Sambo",
+    "author": "Helen Bannerman",
+    "genres": [
+      "fiction"
+    ],
+    "themes": [
+      "racism",
+      "childhood",
+      "knowledge",
+      "books",
+      "dreams"
+    ],
+    "tone": [
+      "epic",
+      "simple"
+    ],
+    "audience": "children",
+    "language": "en",
+    "short_summary": "The Story of Little Black Sambo is a children's book written and illustrated by Scottish author Helen Bannerman, and first published by Grant Richards in October 1899 as one in a series of small-format books called The Dumpy Books for Children.",
+    "full_summary": "The Story of Little Black Sambo is a children's book written and illustrated by Scottish author Helen Bannerman, and first published by Grant Richards in October 1899 as one in a series of small-format books called The Dumpy Books for Children. The story was a children's favorite for more than half a century but would become a victim of allegations of racism in the mid-20th century. Both text and illustrations have undergone considerable revision since.",
+    "content_for_embedding": "Title: Little Black Sambo. Author: Helen Bannerman. Genres: fiction. Themes: racism, childhood, knowledge, books, dreams. Tone: epic, simple. Audience: children. Language: en. Short summary: The Story of Little Black Sambo is a children's book written and illustrated by Scottish author Helen Bannerman, and first published by Grant Richards in October 1899 as one in a series of small-format books called The Dumpy Books for Children. Full summary: The Story of Little Black Sambo is a children's book written and illustrated by Scottish author Helen Bannerman, and first published by Grant Richards in October 1899 as one in a series of small-format books called The Dumpy Books for Children. The story was a children's favorite for more than half a century but would become a victim of allegations of racism in the mid-20th century. Both text and illustrations have undergone considerable revision since."
+  },
+  {
+    "id": "book_mastering_the_marquess",
+    "title": "Mastering the Marquess",
+    "author": "Vanessa Kelly",
+    "genres": [
+      "romance"
+    ],
+    "themes": [
+      "identity",
+      "loss",
+      "love"
+    ],
+    "tone": [
+      "emotional",
+      "warm"
+    ],
+    "audience": "adult",
+    "language": "en",
+    "short_summary": "\"Since the loss of her parents, Meredith Burnley has contented herself with a solitary life looking after her half-sister, Annabel. But Meredith's peace is shattered when her uncle schemes to marry her off to his son in order to gain her inheritance.",
+    "full_summary": "\"Since the loss of her parents, Meredith Burnley has contented herself with a solitary life looking after her half-sister, Annabel. But Meredith's peace is shattered when her uncle schemes to marry her off to his son in order to gain her inheritance. Desperate, Meredith has only one choice: to flee with Annabel to their estranged grandparents' home. But their arrival soon reignites a family scandal--and kindles unexpected romance ...",
+    "content_for_embedding": "Title: Mastering the Marquess. Author: Vanessa Kelly. Genres: romance. Themes: identity, loss, love. Tone: emotional, warm. Audience: adult. Language: en. Short summary: \"Since the loss of her parents, Meredith Burnley has contented herself with a solitary life looking after her half-sister, Annabel. But Meredith's peace is shattered when her uncle schemes to marry her off to his son in order to gain her inheritance. Full summary: \"Since the loss of her parents, Meredith Burnley has contented herself with a solitary life looking after her half-sister, Annabel. But Meredith's peace is shattered when her uncle schemes to marry her off to his son in order to gain her inheritance. Desperate, Meredith has only one choice: to flee with Annabel to their estranged grandparents' home. But their arrival soon reignites a family scandal--and kindles unexpected romance ..."
+  },
+  {
+    "id": "book_my_scandalous_bride",
+    "title": "My Scandalous Bride",
+    "author": "Christina Dodd",
+    "genres": [
+      "romance",
+      "young adult"
+    ],
+    "themes": [
+      "love",
+      "books",
+      "secrets",
+      "dreams"
+    ],
+    "tone": [
+      "dark"
+    ],
+    "audience": "adult",
+    "language": "en",
+    "short_summary": "But things go too far when Keefe engages Laura in an artful game of seduction-a game that can have only one winner... It won't be easy...but Rennick has been lusting after the beguiling Julia Hamilton far too long to let her go now...",
+    "full_summary": "The passion is endless and it's only just begun in these four scintillating tales of brides-to-be by four of today's hottest romance authors... But things go too far when Keefe engages Laura in an artful game of seduction-a game that can have only one winner... But will wedding bells ring after the guests get their just desserts? It won't be easy...but Rennick has been lusting after the beguiling Julia Hamilton far too long to let her go now...",
+    "content_for_embedding": "Title: My Scandalous Bride. Author: Christina Dodd. Genres: romance, young adult. Themes: love, books, secrets, dreams. Tone: dark. Audience: adult. Language: en. Short summary: But things go too far when Keefe engages Laura in an artful game of seduction-a game that can have only one winner... It won't be easy...but Rennick has been lusting after the beguiling Julia Hamilton far too long to let her go now... Full summary: The passion is endless and it's only just begun in these four scintillating tales of brides-to-be by four of today's hottest romance authors... But things go too far when Keefe engages Laura in an artful game of seduction-a game that can have only one winner... But will wedding bells ring after the guests get their just desserts? It won't be easy...but Rennick has been lusting after the beguiling Julia Hamilton far too long to let her go now..."
+  },
+  {
+    "id": "book_mysteries",
+    "title": "Mysteries",
+    "author": "Knut Hamsun",
+    "genres": [
+      "literary fiction",
+      "war",
+      "classic"
+    ],
+    "themes": [
+      "truth",
+      "war",
+      "power",
+      "politics",
+      "knowledge"
+    ],
+    "tone": [
+      "intense",
+      "mysterious"
+    ],
+    "audience": "teen_adult",
+    "language": "en",
+    "short_summary": "The first complete English translation of the Nobel Prize-winner's literary masterpiece A Penguin Classic Mysteries is the story of Johan Nilsen Nagel, a mysterious stranger who suddenly turns up in a small Norwegian town one summer—and just as suddenly disappears.",
+    "full_summary": "The first complete English translation of the Nobel Prize-winner's literary masterpiece A Penguin Classic Mysteries is the story of Johan Nilsen Nagel, a mysterious stranger who suddenly turns up in a small Norwegian town one summer—and just as suddenly disappears. Nagel is a complete outsider, a sort of modern Christ treated in a spirit of near parody. He condemns the politics and thought of the age, brings comfort to the \"insulted and injured,\" and gains the love of two women suggestive of the biblical Mary and Martha. The novel creates a powerful sense of Nagel's stream of thought, as he increasingly withdraws into the torture chamber of his own subconscious psyche.",
+    "content_for_embedding": "Title: Mysteries. Author: Knut Hamsun. Genres: literary fiction, war, classic. Themes: truth, war, power, politics, knowledge. Tone: intense, mysterious. Audience: teen_adult. Language: en. Short summary: The first complete English translation of the Nobel Prize-winner's literary masterpiece A Penguin Classic Mysteries is the story of Johan Nilsen Nagel, a mysterious stranger who suddenly turns up in a small Norwegian town one summer—and just as suddenly disappears. Full summary: The first complete English translation of the Nobel Prize-winner's literary masterpiece A Penguin Classic Mysteries is the story of Johan Nilsen Nagel, a mysterious stranger who suddenly turns up in a small Norwegian town one summer—and just as suddenly disappears. Nagel is a complete outsider, a sort of modern Christ treated in a spirit of near parody. He condemns the politics and thought of the age, brings comfort to the \"insulted and injured,\" and gains the love of two women suggestive of the biblical Mary and Martha. The novel creates a powerful sense of Nagel's stream of thought, as he increasingly withdraws into the torture chamber of his own subconscious psyche."
+  },
+  {
+    "id": "book_north_and_south",
+    "title": "North and South",
+    "author": "Elizabeth Cleghorn Gaskell",
+    "genres": [
+      "science fiction",
+      "romance",
+      "war",
+      "classic"
+    ],
+    "themes": [
+      "identity",
+      "war",
+      "loss",
+      "power",
+      "justice"
+    ],
+    "tone": [
+      "human"
+    ],
+    "audience": "teen_adult",
+    "language": "en",
+    "short_summary": "As relevant now as when it was first published, Elizabeth Gaskell's North and South skilfully weaves a compelling love story into a clash between the pursuit of profit and humanitarian ideals. full of character and power' Charles Dickens",
+    "full_summary": "As relevant now as when it was first published, Elizabeth Gaskell's North and South skilfully weaves a compelling love story into a clash between the pursuit of profit and humanitarian ideals. When her father leaves the Church in a crisis of conscience, Margaret Hale is uprooted from her comfortable home in Hampshire to move with her family to the North of England. This is intensified by her tempestuous relationship with the mill-owner and self-made man John Thornton, as their fierce opposition over his treatment of his employees masks a deeper attraction. In her introduction Patricia Ingham examines Elizabeth Gaskell's treatment of geographical, economic and class differences, and the male and female roles portrayed in the novel.",
+    "content_for_embedding": "Title: North and South. Author: Elizabeth Cleghorn Gaskell. Genres: science fiction, romance, war, classic. Themes: identity, war, loss, power, justice. Tone: human. Audience: teen_adult. Language: en. Short summary: As relevant now as when it was first published, Elizabeth Gaskell's North and South skilfully weaves a compelling love story into a clash between the pursuit of profit and humanitarian ideals. full of character and power' Charles Dickens Full summary: As relevant now as when it was first published, Elizabeth Gaskell's North and South skilfully weaves a compelling love story into a clash between the pursuit of profit and humanitarian ideals. When her father leaves the Church in a crisis of conscience, Margaret Hale is uprooted from her comfortable home in Hampshire to move with her family to the North of England. This is intensified by her tempestuous relationship with the mill-owner and self-made man John Thornton, as their fierce opposition over his treatment of his employees masks a deeper attraction. In her introduction Patricia Ingham examines Elizabeth Gaskell's treatment of geographical, economic and class differences, and the male and female roles portrayed in the novel."
+  },
+  {
+    "id": "book_northern_lights",
+    "title": "Northern Lights",
+    "author": "Nora Roberts",
+    "genres": [
+      "romance",
+      "war"
+    ],
+    "themes": [
+      "surveillance",
+      "war",
+      "imagination"
+    ],
+    "tone": [
+      "dark",
+      "warm",
+      "sad"
+    ],
+    "audience": "adult",
+    "language": "en",
+    "short_summary": "Lunacy, Alaska - population 506 - is Nate Burke's last chance. Maybe serving as Chief of Police in this tiny, remote town, where darkness falls by mid-afternoon and temperatures fall to below zero, will bring some kind of solace.",
+    "full_summary": "Lunacy, Alaska - population 506 - is Nate Burke's last chance. As a Baltimore cop, he had watched his partner die - and the guilt still haunts him. Maybe serving as Chief of Police in this tiny, remote town, where darkness falls by mid-afternoon and temperatures fall to below zero, will bring some kind of solace. However, when two climbers find a corpse on the mountain, Nate discovers that Lunacy isn't quite the sleepy little backwater he imagined.",
+    "content_for_embedding": "Title: Northern Lights. Author: Nora Roberts. Genres: romance, war. Themes: surveillance, war, imagination. Tone: dark, warm, sad. Audience: adult. Language: en. Short summary: Lunacy, Alaska - population 506 - is Nate Burke's last chance. Maybe serving as Chief of Police in this tiny, remote town, where darkness falls by mid-afternoon and temperatures fall to below zero, will bring some kind of solace. Full summary: Lunacy, Alaska - population 506 - is Nate Burke's last chance. As a Baltimore cop, he had watched his partner die - and the guilt still haunts him. Maybe serving as Chief of Police in this tiny, remote town, where darkness falls by mid-afternoon and temperatures fall to below zero, will bring some kind of solace. However, when two climbers find a corpse on the mountain, Nate discovers that Lunacy isn't quite the sleepy little backwater he imagined."
+  },
+  {
+    "id": "book_oliver_twist",
+    "title": "Oliver Twist",
+    "author": "Charles Dickens",
+    "genres": [
+      "adventure",
+      "classic",
+      "crime"
+    ],
+    "themes": [
+      "journey",
+      "identity",
+      "good versus evil",
+      "childhood",
+      "love"
+    ],
+    "tone": [
+      "adventurous",
+      "sad",
+      "gentle"
+    ],
+    "audience": "children",
+    "language": "en",
+    "short_summary": "JAICO ILLUSTARTED CLASSICS SERIES is a collection of beloved children's classics read by generations all over the world. When the family fortunes improved, Dickens went back to school, after which he became an office boy, a freelance reporter, and finally an author.",
+    "full_summary": "JAICO ILLUSTARTED CLASSICS SERIES is a collection of beloved children's classics read by generations all over the world. Rich with adventures and thrills, these immortal stories with vivid illustrations are designed to delight young readers. IN A RAMSHACKLE workhouse of a parish in England, a baby boy was born to a woman who died in childbirth. When the family fortunes improved, Dickens went back to school, after which he became an office boy, a freelance reporter, and finally an author.",
+    "content_for_embedding": "Title: Oliver Twist. Author: Charles Dickens. Genres: adventure, classic, crime. Themes: journey, identity, good versus evil, childhood, love. Tone: adventurous, sad, gentle. Audience: children. Language: en. Short summary: JAICO ILLUSTARTED CLASSICS SERIES is a collection of beloved children's classics read by generations all over the world. When the family fortunes improved, Dickens went back to school, after which he became an office boy, a freelance reporter, and finally an author. Full summary: JAICO ILLUSTARTED CLASSICS SERIES is a collection of beloved children's classics read by generations all over the world. Rich with adventures and thrills, these immortal stories with vivid illustrations are designed to delight young readers. IN A RAMSHACKLE workhouse of a parish in England, a baby boy was born to a woman who died in childbirth. When the family fortunes improved, Dickens went back to school, after which he became an office boy, a freelance reporter, and finally an author."
+  },
+  {
+    "id": "book_pride_and_prejudice",
+    "title": "Pride and Prejudice",
+    "author": "Jane Austen",
+    "genres": [
+      "classic",
+      "romance",
+      "social fiction"
+    ],
+    "themes": [
+      "love",
+      "class",
+      "pride",
+      "misunderstanding",
+      "growth"
+    ],
+    "tone": [
+      "witty",
+      "elegant",
+      "observant"
+    ],
+    "audience": "adult",
+    "language": "en",
+    "short_summary": "Elizabeth Bennet navigates family pressure, social expectations, and mistaken first impressions. The novel combines romance with sharp insight into pride, class, and personal change.",
+    "full_summary": "Elizabeth Bennet is intelligent, independent, and quick to judge, especially when she meets the reserved Mr. Darcy. As misunderstandings unfold, both characters are forced to confront their own pride and assumptions. Around them, family concerns, marriage expectations, and social status shape every decision. The novel is valued not only for its romance, but for its humor, psychological insight, and subtle critique of society.",
+    "content_for_embedding": "Title: Pride and Prejudice. Author: Jane Austen. Genres: classic, romance, social fiction. Themes: love, class, pride, misunderstanding, growth. Tone: witty, elegant, observant. Summary: A classic novel where romance develops through conflict, misunderstanding, and personal growth within a structured social world."
+  },
+  {
+    "id": "book_restore_me",
+    "title": "Restore Me",
+    "author": "Tahereh Mafi",
+    "genres": [
+      "fantasy",
+      "dystopian",
+      "romance",
+      "war",
+      "young adult"
+    ],
+    "themes": [
+      "identity",
+      "war",
+      "survival",
+      "power",
+      "childhood"
+    ],
+    "tone": [
+      "dark",
+      "epic",
+      "intense"
+    ],
+    "audience": "children",
+    "language": "en",
+    "short_summary": "Maas, Victoria Aveyard's The Red Queen, Stranger Things and Leigh Bardugo's Six of Crows The girl with the power to kill with a single touch now has the world in the palm of her hand. But when tragedy strikes, she must confront the darkness that dwells both around and inside her.",
+    "full_summary": "The book that all SHATTER ME fans have been waiting for is finally here. Maas, Victoria Aveyard's The Red Queen, Stranger Things and Leigh Bardugo's Six of Crows The girl with the power to kill with a single touch now has the world in the palm of her hand. She took over Sector 45, was named Supreme Commander, and now has Warner by her side. But when tragedy strikes, she must confront the darkness that dwells both around and inside her.",
+    "content_for_embedding": "Title: Restore Me. Author: Tahereh Mafi. Genres: fantasy, dystopian, romance, war, young adult. Themes: identity, war, survival, power, childhood. Tone: dark, epic, intense. Audience: children. Language: en. Short summary: Maas, Victoria Aveyard's The Red Queen, Stranger Things and Leigh Bardugo's Six of Crows The girl with the power to kill with a single touch now has the world in the palm of her hand. But when tragedy strikes, she must confront the darkness that dwells both around and inside her. Full summary: The book that all SHATTER ME fans have been waiting for is finally here. Maas, Victoria Aveyard's The Red Queen, Stranger Things and Leigh Bardugo's Six of Crows The girl with the power to kill with a single touch now has the world in the palm of her hand. She took over Sector 45, was named Supreme Commander, and now has Warner by her side. But when tragedy strikes, she must confront the darkness that dwells both around and inside her."
+  },
+  {
+    "id": "book_seeking_whom_he_may_devour_chief_inspector_adamsberg_investigates",
+    "title": "Seeking Whom He May Devour: Chief Inspector Adamsberg Investigates",
+    "author": "Fred Vargas",
+    "genres": [
+      "mystery"
+    ],
+    "themes": [
+      "imagination"
+    ],
+    "tone": [
+      "serious",
+      "engaging"
+    ],
+    "audience": "adult",
+    "language": "en",
+    "short_summary": "\"A small mountain community in the French Alps is roused to terror when they awaken each morning to find yet another of their sheep with its throat torn out. Suspicion falls on Massart, a loner living on the edge of town\"--Publisher website (April 2007).",
+    "full_summary": "\"A small mountain community in the French Alps is roused to terror when they awaken each morning to find yet another of their sheep with its throat torn out. One of the villagers thinks it might be a werewolf, and when she's found killed in the same manner, people begin to wonder if she might have been right. Suspicion falls on Massart, a loner living on the edge of town\"--Publisher website (April 2007).",
+    "content_for_embedding": "Title: Seeking Whom He May Devour: Chief Inspector Adamsberg Investigates. Author: Fred Vargas. Genres: mystery. Themes: imagination. Tone: serious, engaging. Audience: adult. Language: en. Short summary: \"A small mountain community in the French Alps is roused to terror when they awaken each morning to find yet another of their sheep with its throat torn out. Suspicion falls on Massart, a loner living on the edge of town\"--Publisher website (April 2007). Full summary: \"A small mountain community in the French Alps is roused to terror when they awaken each morning to find yet another of their sheep with its throat torn out. One of the villagers thinks it might be a werewolf, and when she's found killed in the same manner, people begin to wonder if she might have been right. Suspicion falls on Massart, a loner living on the edge of town\"--Publisher website (April 2007)."
+  },
+  {
+    "id": "book_sherlock_holmes_the_valley_of_fear_unabridged",
+    "title": "SHERLOCK HOLMES - THE VALLEY OF FEAR: UNABRIDGED",
+    "author": "ARTHUR CONAN DOYLE",
+    "genres": [
+      "literary fiction",
+      "adventure",
+      "classic",
+      "crime"
+    ],
+    "themes": [
+      "journey",
+      "knowledge",
+      "class",
+      "books"
+    ],
+    "tone": [
+      "adventurous"
+    ],
+    "audience": "teen_adult",
+    "language": "en",
+    "short_summary": "SHERLOCK HOLMES - THE VALLEY OF FEAR, is the 4th and final novel written by Arthur Conan Doyle. This book is complete, unabridged and was originally published in 1915.",
+    "full_summary": "SHERLOCK HOLMES - THE VALLEY OF FEAR, is the 4th and final novel written by Arthur Conan Doyle. This book is complete, unabridged and was originally published in 1915. This is one of Doyle's most outstanding and well-known works of the adventures of the most famous crime-solving duo - Sherlock Holmes and John Watson This book is properly formatted for aesthetics and ease of reading. This book is great for teachers and students or for the casual reader.",
+    "content_for_embedding": "Title: SHERLOCK HOLMES - THE VALLEY OF FEAR: UNABRIDGED. Author: ARTHUR CONAN DOYLE. Genres: literary fiction, adventure, classic, crime. Themes: journey, knowledge, class, books. Tone: adventurous. Audience: teen_adult. Language: en. Short summary: SHERLOCK HOLMES - THE VALLEY OF FEAR, is the 4th and final novel written by Arthur Conan Doyle. This book is complete, unabridged and was originally published in 1915. Full summary: SHERLOCK HOLMES - THE VALLEY OF FEAR, is the 4th and final novel written by Arthur Conan Doyle. This book is complete, unabridged and was originally published in 1915. This is one of Doyle's most outstanding and well-known works of the adventures of the most famous crime-solving duo - Sherlock Holmes and John Watson This book is properly formatted for aesthetics and ease of reading. This book is great for teachers and students or for the casual reader."
+  },
+  {
+    "id": "book_sweet_ache",
+    "title": "Sweet Ache",
+    "author": "K. Bromberg",
+    "genres": [
+      "romance"
+    ],
+    "themes": [
+      "awakening",
+      "ambition"
+    ],
+    "tone": [
+      "simple"
+    ],
+    "audience": "adult",
+    "language": "en",
+    "short_summary": "Hawkin Play, the bad boy rock star with a good guy heart, has lived a lifetime of cleaning up after his twin brother's mistakes. When Hunter realizes his twin finally has a weakness, he'll stop at nothing to take advantage....",
+    "full_summary": "Hawkin Play, the bad boy rock star with a good guy heart, has lived a lifetime of cleaning up after his twin brother's mistakes. Hunter's most recent screwup could land Hawke in jail and risk the band's future. Hawke agrees to guest lecture at a local college to stay in the judge's good graces--and a bet with his bandmate to seduce his sexy teaching assistant is icing on the cake. When Hunter realizes his twin finally has a weakness, he'll stop at nothing to take advantage....",
+    "content_for_embedding": "Title: Sweet Ache. Author: K. Bromberg. Genres: romance. Themes: awakening, ambition. Tone: simple. Audience: adult. Language: en. Short summary: Hawkin Play, the bad boy rock star with a good guy heart, has lived a lifetime of cleaning up after his twin brother's mistakes. When Hunter realizes his twin finally has a weakness, he'll stop at nothing to take advantage.... Full summary: Hawkin Play, the bad boy rock star with a good guy heart, has lived a lifetime of cleaning up after his twin brother's mistakes. Hunter's most recent screwup could land Hawke in jail and risk the band's future. Hawke agrees to guest lecture at a local college to stay in the judge's good graces--and a bet with his bandmate to seduce his sexy teaching assistant is icing on the cake. When Hunter realizes his twin finally has a weakness, he'll stop at nothing to take advantage...."
+  },
+  {
+    "id": "book_taras_bulba",
+    "title": "Taras Bulba",
+    "author": "Nikolái V. Gogol",
+    "genres": [
+      "literary fiction"
+    ],
+    "themes": [
+      "identity",
+      "growth",
+      "storytelling"
+    ],
+    "tone": [
+      "serious",
+      "engaging"
+    ],
+    "audience": "adult",
+    "language": "es",
+    "short_summary": "Feroces, crueles, valientes y apasionados, los cosacos hacen temblar la estepa bajo los cascos de sus caballos. un fresco tan afinadamente dibujado y tan vívido que resulta absolutamente intemporal.",
+    "full_summary": "Feroces, crueles, valientes y apasionados, los cosacos hacen temblar la estepa bajo los cascos de sus caballos. Y entre ellos se encuentra Taras Bulba, un anciano lleno aún de fuerza e inteligencia que junto a sus hijos, Ostap y Andrí, avanzará por tierras polacas con intención de vengar su fe ortodoxa burlada por los católicos. Ninguna guarnición, ciudad amurallada o iglesia podrán detenerlos, hasta que la desgracia se cierna sobre ellos y el apuesto y enamoradizo Andrí haga que su padre maldiga el día en que lo engendró. Taras Bulba, una anomalía entre la obra más conocida de Gogol, es una aventura trepidante, una sinfonía en perpetuo crescendo, en la que cada capítulo es más intenso y sorprendente que el anterior.",
+    "content_for_embedding": "Title: Taras Bulba. Author: Nikolái V. Gogol. Genres: literary fiction. Themes: identity, growth, storytelling. Tone: serious, engaging. Audience: adult. Language: es. Short summary: Feroces, crueles, valientes y apasionados, los cosacos hacen temblar la estepa bajo los cascos de sus caballos. un fresco tan afinadamente dibujado y tan vívido que resulta absolutamente intemporal. Full summary: Feroces, crueles, valientes y apasionados, los cosacos hacen temblar la estepa bajo los cascos de sus caballos. Y entre ellos se encuentra Taras Bulba, un anciano lleno aún de fuerza e inteligencia que junto a sus hijos, Ostap y Andrí, avanzará por tierras polacas con intención de vengar su fe ortodoxa burlada por los católicos. Ninguna guarnición, ciudad amurallada o iglesia podrán detenerlos, hasta que la desgracia se cierna sobre ellos y el apuesto y enamoradizo Andrí haga que su padre maldiga el día en que lo engendró. Taras Bulba, una anomalía entre la obra más conocida de Gogol, es una aventura trepidante, una sinfonía en perpetuo crescendo, en la que cada capítulo es más intenso y sorprendente que el anterior."
+  },
+  {
+    "id": "book_the_alchemist",
+    "title": "The Alchemist",
+    "author": "Paulo Coelho",
+    "genres": [
+      "philosophical fiction",
+      "adventure",
+      "parable"
+    ],
+    "themes": [
+      "destiny",
+      "dreams",
+      "self-discovery",
+      "faith",
+      "purpose"
+    ],
+    "tone": [
+      "inspirational",
+      "simple",
+      "reflective"
+    ],
+    "audience": "all_ages",
+    "language": "en",
+    "short_summary": "A young shepherd leaves home to pursue a recurring dream of treasure. His journey becomes a search for purpose, courage, and personal meaning.",
+    "full_summary": "Santiago travels from Spain to the desert after believing that his recurring dream points toward hidden treasure. On the road he meets teachers, obstacles, and symbols that gradually reshape his understanding of success and destiny. The novel is written simply, but it tries to encourage readers to listen to their inner calling and learn from the path itself. It works best for readers who want an uplifting and symbolic story about purpose and perseverance.",
+    "content_for_embedding": "Title: The Alchemist. Author: Paulo Coelho. Genres: philosophical fiction, adventure, parable. Themes: destiny, dreams, self-discovery, faith, purpose. Tone: inspirational, simple, reflective. Summary: A symbolic journey about following a dream, learning from the road, and searching for meaning and purpose."
+  },
+  {
+    "id": "book_the_book_thief",
+    "title": "The Book Thief",
+    "author": "Markus Zusak",
+    "genres": [
+      "historical fiction",
+      "war",
+      "drama"
+    ],
+    "themes": [
+      "war",
+      "loss",
+      "friendship",
+      "language",
+      "resistance"
+    ],
+    "tone": [
+      "sad",
+      "human",
+      "poetic"
+    ],
+    "audience": "teen_adult",
+    "language": "en",
+    "short_summary": "Set in Nazi Germany, the novel follows a girl who finds comfort in words, books, and human connection during a time of fear and destruction.",
+    "full_summary": "Liesel Meminger lives in wartime Germany, where books become both a refuge and a form of quiet resistance. She builds strong emotional bonds with her foster parents, a close friend, and a Jewish man hidden in their home. Against the background of bombing, propaganda, and loss, language becomes a tool for memory, courage, and survival. The novel is emotionally intense and deeply human, showing both cruelty and kindness during war.",
+    "content_for_embedding": "Title: The Book Thief. Author: Markus Zusak. Genres: historical fiction, war, drama. Themes: war, loss, friendship, language, resistance. Tone: sad, human, poetic. Summary: A wartime story about a young girl who clings to books and relationships while living through fear, grief, and oppression."
+  },
+  {
+    "id": "book_the_cottage",
+    "title": "The Cottage",
+    "author": "Danielle Steel",
+    "genres": [
+      "science fiction",
+      "romance",
+      "young adult"
+    ],
+    "themes": [
+      "social control",
+      "friendship",
+      "greed",
+      "identity",
+      "destiny"
+    ],
+    "tone": [
+      "emotional",
+      "human",
+      "elegant"
+    ],
+    "audience": "young_adult",
+    "language": "en",
+    "short_summary": "In her fifty-fourth bestselling novel, DANIELLE STEEL weaves a compelling story of fame and friendship, charmed lives and private struggles...and of three very different men whose lives converge and collide atThe Cottage. But everything changes when Mark's teenage son and daughter move in.",
+    "full_summary": "In her fifty-fourth bestselling novel, DANIELLE STEEL weaves a compelling story of fame and friendship, charmed lives and private struggles...and of three very different men whose lives converge and collide atThe Cottage. Modeled after the \"cottages\" of Newport, Rhode Island, the spacious, elegant property, sitting on fourteen acres of lush Bel Air, fits its owner to a T. But everything changes when Mark's teenage son and daughter move in. Three men who never would have met are becoming friends...and each man finds himself changing in surprising ways, Coop most of all.",
+    "content_for_embedding": "Title: The Cottage. Author: Danielle Steel. Genres: science fiction, romance, young adult. Themes: social control, friendship, greed, identity, destiny. Tone: emotional, human, elegant. Audience: young_adult. Language: en. Short summary: In her fifty-fourth bestselling novel, DANIELLE STEEL weaves a compelling story of fame and friendship, charmed lives and private struggles...and of three very different men whose lives converge and collide atThe Cottage. But everything changes when Mark's teenage son and daughter move in. Full summary: In her fifty-fourth bestselling novel, DANIELLE STEEL weaves a compelling story of fame and friendship, charmed lives and private struggles...and of three very different men whose lives converge and collide atThe Cottage. Modeled after the \"cottages\" of Newport, Rhode Island, the spacious, elegant property, sitting on fourteen acres of lush Bel Air, fits its owner to a T. But everything changes when Mark's teenage son and daughter move in. Three men who never would have met are becoming friends...and each man finds himself changing in surprising ways, Coop most of all."
+  },
+  {
+    "id": "book_the_curious_incident_of_the_dog_in_the_night_time",
+    "title": "The Curious Incident of the Dog in the Night-time",
+    "author": "Mark Haddon",
+    "genres": [
+      "mystery",
+      "young adult"
+    ],
+    "themes": [
+      "talent",
+      "secrets"
+    ],
+    "tone": [
+      "mysterious",
+      "intense"
+    ],
+    "audience": "young_adult",
+    "language": "en",
+    "short_summary": "Despite his overwhelming fear of interacting with people, Christopher, a mathematically-gifted, autistic fifteen-year-old boy, decides to investigate the murder of a neighbour's dog and uncovers secret information about his mother. Whitbread book of the year 2003.",
+    "full_summary": "Despite his overwhelming fear of interacting with people, Christopher, a mathematically-gifted, autistic fifteen-year-old boy, decides to investigate the murder of a neighbour's dog and uncovers secret information about his mother. Whitbread book of the year 2003.",
+    "content_for_embedding": "Title: The Curious Incident of the Dog in the Night-time. Author: Mark Haddon. Genres: mystery, young adult. Themes: talent, secrets. Tone: mysterious, intense. Audience: young_adult. Language: en. Short summary: Despite his overwhelming fear of interacting with people, Christopher, a mathematically-gifted, autistic fifteen-year-old boy, decides to investigate the murder of a neighbour's dog and uncovers secret information about his mother. Whitbread book of the year 2003. Full summary: Despite his overwhelming fear of interacting with people, Christopher, a mathematically-gifted, autistic fifteen-year-old boy, decides to investigate the murder of a neighbour's dog and uncovers secret information about his mother. Whitbread book of the year 2003."
+  },
+  {
+    "id": "book_the_da_vinci_code",
+    "title": "The Da Vinci Code",
+    "author": "Dan Brown",
+    "genres": [
+      "mystery",
+      "thriller",
+      "historical fiction"
+    ],
+    "themes": [
+      "truth",
+      "knowledge",
+      "talent",
+      "books",
+      "secrets"
+    ],
+    "tone": [
+      "urgent"
+    ],
+    "audience": "adult",
+    "language": "en",
+    "short_summary": "Harvard professor Robert Langdon receives an urgent late-night phone call while on business in Paris: the elderly curator of the Louvre, Jacques Sauni're, has been brutally murdered inside the museum. Alongside the body, police have found a series of baffling codes.",
+    "full_summary": "Harvard professor Robert Langdon receives an urgent late-night phone call while on business in Paris: the elderly curator of the Louvre, Jacques Sauni're, has been brutally murdered inside the museum. Alongside the body, police have found a series of baffling codes. Unless Langdon and Neveu can decipher the labyrinthine code and quickly assemble the pieces of the puzzle, the Priory's secret - and a stunning historical truth - will be lost forever. Breaking the mould of traditional suspense novels, The DA VINCI CODE is simultaneously lightning-paced, intelligent and intricately layered with remarkable research and detail.",
+    "content_for_embedding": "Title: The Da Vinci Code. Author: Dan Brown. Genres: mystery, thriller, historical fiction. Themes: truth, knowledge, talent, books, secrets. Tone: urgent. Audience: adult. Language: en. Short summary: Harvard professor Robert Langdon receives an urgent late-night phone call while on business in Paris: the elderly curator of the Louvre, Jacques Sauni're, has been brutally murdered inside the museum. Alongside the body, police have found a series of baffling codes. Full summary: Harvard professor Robert Langdon receives an urgent late-night phone call while on business in Paris: the elderly curator of the Louvre, Jacques Sauni're, has been brutally murdered inside the museum. Alongside the body, police have found a series of baffling codes. Unless Langdon and Neveu can decipher the labyrinthine code and quickly assemble the pieces of the puzzle, the Priory's secret - and a stunning historical truth - will be lost forever. Breaking the mould of traditional suspense novels, The DA VINCI CODE is simultaneously lightning-paced, intelligent and intricately layered with remarkable research and detail."
+  },
+  {
+    "id": "book_the_girl_from_summer_hill_a_summer_hill_novel",
+    "title": "The Girl from Summer Hill: A Summer Hill Novel",
+    "author": "Jude Deveraux",
+    "genres": [
+      "romance"
+    ],
+    "themes": [
+      "racism",
+      "love",
+      "pride"
+    ],
+    "tone": [
+      "serious",
+      "engaging"
+    ],
+    "audience": "adult",
+    "language": "en",
+    "short_summary": "Arriving in the charming town of Summer Hill, Virginia, peace and quiet on the picturesque Tattwell plantation is just what she needs. But the tranquillity is broken one morning when she sees a gorgeous naked man on her porch.",
+    "full_summary": "Chef Casey Reddick has had it up to here with men. Arriving in the charming town of Summer Hill, Virginia, peace and quiet on the picturesque Tattwell plantation is just what she needs. But the tranquillity is broken one morning when she sees a gorgeous naked man on her porch. What Tate Landers, Hollywood heartthrob and owner of Tattwell, doesn't need on a bittersweet trip to his ancestral home is a woman spying on him.",
+    "content_for_embedding": "Title: The Girl from Summer Hill: A Summer Hill Novel. Author: Jude Deveraux. Genres: romance. Themes: racism, love, pride. Tone: serious, engaging. Audience: adult. Language: en. Short summary: Arriving in the charming town of Summer Hill, Virginia, peace and quiet on the picturesque Tattwell plantation is just what she needs. But the tranquillity is broken one morning when she sees a gorgeous naked man on her porch. Full summary: Chef Casey Reddick has had it up to here with men. Arriving in the charming town of Summer Hill, Virginia, peace and quiet on the picturesque Tattwell plantation is just what she needs. But the tranquillity is broken one morning when she sees a gorgeous naked man on her porch. What Tate Landers, Hollywood heartthrob and owner of Tattwell, doesn't need on a bittersweet trip to his ancestral home is a woman spying on him."
+  },
+  {
+    "id": "book_the_girl_with_the_dragon_tattoo",
+    "title": "The Girl with the Dragon Tattoo",
+    "author": "Stieg Larsson",
+    "genres": [
+      "science fiction",
+      "mystery"
+    ],
+    "themes": [
+      "power",
+      "memory",
+      "secrets"
+    ],
+    "tone": [
+      "playful",
+      "intense"
+    ],
+    "audience": "adult",
+    "language": "en",
+    "short_summary": "Forty years ago, Harriet Vanger disappeared off the secluded island owned and inhabited by the powerful Vanger family. But her uncle, Henrik, is convinced that she was murdered by someone in her own family the deeply dysfunctional Vanger clan.",
+    "full_summary": "Forty years ago, Harriet Vanger disappeared off the secluded island owned and inhabited by the powerful Vanger family. There was no corpse, no witnesses, no evidence. But her uncle, Henrik, is convinced that she was murdered by someone in her own family the deeply dysfunctional Vanger clan. Disgraced journalist Mikael Blomqvist is hired to investigate, but when he links Harriet s disappearance to a string of gruesome murders from forty years ago, he needs a competent assistant and he gets one: computer hacker Lisbeth Salander a tattoed, truculent, angry girl who rides a motorbike like a Hell s Angel and handles makeshift weapons with the skill born of remorseless rage.",
+    "content_for_embedding": "Title: The Girl with the Dragon Tattoo. Author: Stieg Larsson. Genres: science fiction, mystery. Themes: power, memory, secrets. Tone: playful, intense. Audience: adult. Language: en. Short summary: Forty years ago, Harriet Vanger disappeared off the secluded island owned and inhabited by the powerful Vanger family. But her uncle, Henrik, is convinced that she was murdered by someone in her own family the deeply dysfunctional Vanger clan. Full summary: Forty years ago, Harriet Vanger disappeared off the secluded island owned and inhabited by the powerful Vanger family. There was no corpse, no witnesses, no evidence. But her uncle, Henrik, is convinced that she was murdered by someone in her own family the deeply dysfunctional Vanger clan. Disgraced journalist Mikael Blomqvist is hired to investigate, but when he links Harriet s disappearance to a string of gruesome murders from forty years ago, he needs a competent assistant and he gets one: computer hacker Lisbeth Salander a tattoed, truculent, angry girl who rides a motorbike like a Hell s Angel and handles makeshift weapons with the skill born of remorseless rage."
+  },
+  {
+    "id": "book_the_happy_prince_and_other_stories",
+    "title": "The Happy Prince and Other Stories",
+    "author": "Oscar Wilde",
+    "genres": [
+      "fiction"
+    ],
+    "themes": [
+      "greed",
+      "identity",
+      "childhood"
+    ],
+    "tone": [
+      "serious",
+      "engaging"
+    ],
+    "audience": "children",
+    "language": "en",
+    "short_summary": "The Happy Prince and Other Stories is a collection of stories for children by Oscar Wilde. As the winter comes and the Happy Prince is stripped of all of his beauty, his lead heart breaks when the swallow dies as a result of his selfless deeds.",
+    "full_summary": "The Happy Prince and Other Stories is a collection of stories for children by Oscar Wilde. It contains five stories, \"The Happy Prince\", \"The Nightingale and the Rose\", \"The Selfish Giant\", \"The Devoted Friend\", and \"The Remarkable Rocket\". In a town where a lot of poor people suffer, a swallow who was left behind after his flock flew off to Egypt for the winter meets the statue of the late \"Happy Prince\", who in reality has never experienced true happiness. As the winter comes and the Happy Prince is stripped of all of his beauty, his lead heart breaks when the swallow dies as a result of his selfless deeds.",
+    "content_for_embedding": "Title: The Happy Prince and Other Stories. Author: Oscar Wilde. Genres: fiction. Themes: greed, identity, childhood. Tone: serious, engaging. Audience: children. Language: en. Short summary: The Happy Prince and Other Stories is a collection of stories for children by Oscar Wilde. As the winter comes and the Happy Prince is stripped of all of his beauty, his lead heart breaks when the swallow dies as a result of his selfless deeds. Full summary: The Happy Prince and Other Stories is a collection of stories for children by Oscar Wilde. It contains five stories, \"The Happy Prince\", \"The Nightingale and the Rose\", \"The Selfish Giant\", \"The Devoted Friend\", and \"The Remarkable Rocket\". In a town where a lot of poor people suffer, a swallow who was left behind after his flock flew off to Egypt for the winter meets the statue of the late \"Happy Prince\", who in reality has never experienced true happiness. As the winter comes and the Happy Prince is stripped of all of his beauty, his lead heart breaks when the swallow dies as a result of his selfless deeds."
+  },
+  {
+    "id": "book_the_hobbit",
+    "title": "The Hobbit",
+    "author": "J.R.R. Tolkien",
+    "genres": [
+      "fantasy",
+      "adventure"
+    ],
+    "themes": [
+      "friendship",
+      "courage",
+      "journey",
+      "greed",
+      "growth"
+    ],
+    "tone": [
+      "warm",
+      "adventurous",
+      "hopeful"
+    ],
+    "audience": "teen_adult",
+    "language": "en",
+    "short_summary": "Bilbo Baggins, a quiet hobbit, is unexpectedly pulled into a dangerous quest with dwarves and a wizard. Along the way he discovers bravery, loyalty, and a wider world than he ever imagined.",
+    "full_summary": "Bilbo begins as a comfort-loving hobbit who wants nothing to do with danger, yet he joins a quest to help a group of dwarves reclaim their treasure from the dragon Smaug. During the journey, he faces trolls, goblins, riddles, forests, and battle. Step by step, Bilbo becomes cleverer and more courageous, earning the respect of his companions. The novel combines adventure, fantasy, humor, and personal growth, while also showing how greed can corrupt noble goals.",
+    "content_for_embedding": "Title: The Hobbit. Author: J.R.R. Tolkien. Genres: fantasy, adventure. Themes: friendship, courage, journey, greed, growth. Tone: warm, adventurous, hopeful. Summary: A fantasy adventure about a reluctant hero who joins a quest, grows in courage, and builds unexpected friendships."
+  },
+  {
+    "id": "book_the_house_at_riverton_a_novel",
+    "title": "The House at Riverton: A Novel",
+    "author": "Kate Morton",
+    "genres": [
+      "mystery"
+    ],
+    "themes": [
+      "secrets"
+    ],
+    "tone": [
+      "serious",
+      "engaging"
+    ],
+    "audience": "adult",
+    "language": "en",
+    "short_summary": "Ninety-eight-year-old Grace Bradley is visited by a young director who takes her back to Riverton House where she reveals the secret behind the death of a young poet in the summer of 1924.",
+    "full_summary": "Ninety-eight-year-old Grace Bradley is visited by a young director who takes her back to Riverton House where she reveals the secret behind the death of a young poet in the summer of 1924. The book fits best in mystery. It especially explores secrets. The tone is serious, engaging, and it is best suited to adult readers.",
+    "content_for_embedding": "Title: The House at Riverton: A Novel. Author: Kate Morton. Genres: mystery. Themes: secrets. Tone: serious, engaging. Audience: adult. Language: en. Short summary: Ninety-eight-year-old Grace Bradley is visited by a young director who takes her back to Riverton House where she reveals the secret behind the death of a young poet in the summer of 1924. Full summary: Ninety-eight-year-old Grace Bradley is visited by a young director who takes her back to Riverton House where she reveals the secret behind the death of a young poet in the summer of 1924. The book fits best in mystery. It especially explores secrets. The tone is serious, engaging, and it is best suited to adult readers."
+  },
+  {
+    "id": "book_the_house_on_hope_street",
+    "title": "The House on Hope Street",
+    "author": "Danielle Steel",
+    "genres": [
+      "science fiction",
+      "romance",
+      "war",
+      "adventure"
+    ],
+    "themes": [
+      "journey",
+      "war",
+      "loss",
+      "power",
+      "justice"
+    ],
+    "tone": [
+      "warm",
+      "adventurous",
+      "hopeful"
+    ],
+    "audience": "children",
+    "language": "en",
+    "short_summary": "And suddenly, Liz is alone, facing painful questions in the wake of an unbearable loss. Powered by her children's love, Liz finds the strength to return to work, to become both mother and 'daddy', coaching her youngest son for the Special Olympics.",
+    "full_summary": "And suddenly, Liz is alone, facing painful questions in the wake of an unbearable loss. Powered by her children's love, Liz finds the strength to return to work, to become both mother and 'daddy', coaching her youngest son for the Special Olympics. And as long as the days of summer blend into fall, a new relationship offers new hope, and Liz reflects on what she has, on what she's lost, on the little blessings that give strength when nothing else is left. THE HOUSE ON HOPE STREET is about learning to live again after you think life is over, about gettting up when you have been knocked down, again and again.",
+    "content_for_embedding": "Title: The House on Hope Street. Author: Danielle Steel. Genres: science fiction, romance, war, adventure. Themes: journey, war, loss, power, justice. Tone: warm, adventurous, hopeful. Audience: children. Language: en. Short summary: And suddenly, Liz is alone, facing painful questions in the wake of an unbearable loss. Powered by her children's love, Liz finds the strength to return to work, to become both mother and 'daddy', coaching her youngest son for the Special Olympics. Full summary: And suddenly, Liz is alone, facing painful questions in the wake of an unbearable loss. Powered by her children's love, Liz finds the strength to return to work, to become both mother and 'daddy', coaching her youngest son for the Special Olympics. And as long as the days of summer blend into fall, a new relationship offers new hope, and Liz reflects on what she has, on what she's lost, on the little blessings that give strength when nothing else is left. THE HOUSE ON HOPE STREET is about learning to live again after you think life is over, about gettting up when you have been knocked down, again and again."
+  },
+  {
+    "id": "book_the_japanese_lover_a_novel",
+    "title": "The Japanese Lover: A Novel",
+    "author": "Isabel Allende",
+    "genres": [
+      "romance",
+      "war"
+    ],
+    "themes": [
+      "friendship",
+      "war",
+      "loss",
+      "politics",
+      "knowledge"
+    ],
+    "tone": [
+      "warm",
+      "gentle",
+      "mysterious"
+    ],
+    "audience": "adult",
+    "language": "en",
+    "short_summary": "Unnoticed by those around them, a tender love affair begins to blossom. Throughout their lifetimes, Alma and Ichimei reunite again and again, but theirs is a love that they are forever forced to hide from the world.",
+    "full_summary": "In 1939, as Poland falls under the shadow of the Nazis, young Alma Belasco's parents send her away to live in safety with an aunt and uncle in their opulent mansion in San Francisco. There, as the rest of the world goes to war, she encounters Ichimei Fukuda, the quiet and gentle son of the family's Japanese gardener. Unnoticed by those around them, a tender love affair begins to blossom. Throughout their lifetimes, Alma and Ichimei reunite again and again, but theirs is a love that they are forever forced to hide from the world.",
+    "content_for_embedding": "Title: The Japanese Lover: A Novel. Author: Isabel Allende. Genres: romance, war. Themes: friendship, war, loss, politics, knowledge. Tone: warm, gentle, mysterious. Audience: adult. Language: en. Short summary: Unnoticed by those around them, a tender love affair begins to blossom. Throughout their lifetimes, Alma and Ichimei reunite again and again, but theirs is a love that they are forever forced to hide from the world. Full summary: In 1939, as Poland falls under the shadow of the Nazis, young Alma Belasco's parents send her away to live in safety with an aunt and uncle in their opulent mansion in San Francisco. There, as the rest of the world goes to war, she encounters Ichimei Fukuda, the quiet and gentle son of the family's Japanese gardener. Unnoticed by those around them, a tender love affair begins to blossom. Throughout their lifetimes, Alma and Ichimei reunite again and again, but theirs is a love that they are forever forced to hide from the world."
+  },
+  {
+    "id": "book_the_klone_and_i_a_high_tech_love_story",
+    "title": "The Klone and I: A High-tech Love Story",
+    "author": "Danielle Steel",
+    "genres": [
+      "romance",
+      "adventure"
+    ],
+    "themes": [
+      "truth",
+      "journey",
+      "identity",
+      "love",
+      "dreams"
+    ],
+    "tone": [
+      "serious",
+      "adventurous",
+      "playful",
+      "human"
+    ],
+    "audience": "children",
+    "language": "en",
+    "short_summary": "But after 13 years of marriage and two kids, she was devastated when he left her for a younger woman. And after months of trying to find a little romance on New York's wild singles circuit, she was ready to give up, reconciled to just raising her two great, but outspoken, kids.",
+    "full_summary": "But after 13 years of marriage and two kids, she was devastated when he left her for a younger woman. And after months of trying to find a little romance on New York's wild singles circuit, she was ready to give up, reconciled to just raising her two great, but outspoken, kids. But much to her amazement, he contacted her when they returned to New York. Naturally, Stephanie thinks it's a joke--until the truth suddenly dawns: this isn't Peter playing a role.",
+    "content_for_embedding": "Title: The Klone and I: A High-tech Love Story. Author: Danielle Steel. Genres: romance, adventure. Themes: truth, journey, identity, love, dreams. Tone: serious, adventurous, playful, human. Audience: children. Language: en. Short summary: But after 13 years of marriage and two kids, she was devastated when he left her for a younger woman. And after months of trying to find a little romance on New York's wild singles circuit, she was ready to give up, reconciled to just raising her two great, but outspoken, kids. Full summary: But after 13 years of marriage and two kids, she was devastated when he left her for a younger woman. And after months of trying to find a little romance on New York's wild singles circuit, she was ready to give up, reconciled to just raising her two great, but outspoken, kids. But much to her amazement, he contacted her when they returned to New York. Naturally, Stephanie thinks it's a joke--until the truth suddenly dawns: this isn't Peter playing a role."
+  },
+  {
+    "id": "book_the_last_man",
+    "title": "The Last Man",
+    "author": "Mary Shelley",
+    "genres": [
+      "historical fiction"
+    ],
+    "themes": [
+      "survival",
+      "religion",
+      "faith"
+    ],
+    "tone": [
+      "serious"
+    ],
+    "audience": "adult",
+    "language": "de",
+    "short_summary": "First published in 1826, The Last Man is an apocalyptic sci-ence fiction work by Mary Shelley. A courtly society at the crossroads between monarchy and republic is afflicted by a serious epidemic that threatens the survival of all mankind.",
+    "full_summary": "First published in 1826, The Last Man is an apocalyptic sci-ence fiction work by Mary Shelley. A courtly society at the crossroads between monarchy and republic is afflicted by a serious epidemic that threatens the survival of all mankind. Will Lionel be able to save the few who are faithful to him? In addition to an exciting novel, Shelley also succeeds in in-terweaving autobiographical, historical and scientific aspects into the story.",
+    "content_for_embedding": "Title: The Last Man. Author: Mary Shelley. Genres: historical fiction. Themes: survival, religion, faith. Tone: serious. Audience: adult. Language: de. Short summary: First published in 1826, The Last Man is an apocalyptic sci-ence fiction work by Mary Shelley. A courtly society at the crossroads between monarchy and republic is afflicted by a serious epidemic that threatens the survival of all mankind. Full summary: First published in 1826, The Last Man is an apocalyptic sci-ence fiction work by Mary Shelley. A courtly society at the crossroads between monarchy and republic is afflicted by a serious epidemic that threatens the survival of all mankind. Will Lionel be able to save the few who are faithful to him? In addition to an exciting novel, Shelley also succeeds in in-terweaving autobiographical, historical and scientific aspects into the story."
+  },
+  {
+    "id": "book_the_life_and_adventures_of_robinson_crusoe_of_york_mariner",
+    "title": "The Life and Adventures of Robinson Crusoe, of York, Mariner",
+    "author": "Daniel Defoe",
+    "genres": [
+      "adventure",
+      "crime"
+    ],
+    "themes": [
+      "truth",
+      "journey",
+      "power",
+      "politics",
+      "religion"
+    ],
+    "tone": [
+      "adventurous"
+    ],
+    "audience": "adult",
+    "language": "en",
+    "short_summary": "Daniel Defoe (1659/1661-1731) was an English writer, journalist and spy, who gained enduring fame for his novel Robinson Crusoe (1719). Defoe is notable for being one of the earliest practitioners of the novel and helped popularise the genre in Britain.",
+    "full_summary": "Daniel Defoe (1659/1661-1731) was an English writer, journalist and spy, who gained enduring fame for his novel Robinson Crusoe (1719). Defoe is notable for being one of the earliest practitioners of the novel and helped popularise the genre in Britain. In some texts he is even referred to as one of the founders, if not the founder, of the English novel. A prolific and versatile writer, he wrote over five hundred books, pamphlets, and journals on various topics (including politics, crime, religion, marriage, psychology and the supernatural).",
+    "content_for_embedding": "Title: The Life and Adventures of Robinson Crusoe, of York, Mariner. Author: Daniel Defoe. Genres: adventure, crime. Themes: truth, journey, power, politics, religion. Tone: adventurous. Audience: adult. Language: en. Short summary: Daniel Defoe (1659/1661-1731) was an English writer, journalist and spy, who gained enduring fame for his novel Robinson Crusoe (1719). Defoe is notable for being one of the earliest practitioners of the novel and helped popularise the genre in Britain. Full summary: Daniel Defoe (1659/1661-1731) was an English writer, journalist and spy, who gained enduring fame for his novel Robinson Crusoe (1719). Defoe is notable for being one of the earliest practitioners of the novel and helped popularise the genre in Britain. In some texts he is even referred to as one of the founders, if not the founder, of the English novel. A prolific and versatile writer, he wrote over five hundred books, pamphlets, and journals on various topics (including politics, crime, religion, marriage, psychology and the supernatural)."
+  },
+  {
+    "id": "book_the_little_paris_bookshop",
+    "title": "The Little Paris Bookshop",
+    "author": "Nina George",
+    "genres": [
+      "romance",
+      "literary fiction"
+    ],
+    "themes": [
+      "friendship",
+      "journey",
+      "identity",
+      "knowledge",
+      "love"
+    ],
+    "tone": [
+      "dark",
+      "mysterious"
+    ],
+    "audience": "adult",
+    "language": "en",
+    "short_summary": "With appeal to fans of }The Elegance Of The Hedgehog{ and }The Unlikely Pilgrimmage Of Harold Fry{. He has nursed a broken heart ever since the night, twenty-one years ago, when the love of his life fled Paris, leaving behind a handwritten letter that he has never dared read.",
+    "full_summary": "Translated from the German by Simon Pare, this is an internationally bestselling novel about the distance one man will travel for the sake of love and friendship. With appeal to fans of }The Elegance Of The Hedgehog{ and }The Unlikely Pilgrimmage Of Harold Fry{. On a beautifully restored barge on the Seine, Jean Perdu runs a bookshop; or rather a 'literary apothecary', for this bookseller possesses a rare gift for sensing which books will soothe the troubled souls of his customers. He has nursed a broken heart ever since the night, twenty-one years ago, when the love of his life fled Paris, leaving behind a handwritten letter that he has never dared read.",
+    "content_for_embedding": "Title: The Little Paris Bookshop. Author: Nina George. Genres: romance, literary fiction. Themes: friendship, journey, identity, knowledge, love. Tone: dark, mysterious. Audience: adult. Language: en. Short summary: With appeal to fans of }The Elegance Of The Hedgehog{ and }The Unlikely Pilgrimmage Of Harold Fry{. He has nursed a broken heart ever since the night, twenty-one years ago, when the love of his life fled Paris, leaving behind a handwritten letter that he has never dared read. Full summary: Translated from the German by Simon Pare, this is an internationally bestselling novel about the distance one man will travel for the sake of love and friendship. With appeal to fans of }The Elegance Of The Hedgehog{ and }The Unlikely Pilgrimmage Of Harold Fry{. On a beautifully restored barge on the Seine, Jean Perdu runs a bookshop; or rather a 'literary apothecary', for this bookseller possesses a rare gift for sensing which books will soothe the troubled souls of his customers. He has nursed a broken heart ever since the night, twenty-one years ago, when the love of his life fled Paris, leaving behind a handwritten letter that he has never dared read."
+  },
+  {
+    "id": "book_the_little_prince",
+    "title": "The Little Prince",
+    "author": "Antoine de Saint-Exupery",
+    "genres": [
+      "fable",
+      "philosophical fiction",
+      "classic"
+    ],
+    "themes": [
+      "friendship",
+      "love",
+      "innocence",
+      "meaning",
+      "imagination"
+    ],
+    "tone": [
+      "gentle",
+      "reflective",
+      "melancholic"
+    ],
+    "audience": "all_ages",
+    "language": "en",
+    "short_summary": "A pilot meets a mysterious boy from another planet, and their conversations reveal lessons about love, responsibility, and seeing with the heart rather than the eyes.",
+    "full_summary": "The story follows a stranded pilot who encounters a young prince with a curious, sincere view of life. Through the prince’s stories about planets, adults, a rose, and a fox, the book reflects on loneliness, attachment, and what truly matters. Its simple style hides deep philosophical meaning, making it both accessible and emotionally powerful. The novel is ideal for readers who want something short, symbolic, and meaningful.",
+    "content_for_embedding": "Title: The Little Prince. Author: Antoine de Saint-Exupery. Genres: fable, philosophical fiction, classic. Themes: friendship, love, innocence, meaning, imagination. Tone: gentle, reflective, melancholic. Summary: A poetic and philosophical tale about friendship, responsibility, and the deeper meaning of human connection."
+  },
+  {
+    "id": "book_the_messenger",
+    "title": "The Messenger",
+    "author": "Markus Zusak",
+    "genres": [
+      "mystery",
+      "romance",
+      "adventure"
+    ],
+    "themes": [
+      "journey",
+      "love"
+    ],
+    "tone": [
+      "adventurous",
+      "playful",
+      "gentle"
+    ],
+    "audience": "adult",
+    "language": "en",
+    "short_summary": "That's when the first Ace turns up. Chosen to care, he makes his way through town, helping and hurting (where necessary) until only one question remains.",
+    "full_summary": "That's when the first Ace turns up. That's when Ed becomes the messenger. Chosen to care, he makes his way through town, helping and hurting (where necessary) until only one question remains. The Messenger, by the highly acclaimed author Markus Zusak, is a cryptic journey filled with laughter, fists and love.",
+    "content_for_embedding": "Title: The Messenger. Author: Markus Zusak. Genres: mystery, romance, adventure. Themes: journey, love. Tone: adventurous, playful, gentle. Audience: adult. Language: en. Short summary: That's when the first Ace turns up. Chosen to care, he makes his way through town, helping and hurting (where necessary) until only one question remains. Full summary: That's when the first Ace turns up. That's when Ed becomes the messenger. Chosen to care, he makes his way through town, helping and hurting (where necessary) until only one question remains. The Messenger, by the highly acclaimed author Markus Zusak, is a cryptic journey filled with laughter, fists and love."
+  },
+  {
+    "id": "book_the_mystery_of_the_ivory_charm",
+    "title": "The Mystery of the Ivory Charm",
+    "author": "Carolyn Keene",
+    "genres": [
+      "mystery"
+    ],
+    "themes": [
+      "identity",
+      "growth",
+      "storytelling"
+    ],
+    "tone": [
+      "mysterious"
+    ],
+    "audience": "children",
+    "language": "en",
+    "short_summary": "Nancy Drew determines if an ivory elephant charm really protects its wearer from harm when she investigates the involvement of a member of the Bengleton Wild-Animal Show in a mysterious scheme.",
+    "full_summary": "Nancy Drew determines if an ivory elephant charm really protects its wearer from harm when she investigates the involvement of a member of the Bengleton Wild-Animal Show in a mysterious scheme. The book fits best in mystery. It especially explores identity, growth, storytelling. The tone is mysterious, and it is best suited to children readers.",
+    "content_for_embedding": "Title: The Mystery of the Ivory Charm. Author: Carolyn Keene. Genres: mystery. Themes: identity, growth, storytelling. Tone: mysterious. Audience: children. Language: en. Short summary: Nancy Drew determines if an ivory elephant charm really protects its wearer from harm when she investigates the involvement of a member of the Bengleton Wild-Animal Show in a mysterious scheme. Full summary: Nancy Drew determines if an ivory elephant charm really protects its wearer from harm when she investigates the involvement of a member of the Bengleton Wild-Animal Show in a mysterious scheme. The book fits best in mystery. It especially explores identity, growth, storytelling. The tone is mysterious, and it is best suited to children readers."
+  },
+  {
+    "id": "book_the_narrows",
+    "title": "The Narrows",
+    "author": "Michael Connelly",
+    "genres": [
+      "science fiction",
+      "mystery"
+    ],
+    "themes": [
+      "justice",
+      "ambition"
+    ],
+    "tone": [
+      "serious",
+      "engaging"
+    ],
+    "audience": "adult",
+    "language": "en",
+    "short_summary": "When an infamous serial killer known as the Poet reemerges, FBI agent Rachel Walling, long haunted by her unsuccessful efforts to bring him to justice, receives assistance from LAPD detective Harry Bosch.",
+    "full_summary": "When an infamous serial killer known as the Poet reemerges, FBI agent Rachel Walling, long haunted by her unsuccessful efforts to bring him to justice, receives assistance from LAPD detective Harry Bosch. The book fits best in science fiction, mystery. It especially explores justice, ambition. The tone is serious, engaging, and it is best suited to adult readers.",
+    "content_for_embedding": "Title: The Narrows. Author: Michael Connelly. Genres: science fiction, mystery. Themes: justice, ambition. Tone: serious, engaging. Audience: adult. Language: en. Short summary: When an infamous serial killer known as the Poet reemerges, FBI agent Rachel Walling, long haunted by her unsuccessful efforts to bring him to justice, receives assistance from LAPD detective Harry Bosch. Full summary: When an infamous serial killer known as the Poet reemerges, FBI agent Rachel Walling, long haunted by her unsuccessful efforts to bring him to justice, receives assistance from LAPD detective Harry Bosch. The book fits best in science fiction, mystery. It especially explores justice, ambition. The tone is serious, engaging, and it is best suited to adult readers."
+  },
+  {
+    "id": "book_the_picture_of_dorian_gray",
+    "title": "The Picture of Dorian Gray",
+    "author": "Oscar Wilde",
+    "genres": [
+      "classic"
+    ],
+    "themes": [
+      "knowledge",
+      "language",
+      "class",
+      "books"
+    ],
+    "tone": [
+      "serious",
+      "engaging"
+    ],
+    "audience": "teen_adult",
+    "language": "en",
+    "short_summary": "The Picture of Dorian Gray is the only published novel by Oscar Wilde, appearing as the lead story in Lippincott's Monthly Magazine on 20 June 1890, printed as the July 1890 issue. Today, Wilde's fin de siècle novella is considered a classic.",
+    "full_summary": "The Picture of Dorian Gray is the only published novel by Oscar Wilde, appearing as the lead story in Lippincott's Monthly Magazine on 20 June 1890, printed as the July 1890 issue. The magazine's editors feared the story was indecent as submitted, so they censored roughly 500 words, without Wilde's knowledge, before publication. Today, Wilde's fin de siècle novella is considered a classic. This new edition from Immortal Books includes footnotes and images.",
+    "content_for_embedding": "Title: The Picture of Dorian Gray. Author: Oscar Wilde. Genres: classic. Themes: knowledge, language, class, books. Tone: serious, engaging. Audience: teen_adult. Language: en. Short summary: The Picture of Dorian Gray is the only published novel by Oscar Wilde, appearing as the lead story in Lippincott's Monthly Magazine on 20 June 1890, printed as the July 1890 issue. Today, Wilde's fin de siècle novella is considered a classic. Full summary: The Picture of Dorian Gray is the only published novel by Oscar Wilde, appearing as the lead story in Lippincott's Monthly Magazine on 20 June 1890, printed as the July 1890 issue. The magazine's editors feared the story was indecent as submitted, so they censored roughly 500 words, without Wilde's knowledge, before publication. Today, Wilde's fin de siècle novella is considered a classic. This new edition from Immortal Books includes footnotes and images."
+  },
+  {
+    "id": "book_the_scarred_woman_a_department_q_novel",
+    "title": "The Scarred Woman: A Department Q Novel",
+    "author": "Jussi Adler-Olsen",
+    "genres": [
+      "mystery",
+      "thriller",
+      "crime"
+    ],
+    "themes": [
+      "truth",
+      "childhood",
+      "memory",
+      "dreams"
+    ],
+    "tone": [
+      "dark",
+      "sad"
+    ],
+    "audience": "adult",
+    "language": "en",
+    "short_summary": "Detective Carl Mørck of Department Q, Copenhagen's cold cases division, meets his toughest challenge yet when the dark, troubled past of one of his own team members collides with a sinister unsolved murder. In a Copenhagen park the body of an elderly woman is discovered.",
+    "full_summary": "Detective Carl Mørck of Department Q, Copenhagen's cold cases division, meets his toughest challenge yet when the dark, troubled past of one of his own team members collides with a sinister unsolved murder. In a Copenhagen park the body of an elderly woman is discovered. After an earlier breakdown, their colleague Rose is still struggling to deal with the reemergence of her past—a past in which a terrible crime may have been committed. It is up to Carl, Assad, and Gordon to uncover the dark and violent truth at the heart of Rose's childhood before it is too late.",
+    "content_for_embedding": "Title: The Scarred Woman: A Department Q Novel. Author: Jussi Adler-Olsen. Genres: mystery, thriller, crime. Themes: truth, childhood, memory, dreams. Tone: dark, sad. Audience: adult. Language: en. Short summary: Detective Carl Mørck of Department Q, Copenhagen's cold cases division, meets his toughest challenge yet when the dark, troubled past of one of his own team members collides with a sinister unsolved murder. In a Copenhagen park the body of an elderly woman is discovered. Full summary: Detective Carl Mørck of Department Q, Copenhagen's cold cases division, meets his toughest challenge yet when the dark, troubled past of one of his own team members collides with a sinister unsolved murder. In a Copenhagen park the body of an elderly woman is discovered. After an earlier breakdown, their colleague Rose is still struggling to deal with the reemergence of her past—a past in which a terrible crime may have been committed. It is up to Carl, Assad, and Gordon to uncover the dark and violent truth at the heart of Rose's childhood before it is too late."
+  },
+  {
+    "id": "book_the_storm_sister_a_novel",
+    "title": "The Storm Sister: A Novel",
+    "author": "Lucinda Riley",
+    "genres": [
+      "romance",
+      "adventure",
+      "young adult"
+    ],
+    "themes": [
+      "truth",
+      "journey",
+      "destiny",
+      "childhood",
+      "awakening"
+    ],
+    "tone": [
+      "adventurous",
+      "mysterious"
+    ],
+    "audience": "children",
+    "language": "en",
+    "short_summary": "Ally D'Apliese is about to compete in one of the world's most perilous yacht races, when she hears the news of her adoptive father's sudden, mysterious death. As Ally learns more about Anna, she also begins to question who her father, Pa Salt, really was.",
+    "full_summary": "Ally D'Apliese is about to compete in one of the world's most perilous yacht races, when she hears the news of her adoptive father's sudden, mysterious death. Rushing back to meet her five sisters at their family home, she discovers that her father - an elusive billionaire affectionately known to his daughters as Pa Salt - has left each of them a tantalising clue to their true heritage. There, Ally begins to discover her roots - and how her story is inextricably bound to that of a young unknown singer, Anna Landvik, who lived there over a hundred years before, and sang in the first performance of Grieg's iconic music set to Ibsen's play 'Peer Gynt'. As Ally learns more about Anna, she also begins to question who her father, Pa Salt, really was.",
+    "content_for_embedding": "Title: The Storm Sister: A Novel. Author: Lucinda Riley. Genres: romance, adventure, young adult. Themes: truth, journey, destiny, childhood, awakening. Tone: adventurous, mysterious. Audience: children. Language: en. Short summary: Ally D'Apliese is about to compete in one of the world's most perilous yacht races, when she hears the news of her adoptive father's sudden, mysterious death. As Ally learns more about Anna, she also begins to question who her father, Pa Salt, really was. Full summary: Ally D'Apliese is about to compete in one of the world's most perilous yacht races, when she hears the news of her adoptive father's sudden, mysterious death. Rushing back to meet her five sisters at their family home, she discovers that her father - an elusive billionaire affectionately known to his daughters as Pa Salt - has left each of them a tantalising clue to their true heritage. There, Ally begins to discover her roots - and how her story is inextricably bound to that of a young unknown singer, Anna Landvik, who lived there over a hundred years before, and sang in the first performance of Grieg's iconic music set to Ibsen's play 'Peer Gynt'. As Ally learns more about Anna, she also begins to question who her father, Pa Salt, really was."
+  },
+  {
+    "id": "book_the_street_of_crocodiles",
+    "title": "The Street of Crocodiles",
+    "author": "Bruno Schulz",
+    "genres": [
+      "war"
+    ],
+    "themes": [
+      "war",
+      "imagination",
+      "memory",
+      "dreams"
+    ],
+    "tone": [
+      "serious",
+      "engaging"
+    ],
+    "audience": "adult",
+    "language": "en",
+    "short_summary": "''The Street of Crocodiles'' by Bruno Schulz (1892-1942) was first published in Polish in 1934; this English translation was first published in the US by Walker and Company in 1963, public domain.",
+    "full_summary": "''The Street of Crocodiles'' by Bruno Schulz (1892-1942) was first published in Polish in 1934; this English translation was first published in the US by Walker and Company in 1963, public domain. A novel that blends the real and the fantastic, from \"one of the most original imaginations in modern Europe\" (Cynthia Ozick). The Street of Crocodiles in the Polish city of Drogobych is a street of memories and dreams where recollections of Bruno Schulz's uncommon boyhood and of the eerie side of his merchant family's life are evoked in a startling blend of the real and the fantastic. Bruno Schulz, a Polish Jew killed by the Nazis in 1942, is considered by many to have been the leading Polish writer between the two world wars.",
+    "content_for_embedding": "Title: The Street of Crocodiles. Author: Bruno Schulz. Genres: war. Themes: war, imagination, memory, dreams. Tone: serious, engaging. Audience: adult. Language: en. Short summary: ''The Street of Crocodiles'' by Bruno Schulz (1892-1942) was first published in Polish in 1934; this English translation was first published in the US by Walker and Company in 1963, public domain. Full summary: ''The Street of Crocodiles'' by Bruno Schulz (1892-1942) was first published in Polish in 1934; this English translation was first published in the US by Walker and Company in 1963, public domain. A novel that blends the real and the fantastic, from \"one of the most original imaginations in modern Europe\" (Cynthia Ozick). The Street of Crocodiles in the Polish city of Drogobych is a street of memories and dreams where recollections of Bruno Schulz's uncommon boyhood and of the eerie side of his merchant family's life are evoked in a startling blend of the real and the fantastic. Bruno Schulz, a Polish Jew killed by the Nazis in 1942, is considered by many to have been the leading Polish writer between the two world wars."
+  },
+  {
+    "id": "book_the_viscount_who_loved_me_bridgerton",
+    "title": "The Viscount Who Loved Me: Bridgerton",
+    "author": "Julia Quinn",
+    "genres": [
+      "romance"
+    ],
+    "themes": [
+      "identity",
+      "power",
+      "love",
+      "dreams",
+      "faith"
+    ],
+    "tone": [
+      "intense"
+    ],
+    "audience": "adult",
+    "language": "en",
+    "short_summary": "ANTHONY'S STORY This time the gossip columnists have it wrong. The spirited schemer is driving Anthony mad with her determination to stop the betrothal, but when he closes his eyes at night, Kate's the woman haunting his increasingly erotic dreams...",
+    "full_summary": "ANTHONY'S STORY This time the gossip columnists have it wrong. The only obstacle is his intended's older sister, Kate Sheffield--the most meddlesome woman ever to grace a London ballroom. The spirited schemer is driving Anthony mad with her determination to stop the betrothal, but when he closes his eyes at night, Kate's the woman haunting his increasingly erotic dreams... And when Anthony's lips touch hers, she's suddenly afraid she might not be able to resist the reprehensible rake herself...",
+    "content_for_embedding": "Title: The Viscount Who Loved Me: Bridgerton. Author: Julia Quinn. Genres: romance. Themes: identity, power, love, dreams, faith. Tone: intense. Audience: adult. Language: en. Short summary: ANTHONY'S STORY This time the gossip columnists have it wrong. The spirited schemer is driving Anthony mad with her determination to stop the betrothal, but when he closes his eyes at night, Kate's the woman haunting his increasingly erotic dreams... Full summary: ANTHONY'S STORY This time the gossip columnists have it wrong. The only obstacle is his intended's older sister, Kate Sheffield--the most meddlesome woman ever to grace a London ballroom. The spirited schemer is driving Anthony mad with her determination to stop the betrothal, but when he closes his eyes at night, Kate's the woman haunting his increasingly erotic dreams... And when Anthony's lips touch hers, she's suddenly afraid she might not be able to resist the reprehensible rake herself..."
+  },
+  {
+    "id": "book_the_winemaker_s_wife",
+    "title": "The Winemaker's Wife",
+    "author": "Kristen Harmel",
+    "genres": [
+      "romance",
+      "historical fiction",
+      "war",
+      "young adult"
+    ],
+    "themes": [
+      "truth",
+      "resistance",
+      "identity",
+      "war",
+      "loss"
+    ],
+    "tone": [
+      "hopeful",
+      "emotional",
+      "intense",
+      "thoughtful"
+    ],
+    "audience": "children",
+    "language": "en",
+    "short_summary": "If you love The Beekeeper's Promiseand The Tattooist of Auschwitzthen you'll adore this beautiful story of love, loss, hope and survival. But it's not long before past and present collide, and in a desperate search for the truth, Liv is led straight to the Maison Chauveau.",
+    "full_summary": "If you love The Beekeeper's Promiseand The Tattooist of Auschwitzthen you'll adore this beautiful story of love, loss, hope and survival. East of Paris in the sun-drenched vineyards of northern France lies the famous champagne house Maison Chauveau. 1940: When young Ines married into the famed Chauveau family she dreamed of working alongside her husband and raising their beautiful children. But it's not long before past and present collide, and in a desperate search for the truth, Liv is led straight to the Maison Chauveau.",
+    "content_for_embedding": "Title: The Winemaker's Wife. Author: Kristen Harmel. Genres: romance, historical fiction, war, young adult. Themes: truth, resistance, identity, war, loss. Tone: hopeful, emotional, intense, thoughtful. Audience: children. Language: en. Short summary: If you love The Beekeeper's Promiseand The Tattooist of Auschwitzthen you'll adore this beautiful story of love, loss, hope and survival. But it's not long before past and present collide, and in a desperate search for the truth, Liv is led straight to the Maison Chauveau. Full summary: If you love The Beekeeper's Promiseand The Tattooist of Auschwitzthen you'll adore this beautiful story of love, loss, hope and survival. East of Paris in the sun-drenched vineyards of northern France lies the famous champagne house Maison Chauveau. 1940: When young Ines married into the famed Chauveau family she dreamed of working alongside her husband and raising their beautiful children. But it's not long before past and present collide, and in a desperate search for the truth, Liv is led straight to the Maison Chauveau."
+  },
+  {
+    "id": "book_there_there_a_novel",
+    "title": "There There: A novel",
+    "author": "Tommy Orange",
+    "genres": [
+      "thriller",
+      "literary fiction",
+      "war",
+      "classic",
+      "young adult"
+    ],
+    "themes": [
+      "truth",
+      "journey",
+      "war",
+      "destiny",
+      "awakening"
+    ],
+    "tone": [
+      "playful"
+    ],
+    "audience": "young_adult",
+    "language": "en",
+    "short_summary": "One of The Atlantic's Great American Novels of the Past 100 Years Among them is Jacquie Red Feather, newly sober and trying to make it back to the family she left behind. Dene Oxendene, pulling his life together after his uncle's death and working at the powwow to honor his memory.",
+    "full_summary": "One of The Atlantic's Great American Novels of the Past 100 Years Among them is Jacquie Red Feather, newly sober and trying to make it back to the family she left behind. Dene Oxendene, pulling his life together after his uncle's death and working at the powwow to honor his memory. Fourteen-year-old Orvil, coming to perform traditional dance for the very first time. It is fierce, funny, suspenseful, and impossible to put down--full of poetry and rage, exploding onto the page with urgency and force.",
+    "content_for_embedding": "Title: There There: A novel. Author: Tommy Orange. Genres: thriller, literary fiction, war, classic, young adult. Themes: truth, journey, war, destiny, awakening. Tone: playful. Audience: young_adult. Language: en. Short summary: One of The Atlantic's Great American Novels of the Past 100 Years Among them is Jacquie Red Feather, newly sober and trying to make it back to the family she left behind. Dene Oxendene, pulling his life together after his uncle's death and working at the powwow to honor his memory. Full summary: One of The Atlantic's Great American Novels of the Past 100 Years Among them is Jacquie Red Feather, newly sober and trying to make it back to the family she left behind. Dene Oxendene, pulling his life together after his uncle's death and working at the powwow to honor his memory. Fourteen-year-old Orvil, coming to perform traditional dance for the very first time. It is fierce, funny, suspenseful, and impossible to put down--full of poetry and rage, exploding onto the page with urgency and force."
+  },
+  {
+    "id": "book_wanderlust",
+    "title": "Wanderlust",
+    "author": "Danielle Steel",
+    "genres": [
+      "romance",
+      "war",
+      "adventure",
+      "drama"
+    ],
+    "themes": [
+      "friendship",
+      "journey",
+      "identity",
+      "war",
+      "survival"
+    ],
+    "tone": [
+      "adventurous",
+      "hopeful"
+    ],
+    "audience": "children",
+    "language": "en",
+    "short_summary": "Wanderlust is the story of Audrey Driscoll. But at the farthest reaches of this journey Aubrey must choose again.",
+    "full_summary": "Wanderlust is the story of Audrey Driscoll. But at the farthest reaches of this journey Aubrey must choose again. While she must come home to San Francisco to confront a world irrevocably changed by time, she finds she cannot stay. From prewar Germany to London during the Blitz, from a wrenching reunion with Charles to a war zone in North Africa, again and again she must choose between thedictates of her conscience and the yearnings of her heart.",
+    "content_for_embedding": "Title: Wanderlust. Author: Danielle Steel. Genres: romance, war, adventure, drama. Themes: friendship, journey, identity, war, survival. Tone: adventurous, hopeful. Audience: children. Language: en. Short summary: Wanderlust is the story of Audrey Driscoll. But at the farthest reaches of this journey Aubrey must choose again. Full summary: Wanderlust is the story of Audrey Driscoll. But at the farthest reaches of this journey Aubrey must choose again. While she must come home to San Francisco to confront a world irrevocably changed by time, she finds she cannot stay. From prewar Germany to London during the Blitz, from a wrenching reunion with Charles to a war zone in North Africa, again and again she must choose between thedictates of her conscience and the yearnings of her heart."
+  }
+]

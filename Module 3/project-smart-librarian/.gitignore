@@ -1,0 +1,32 @@
+# Secrets
+.env
+.env.*
+!.env.example
+
+# Virtual environments
+.venv/
+venv/
+
+# Python cache / build artifacts
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Test / tooling caches
+.pytest_cache/
+.pytest_tmp/
+pytest-cache-files-*/
+pytest_cache_local/
+.coverage
+htmlcov/
+.mypy_cache/
+.ruff_cache/
+
+# IDE / OS clutter
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Ignore only disposable local test databases
+tests/catalog_settings*.db

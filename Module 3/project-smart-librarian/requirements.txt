@@ -1,0 +1,9 @@
+openai
+chromadb
+python-dotenv
+pydantic
+rich
+streamlit
+pytest
+requests>=2.32.0
+langdetect
