@@ -1,3 +1,5 @@
+# Language detection and translation helpers for bilingual UX output.
+
 import re
 from typing import Any
 
@@ -108,10 +110,12 @@ ENGLISH_PATTERNS = (
 
 
 def _tokenize(text: str) -> list[str]:
+    # Tokenize a short user message with a lightweight regex strategy.
     return re.findall(r"\b[\w'-]+\b", text.casefold())
 
 
 def _score_markers(text: str, tokens: list[str], markers: set[str], patterns: tuple[str, ...]) -> int:
+    # Score heuristic language markers before falling back to langdetect.
     score = 0
     score += sum(token in markers for token in tokens)
     score += sum(bool(re.search(pattern, text)) * 2 for pattern in patterns)
@@ -119,6 +123,7 @@ def _score_markers(text: str, tokens: list[str], markers: set[str], patterns: tu
 
 
 def _detect_with_langdetect(text: str) -> tuple[str, float] | None:
+    # Use langdetect when available and return `(language, confidence)`.
     if detect_langs is None:
         return None
 
@@ -135,6 +140,7 @@ def _detect_with_langdetect(text: str) -> tuple[str, float] | None:
 
 
 def detect_user_language(text: str) -> str:
+    # Detect whether the user message is better treated as Romanian or English.
     lowered_text = text.strip().casefold()
     if not lowered_text:
         return "en"
@@ -178,18 +184,21 @@ def detect_user_language(text: str) -> str:
 
 
 def get_language_name(language_code: str) -> str:
+    # Return the human-readable language name used in prompts.
     if language_code == "ro":
         return "Romanian"
     return "English"
 
 
 def should_translate_text(text: str, target_language: str) -> bool:
+    # Decide whether a model or tool output should be translated.
     if not text.strip():
         return False
     return detect_user_language(text) != target_language
 
 
 def translate_text(client: Any, text: str, target_language: str) -> str:
+    # Translate arbitrary text with the main OpenAI text model.
     response = client.responses.create(
         model=LLM_MODEL,
         instructions=(
@@ -205,6 +214,7 @@ def translate_text(client: Any, text: str, target_language: str) -> str:
 
 
 def translate_text_if_needed(client: Any, text: str, target_language: str) -> str:
+    # Translate only when detection says the text is in another language.
     if not should_translate_text(text, target_language):
         return text
 
@@ -213,13 +223,15 @@ def translate_text_if_needed(client: Any, text: str, target_language: str) -> st
 
 
 def normalize_text_to_target_language(client: Any, text: str, target_language: str) -> str:
+    # Normalize final user-visible text into the expected language.
     if not text.strip():
         return text
 
-    # Pentru intrebarile detectate ca romana, fortam normalizarea in romana
-    # ca sa evitam raspunsurile mixte sau in engleza fara diacritice.
+    # Romanian output is forced through translation to avoid mixed-language answers
+    # or Romanian text that silently drifts into plain English.
     if target_language == "ro":
         translated = translate_text(client, text, target_language)
         return translated or text
 
     return translate_text_if_needed(client, text, target_language)
+

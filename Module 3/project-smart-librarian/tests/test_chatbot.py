@@ -1,3 +1,5 @@
+# Tests for the main retrieval, moderation, and tool-calling chat flow.
+
 import json
 import sys
 from types import SimpleNamespace
@@ -11,6 +13,8 @@ from src.chatbot import chat_once
 
 
 class DummyResponsesApi:
+    # Minimal stand-in for the OpenAI Responses API used by unit tests.
+
     def __init__(self, responses):
         self._responses = list(responses)
 
@@ -21,6 +25,8 @@ class DummyResponsesApi:
 
 
 class DummyModerationsApi:
+    # Minimal moderation API stub that returns predefined flag decisions.
+
     def __init__(self, flags):
         self._flags = list(flags)
 
@@ -33,6 +39,8 @@ class DummyModerationsApi:
 
 
 class DummyClient:
+    # Composite fake OpenAI client exposing only the APIs used by chat_once().
+
     def __init__(self, responses, moderation_flags=None):
         self.responses = DummyResponsesApi(responses)
         if moderation_flags is not None:
@@ -40,6 +48,7 @@ class DummyClient:
 
 
 def _match(title: str, author: str = "George Orwell") -> dict:
+    # Create one synthetic retriever match returned by the mocked search layer.
     return {
         "id": f"book_{title.lower().replace(' ', '_')}",
         "document": f"Title: {title}",
@@ -90,7 +99,7 @@ def test_chat_once_completes_tool_flow(monkeypatch):
         lambda client, text, target_language: text,
     )
 
-    result = chat_once("Vreau o carte despre libertate.")
+    result = chat_once("Vreau o carte despre violenta extrema.")
 
     assert result["status"] == "ok"
     assert result["response_language"] == "ro"
@@ -501,7 +510,7 @@ def test_chat_once_blocks_flagged_output_via_openai_moderation(monkeypatch):
                 ),
                 SimpleNamespace(
                     output=[],
-                    output_text="Iti recomand 1984 de George Orwell.",
+                    output_text="Iti recomand 1984 pentru temele de violenta, murder si control.",
                 ),
             ],
             moderation_flags=[False, True],
@@ -509,18 +518,18 @@ def test_chat_once_blocks_flagged_output_via_openai_moderation(monkeypatch):
     )
     monkeypatch.setattr(
         "src.chatbot.execute_tool_call",
-        lambda tool_name, arguments: "Rezumat complet pentru 1984.",
+        lambda tool_name, arguments: "Rezumat complet cu murder, guns si violenta grafica.",
     )
     monkeypatch.setattr(
         "src.chatbot.normalize_text_to_target_language",
         lambda client, text, target_language: text,
     )
 
-    result = chat_once("Vreau o carte despre libertate.")
+    result = chat_once("Vreau o carte despre violenta extrema.")
 
     assert result["status"] == "blocked_input"
     assert result["blocked"] is True
-    assert "fara limbaj ofensator" in result["final_answer"].lower()
+    assert "filtrul de siguranta" in result["final_answer"].lower()
 
 
 def test_chat_once_ignores_false_positive_output_moderation_for_children_books(monkeypatch):
@@ -564,6 +573,159 @@ def test_chat_once_ignores_false_positive_output_moderation_for_children_books(m
 
     assert result["status"] == "ok"
     assert result["display"]["recommended_title"] == "The Hobbit"
+
+
+def test_chat_once_ignores_false_positive_output_moderation_for_benign_sf_preference(monkeypatch):
+    monkeypatch.setattr(
+        "src.chatbot.search_books",
+        lambda *args, **kwargs: [_match("Fiance by Friday", author="Catherine Bybee")],
+    )
+    monkeypatch.setattr(
+        "src.chatbot.get_openai_client",
+        lambda: DummyClient(
+            [
+                SimpleNamespace(
+                    output=[
+                        SimpleNamespace(
+                            type="function_call",
+                            name="get_summary_by_title",
+                            arguments=json.dumps({"title": "Fiance by Friday"}),
+                            call_id="call_1",
+                        )
+                    ],
+                    output_text="",
+                ),
+                SimpleNamespace(
+                    output=[],
+                    output_text="Iti recomand Fiance by Friday pentru ritmul alert si tonul accesibil.",
+                ),
+            ],
+            moderation_flags=[False, True],
+        ),
+    )
+    monkeypatch.setattr(
+        "src.chatbot.execute_tool_call",
+        lambda tool_name, arguments: "Rezumat complet pentru Fiance by Friday.",
+    )
+    monkeypatch.setattr(
+        "src.chatbot.normalize_text_to_target_language",
+        lambda client, text, target_language: text,
+    )
+
+    result = chat_once("imi place SF-ul")
+
+    assert result["status"] == "ok"
+    assert result["display"]["recommended_title"] == "Fiance by Friday"
+    assert "filtrul de siguranta" not in result["final_answer"].lower()
+
+
+def test_chat_once_ignores_false_positive_output_moderation_for_benign_drama_preference(monkeypatch):
+    monkeypatch.setattr(
+        "src.chatbot.search_books",
+        lambda *args, **kwargs: [_match("The Book Thief", author="Markus Zusak")],
+    )
+    monkeypatch.setattr(
+        "src.chatbot.get_openai_client",
+        lambda: DummyClient(
+            [
+                SimpleNamespace(
+                    output=[
+                        SimpleNamespace(
+                            type="function_call",
+                            name="get_summary_by_title",
+                            arguments=json.dumps({"title": "The Book Thief"}),
+                            call_id="call_1",
+                        )
+                    ],
+                    output_text="",
+                ),
+                SimpleNamespace(
+                    output=[],
+                    output_text="Iti recomand The Book Thief pentru drama emotionala si personajele memorabile.",
+                ),
+            ],
+            moderation_flags=[False, True],
+        ),
+    )
+    monkeypatch.setattr(
+        "src.chatbot.execute_tool_call",
+        lambda tool_name, arguments: (
+            "Liesel traieste in Germania in timpul razboiului, printre bombardamente, propaganda si pierdere."
+        ),
+    )
+    monkeypatch.setattr(
+        "src.chatbot.normalize_text_to_target_language",
+        lambda client, text, target_language: text,
+    )
+
+    result = chat_once("imi plac cartile cu drama")
+
+    assert result["status"] == "ok"
+    assert result["display"]["recommended_title"] == "The Book Thief"
+    assert "filtrul de siguranta" not in result["final_answer"].lower()
+
+
+def test_chat_once_ignores_false_positive_output_moderation_for_benign_war_preference(monkeypatch):
+    monkeypatch.setattr(
+        "src.chatbot.search_books",
+        lambda *args, **kwargs: [_match("All Quiet on the Western Front", author="Erich Maria Remarque")],
+    )
+    monkeypatch.setattr(
+        "src.chatbot.get_openai_client",
+        lambda: DummyClient(
+            [
+                SimpleNamespace(
+                    output=[
+                        SimpleNamespace(
+                            type="function_call",
+                            name="get_summary_by_title",
+                            arguments=json.dumps({"title": "All Quiet on the Western Front"}),
+                            call_id="call_1",
+                        )
+                    ],
+                    output_text="",
+                ),
+                SimpleNamespace(
+                    output=[],
+                    output_text="Iti recomand All Quiet on the Western Front pentru realismul dur si perspectiva umana asupra razboiului.",
+                ),
+            ],
+            moderation_flags=[False, True],
+        ),
+    )
+    monkeypatch.setattr(
+        "src.chatbot.execute_tool_call",
+        lambda tool_name, arguments: (
+            "Un soldat tanar traieste trauma, pierderi si brutalitatea frontului intr-un roman anti-razboi."
+        ),
+    )
+    monkeypatch.setattr(
+        "src.chatbot.normalize_text_to_target_language",
+        lambda client, text, target_language: text,
+    )
+
+    result = chat_once("ador genul razboi")
+
+    assert result["status"] == "ok"
+    assert result["display"]["recommended_title"] == "All Quiet on the Western Front"
+    assert "filtrul de siguranta" not in result["final_answer"].lower()
+
+
+def test_chat_once_does_not_ignore_flagged_input_for_bomb_request(monkeypatch):
+    def _should_not_run(*args, **kwargs):
+        raise AssertionError("Dangerous book-like queries should not reach retrieval.")
+
+    monkeypatch.setattr("src.chatbot.search_books", _should_not_run)
+    monkeypatch.setattr(
+        "src.chatbot.get_openai_client",
+        lambda: DummyClient([], moderation_flags=[True]),
+    )
+
+    result = chat_once("Vreau o carte despre cum sa fac o bomba.")
+
+    assert result["status"] == "blocked_input"
+    assert result["blocked"] is True
+    assert "fara limbaj ofensator" in result["final_answer"].lower()
 
 
 def test_chat_once_normalizes_mystery_typo_before_retrieval(monkeypatch):

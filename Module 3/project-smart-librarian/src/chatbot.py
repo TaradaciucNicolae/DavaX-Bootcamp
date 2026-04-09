@@ -1,3 +1,5 @@
+# Core recommendation orchestration for retrieval, moderation, and tool calling.
+
 import json
 import unicodedata
 from typing import Any
@@ -56,6 +58,17 @@ HIGH_RISK_CONTENT_MARKERS = (
     "violență",
     "graphic",
     "gore",
+    "bomb",
+    "bombs",
+    "bomba",
+    "bombe",
+    "explosive",
+    "explosives",
+    "exploziv",
+    "explozive",
+    "grenade",
+    "grenades",
+    "grenada",
     "weapon",
     "weapons",
     "arma",
@@ -64,6 +77,13 @@ HIGH_RISK_CONTENT_MARKERS = (
     "knife",
     "gun",
     "guns",
+    "poison",
+    "poisons",
+    "otrava",
+    "otravuri",
+    "terorism",
+    "terrorism",
+    "terrorist",
     "murder",
     "kill",
     "killing",
@@ -79,6 +99,7 @@ HIGH_RISK_CONTENT_MARKERS = (
 
 
 def _extract_function_calls(response: Any) -> list[Any]:
+    # Pull function-call items out of an OpenAI Responses API payload.
     function_calls: list[Any] = []
 
     for item in getattr(response, "output", []) or []:
@@ -89,6 +110,7 @@ def _extract_function_calls(response: Any) -> list[Any]:
 
 
 def _safe_preview(text: str, limit: int = 80) -> str:
+    # Create short one-line previews for logging.
     preview = text.replace("\n", " ").strip()
     if len(preview) <= limit:
         return preview
@@ -96,20 +118,24 @@ def _safe_preview(text: str, limit: int = 80) -> str:
 
 
 def _moderation_results_flagged(results: list[Any]) -> bool:
+    # Return True when any moderation result is flagged.
     return any(bool(getattr(result, "flagged", False)) for result in results)
 
 
 def _normalize_for_risk_scan(text: str) -> str:
+    # Normalize text before checking for high-risk moderation keywords.
     normalized = unicodedata.normalize("NFKD", normalize_user_text(text).casefold())
     return "".join(char for char in normalized if not unicodedata.combining(char))
 
 
 def _contains_high_risk_markers(text: str) -> bool:
+    # Detect obviously unsafe topic markers that should not be ignored.
     normalized_text = _normalize_for_risk_scan(text)
     return any(marker in normalized_text for marker in HIGH_RISK_CONTENT_MARKERS)
 
 
 def _is_benign_child_book_content(texts: list[str]) -> bool:
+    # Allow benign children's book requests that moderation may over-flag.
     combined_text = normalize_user_text(" ".join(texts)).casefold()
     if not combined_text:
         return False
@@ -124,6 +150,7 @@ def _is_benign_child_book_content(texts: list[str]) -> bool:
 
 
 def _is_benign_general_book_content(texts: list[str]) -> bool:
+    # Allow book-related prompts that are broad but not actually high risk.
     combined_text = normalize_user_text(" ".join(texts)).casefold()
     if not combined_text:
         return False
@@ -141,6 +168,7 @@ def _is_moderation_flagged(
     stage: str,
     benign_context_texts: list[str] | None = None,
 ) -> bool:
+    # Run moderation and ignore the specific false positives covered by tests.
     cleaned_texts = [text.strip() for text in texts if text and text.strip()]
     if not cleaned_texts:
         return False
@@ -168,8 +196,20 @@ def _is_moderation_flagged(
     if not flagged:
         return False
 
-    benign_check_texts = cleaned_texts + [
+    context_texts = [
         text.strip() for text in (benign_context_texts or []) if text and text.strip()
+    ]
+
+    if stage == "output" and context_texts and _is_benign_general_book_content(context_texts):
+        logger.info(
+            "moderation_false_positive_ignored | stage=%s | preview=%s",
+            stage,
+            _safe_preview(" ".join(context_texts)),
+        )
+        return False
+
+    benign_check_texts = cleaned_texts + [
+        text for text in context_texts
     ]
 
     if _is_benign_child_book_content(benign_check_texts):
@@ -192,6 +232,7 @@ def _is_moderation_flagged(
 
 
 def _create_streamed_response(client: Any, **kwargs: Any) -> Any:
+    # Use streaming when available, otherwise fall back to a normal response call.
     responses_api = getattr(client, "responses")
     stream_method = getattr(responses_api, "stream", None)
 
@@ -206,21 +247,39 @@ def _build_moderation_block_result(
     validation: Any,
     response_language: str,
     *,
+    stage: str,
     tool_calls: list[dict[str, Any]] | None = None,
 ) -> dict[str, Any]:
+    # Build the uniform payload returned when moderation blocks a request.
+    if stage == "output":
+        final_answer = (
+            "Am gasit o recomandare, dar raspunsul generat a fost oprit de filtrul "
+            "de siguranta. Incearca o formulare mai specifica, de exemplu cu un "
+            "subgen, o tema sau o atmosfera."
+            if response_language == "ro"
+            else (
+                "I found a recommendation, but the generated answer was stopped by the "
+                "safety filter. Try a more specific request, such as a subgenre, theme, "
+                "or mood."
+            )
+        )
+    else:
+        final_answer = CLASSIC_BLOCKED_MESSAGE
+
     return {
         "status": "blocked_input",
         "blocked": True,
         "validation": validation.to_dict(),
         "matches": [],
         "tool_calls": tool_calls or [],
-        "final_answer": CLASSIC_BLOCKED_MESSAGE,
+        "final_answer": final_answer,
         "response_language": response_language,
         "display": None,
     }
 
 
 def _find_metadata_by_title(matches: list[dict[str, Any]], title: str) -> dict[str, Any]:
+    # Look up retriever metadata for the final selected title.
     normalized_title = title.strip().casefold()
 
     for match in matches:
@@ -241,6 +300,7 @@ def _build_error_result(
     response_language: str,
     display: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
+    # Build a structured error response consumed by both UI layers.
     return {
         "status": "error",
         "blocked": False,
@@ -254,6 +314,7 @@ def _build_error_result(
 
 
 def _parse_tool_arguments(raw_arguments: Any) -> dict[str, Any]:
+    # Parse tool arguments from either a dict or the JSON string returned by the SDK.
     if isinstance(raw_arguments, dict):
         return raw_arguments
 
@@ -268,6 +329,7 @@ def _parse_tool_arguments(raw_arguments: Any) -> dict[str, Any]:
 
 
 def _is_successful_tool_output(tool_output: str) -> bool:
+    # Treat local error-style tool outputs as failed tool calls.
     normalized = tool_output.strip().casefold()
     if normalized.startswith("eroare:"):
         return False
@@ -277,6 +339,7 @@ def _is_successful_tool_output(tool_output: str) -> bool:
 
 
 def _get_out_of_scope_message(language_code: str) -> str:
+    # Return a bilingual explanation when the question is outside the app scope.
     if language_code == "en":
         return (
             "I can only help with questions about books, authors, titles, genres, "
@@ -290,6 +353,15 @@ def _get_out_of_scope_message(language_code: str) -> str:
 
 
 def chat_once(user_query: str, n_results: int | None = None) -> dict[str, Any]:
+    # Execute one end-to-end chat turn.
+    #
+    # Flow:
+    # 1. Validate and normalize the user input
+    # 2. Detect whether the question is in scope
+    # 3. Moderate the input with OpenAI
+    # 4. Retrieve the best catalog candidates from Chroma
+    # 5. Ask the LLM to choose one title and call the summary tool
+    # 6. Moderate and normalize the final output
     validation = validate_user_query(user_query)
     target_language = detect_user_language(validation.cleaned_text or user_query)
     target_language_name = get_language_name(target_language)
@@ -352,8 +424,13 @@ def chat_once(user_query: str, n_results: int | None = None) -> dict[str, Any]:
 
     if _is_moderation_flagged(client, [cleaned_query], stage="input"):
         logger.warning("input_moderation_blocked | preview=%s", _safe_preview(cleaned_query))
-        return _build_moderation_block_result(validation, target_language)
+        return _build_moderation_block_result(
+            validation,
+            target_language,
+            stage="input",
+        )
 
+    # Retrieval happens only after the query has passed local validation and moderation.
     matches = search_books(cleaned_query, n_results=n_results or TOP_K)
 
     if not matches:
@@ -416,6 +493,8 @@ def chat_once(user_query: str, n_results: int | None = None) -> dict[str, Any]:
     current_round = 0
 
     while current_round < MAX_TOOL_ROUNDS:
+        # Each round either handles one tool call or exits when the model produces
+        # the final natural-language answer after receiving the tool output.
         function_calls = _extract_function_calls(response)
 
         if not function_calls:
@@ -468,6 +547,7 @@ def chat_once(user_query: str, n_results: int | None = None) -> dict[str, Any]:
                 return _build_moderation_block_result(
                     validation,
                     target_language,
+                    stage="output",
                     tool_calls=result_payload["tool_calls"],
                 )
 
@@ -484,6 +564,8 @@ def chat_once(user_query: str, n_results: int | None = None) -> dict[str, Any]:
             )
             function_calls = function_calls[:1]
 
+        # Feed the intermediate model output back into the next turn so the
+        # Responses API retains the tool-calling conversation state.
         input_items.extend(getattr(response, "output", []) or [])
         tool_call = function_calls[0]
 
@@ -512,6 +594,8 @@ def chat_once(user_query: str, n_results: int | None = None) -> dict[str, Any]:
                     tool_output = execute_tool_call(tool_call.name, parsed_arguments)
                     tool_ok = _is_successful_tool_output(tool_output)
                     if tool_ok:
+                        # Tool output is translated before being shown in the UI so the
+                        # summary language always matches the user-facing response.
                         tool_output = normalize_text_to_target_language(
                             client,
                             tool_output,

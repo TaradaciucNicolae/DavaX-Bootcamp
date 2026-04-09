@@ -1,3 +1,5 @@
+# Tests for narration text assembly and TTS payload generation.
+
 from types import SimpleNamespace
 
 from src.audio_narration import (
@@ -8,6 +10,7 @@ from src.audio_narration import (
 
 
 def _assistant_message(language: str = "ro") -> dict:
+    # Create a representative assistant payload used across narration tests.
     return {
         "role": "assistant",
         "kind": "assistant",
@@ -77,3 +80,4 @@ def test_generate_audio_narration_returns_audio_payload(monkeypatch):
     assert captured_kwargs["voice"] == "alloy"
     assert captured_kwargs["response_format"] == "mp3"
     assert captured_kwargs["input"].startswith("Se potriveste pentru teme despre libertate si control social.")
+

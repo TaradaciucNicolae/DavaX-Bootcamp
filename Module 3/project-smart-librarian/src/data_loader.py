@@ -1,3 +1,5 @@
+# Catalog loading, validation, and title resolution helpers.
+
 import json
 from pathlib import Path
 import re
@@ -7,6 +9,8 @@ from pydantic import BaseModel, Field, ValidationError
 
 
 class BookSummary(BaseModel):
+    # Validated schema for every catalog entry stored in the local JSON dataset.
+
     id: str
     title: str
     author: str
@@ -21,18 +25,15 @@ class BookSummary(BaseModel):
 
 
 def load_books(file_path: Path) -> list[BookSummary]:
-    """
-    Citeste fisierul JSON si valideaza fiecare carte.
-    Returneaza o lista de obiecte BookSummary.
-    """
+    # Read the catalog JSON file and validate every book entry.
     if not file_path.exists():
-        raise FileNotFoundError(f"Fisierul nu exista: {file_path}")
+        raise FileNotFoundError(f"File does not exist: {file_path}")
 
     with file_path.open("r", encoding="utf-8") as f:
         raw_data = json.load(f)
 
     if not isinstance(raw_data, list):
-        raise ValueError("Fisierul JSON trebuie sa contina o lista de carti.")
+        raise ValueError("The JSON file must contain a list of books.")
 
     books: list[BookSummary] = []
     errors: list[str] = []
@@ -46,22 +47,20 @@ def load_books(file_path: Path) -> list[BookSummary]:
 
     if errors:
         raise ValueError(
-            "Au fost gasite erori de validare in book_summaries.json:\n"
+            "Validation errors were found in book_summaries.json:\n"
             + "\n".join(errors)
         )
 
     if len(books) < 10:
         raise ValueError(
-            f"Trebuie sa ai minim 10 carti conform cerintei. Acum ai {len(books)}."
+            f"The assignment requires at least 10 books. The file currently has {len(books)}."
         )
 
     return books
 
 
 def get_book_by_exact_title(title: str, books: list[BookSummary]) -> Optional[BookSummary]:
-    """
-    Cauta o carte dupa titlu exact, ignorand diferente minore de litere mari/mici.
-    """
+    # Find a book by exact title while tolerating minor formatting differences.
     resolved_title = resolve_catalog_title(title, [book.title for book in books])
     if not resolved_title:
         return None
@@ -74,6 +73,7 @@ def get_book_by_exact_title(title: str, books: list[BookSummary]) -> Optional[Bo
 
 
 def _normalize_title_key(title: str) -> str:
+    # Normalize a title into a stable lookup key.
     cleaned_title = title.strip()
     cleaned_title = re.sub(r"^[`*_#\s]+|[`*_#\s]+$", "", cleaned_title)
     cleaned_title = cleaned_title.strip("\"'`“”„«»’‘")
@@ -83,11 +83,13 @@ def _normalize_title_key(title: str) -> str:
 
 
 def _strip_author_suffix(title: str) -> str:
+    # Drop trailing `by Author` or `de Autor` fragments from model outputs.
     stripped = re.sub(r"\s+\b(?:by|de)\b\s+.+$", "", title, flags=re.IGNORECASE)
     return stripped.strip()
 
 
 def _build_title_aliases(title: str) -> set[str]:
+    # Generate safe aliases for subtitles and author-suffixed title variants.
     title_variants = {title.strip()}
     stripped_author = _strip_author_suffix(title)
     if stripped_author:
@@ -114,6 +116,7 @@ def _build_title_aliases(title: str) -> set[str]:
 
 
 def resolve_catalog_title(title: str, catalog_titles: list[str]) -> Optional[str]:
+    # Resolve a fuzzy-but-safe title variant to one unique catalog title.
     normalized_requested_title = _normalize_title_key(_strip_author_suffix(title))
     if not normalized_requested_title:
         return None
@@ -135,3 +138,4 @@ def resolve_catalog_title(title: str, catalog_titles: list[str]) -> Optional[str
         unique_aliases.pop(ambiguous_alias, None)
 
     return unique_aliases.get(normalized_requested_title)
+

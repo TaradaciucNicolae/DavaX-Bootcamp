@@ -1,3 +1,5 @@
+# Tests for the end-to-end catalog import orchestration service.
+
 import sys
 from types import SimpleNamespace
 
@@ -12,6 +14,7 @@ from src.data_loader import BookSummary
 
 
 def _book(title: str) -> BookSummary:
+    # Build a minimal valid BookSummary used by the ingestion tests.
     return BookSummary(
         id=f"book_{title.lower().replace(' ', '_')}",
         title=title,
@@ -72,3 +75,4 @@ def test_import_books_from_settings_refreshes_tool_cache(monkeypatch):
     assert result["new_items_in_this_run"] == 1
     assert result["total_items_in_json"] == 1
     assert result["indexed_total"] == 1
+

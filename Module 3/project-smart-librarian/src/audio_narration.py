@@ -1,3 +1,5 @@
+# Script for turning assistant messages into downloadable TTS narration.
+
 import re
 import unicodedata
 
@@ -17,10 +19,12 @@ AUDIO_MIME_TYPES = {
 
 
 def _normalize_spaces(text: str) -> str:
+    # Collapse repeated whitespace before narration text is assembled.
     return re.sub(r"\s+", " ", (text or "")).strip()
 
 
 def _trim_tts_text(text: str, max_chars: int = MAX_TTS_INPUT_CHARS) -> str:
+    # Trim narration text to the service limit without cutting too abruptly.
     cleaned_text = _normalize_spaces(text)
     if len(cleaned_text) <= max_chars:
         return cleaned_text
@@ -44,6 +48,7 @@ def _trim_tts_text(text: str, max_chars: int = MAX_TTS_INPUT_CHARS) -> str:
 
 
 def build_audio_narration_text(message: dict) -> str:
+    # Build the spoken text based on the message kind and response language.
     language = message.get("response_language", "ro")
     kind = message.get("kind", "assistant")
     display = message.get("display") or {}
@@ -73,10 +78,12 @@ def build_audio_narration_text(message: dict) -> str:
 
 
 def get_audio_mime_type(response_format: str = TTS_RESPONSE_FORMAT) -> str:
+    # Map the configured TTS format to a browser-friendly MIME type.
     return AUDIO_MIME_TYPES.get(response_format, "audio/mp3")
 
 
 def build_audio_filename(message: dict, response_format: str = TTS_RESPONSE_FORMAT) -> str:
+    # Generate a stable download filename based on the recommended title.
     display = message.get("display") or {}
     title = str(display.get("recommended_title") or DEFAULT_AUDIO_FILENAME)
     normalized = unicodedata.normalize("NFKD", title).encode("ascii", "ignore").decode("ascii")
@@ -87,6 +94,7 @@ def build_audio_filename(message: dict, response_format: str = TTS_RESPONSE_FORM
 
 
 def generate_audio_narration(message: dict) -> dict[str, str | bytes]:
+    # Call OpenAI TTS and return the payload needed by the Streamlit UI.
     narration_text = build_audio_narration_text(message)
     if not narration_text:
         raise ValueError("Nu exista text disponibil pentru generarea audio.")
@@ -105,3 +113,4 @@ def generate_audio_narration(message: dict) -> dict[str, str | bytes]:
         "file_name": build_audio_filename(message, TTS_RESPONSE_FORMAT),
         "narration_text": narration_text,
     }
+

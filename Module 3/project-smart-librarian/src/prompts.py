@@ -1,3 +1,5 @@
+# Prompt templates used to constrain the LLM during recommendation flows.
+
 from typing import Any
 
 
@@ -22,6 +24,7 @@ Rules:
 
 
 def _join_list(values: list[str]) -> str:
+    # Format list metadata consistently for prompt injection.
     if not values:
         return "-"
     return ", ".join(values)
@@ -32,6 +35,7 @@ def build_rag_user_message(
     matches: list[dict[str, Any]],
     target_language_name: str,
 ) -> str:
+    # Build the grounded user message that contains the retriever candidates.
     context_blocks: list[str] = []
 
     for index, match in enumerate(matches, start=1):
@@ -70,3 +74,5 @@ Important:
 - Choose the best title, then call get_summary_by_title with the exact title.
 - The final answer must be written in {target_language_name}.
 """.strip()
+
+

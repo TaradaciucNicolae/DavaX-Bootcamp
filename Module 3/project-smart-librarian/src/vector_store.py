@@ -1,3 +1,5 @@
+# Persistent Chroma collection management for the local book catalog.
+
 from typing import Any
 
 import chromadb
@@ -8,39 +10,33 @@ from src.embeddings import embed_texts
 
 
 def get_chroma_client():
-    """
-    Creeaza clientul Chroma persistent pe disk.
-    """
+    # Create the persistent Chroma client stored on disk.
     CHROMA_PATH.mkdir(parents=True, exist_ok=True)
     return chromadb.PersistentClient(path=str(CHROMA_PATH))
 
 
 def get_or_create_books_collection():
-    """
-    Obtine colectia de carti daca exista sau o creeaza daca nu exista.
-    """
+    # Return the catalog collection, creating it if needed.
     client = get_chroma_client()
     return client.get_or_create_collection(name=COLLECTION_NAME)
 
 
 def delete_books_collection_if_exists() -> None:
-    """
-    Sterge colectia curenta daca exista deja.
-    Folosim asta la rebuild complet, ca sa evitam date vechi sau inconsistente.
-    """
+    # Delete the current collection if it already exists.
+    #
+    # Full rebuilds start from a clean slate so stale vectors do not survive imports
+    # or schema changes.
     client = get_chroma_client()
 
     try:
         client.delete_collection(name=COLLECTION_NAME)
     except Exception:
-        # Daca nu exista colectia, ignoram eroarea.
+        # It is safe to ignore the error when the collection does not exist yet.
         pass
 
 
 def _book_to_metadata(book: BookSummary) -> dict[str, Any]:
-    """
-    Extrage metadata utila pentru fiecare carte.
-    """
+    # Extract the metadata fields that should stay queryable in Chroma.
     return {
         "title": book.title,
         "author": book.author,
@@ -50,18 +46,19 @@ def _book_to_metadata(book: BookSummary) -> dict[str, Any]:
         "themes": book.themes,
         "tone": book.tone,
         "short_summary": book.short_summary,
-}   
+    }
 
 
 def rebuild_vector_store(books: list[BookSummary]) -> int:
-    """
-    Reconstruieste complet vector store-ul:
-    1. Sterge colectia veche
-    2. Creeaza colectia noua
-    3. Genereaza embeddings pentru carti
-    4. Salveaza datele in Chroma
-    Returneaza numarul total de inregistrari din colectie.
-    """
+    # Rebuild the entire vector store from the validated catalog.
+    #
+    # Steps:
+    # 1. Delete the previous collection
+    # 2. Create a fresh collection
+    # 3. Generate embeddings for each book
+    # 4. Upsert the full dataset into Chroma
+    #
+    # The return value is the total number of indexed records.
     delete_books_collection_if_exists()
     collection = get_or_create_books_collection()
 
@@ -82,8 +79,7 @@ def rebuild_vector_store(books: list[BookSummary]) -> int:
 
 
 def get_collection_size() -> int:
-    """
-    Returneaza cate inregistrari exista in colectie.
-    """
+    # Return the current number of records stored in the collection.
     collection = get_or_create_books_collection()
     return collection.count()
+

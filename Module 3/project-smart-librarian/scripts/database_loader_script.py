@@ -1,21 +1,16 @@
-#!/usr/bin/env python3
-"""
-books_to_chroma_quality_commented.py
-
-Scop:
-- ia carti din Google Books API
-- normalizeaza datele intr-o schema JSON fixa
-- imbunatateste sumarizarile scurte/lungi folosind euristici peste descriere
-- salveaza / actualizeaza un JSON local fara sa piarda intrarile vechi
-- reconstruieste indexul semantic folosit de aplicatie
-
-Observatie importanta:
-- API-urile publice pentru carti NU ofera direct campuri curate pentru:
-  themes, tone, audience, short_summary, full_summary.
-- De aceea, o parte din date sunt inferate din description + categories + query.
-- Rezultatul este mai coerent decat un simplu fallback, dar nu poate fi 100%
-  perfect pentru toate cartile fara un pas suplimentar de enrich/manual review.
-"""
+# Normalize Google Books results into the JSON schema used by Smart Librarian.
+#
+# What does this script do ?
+# - fetch books from Google Books
+# - normalize inconsistent public metadata into one stable schema
+# - build better short and full summaries using lightweight heuristics
+# - merge new data into the local JSON catalog without losing existing entries
+# - rebuild the semantic index used by the application
+#
+# Important note:
+# Public book APIs do not expose clean fields such as themes, tone, audience,
+# short_summary, or full_summary. Those fields are inferred from the available
+# description, categories, and query context
 
 from __future__ import annotations
 
@@ -36,48 +31,52 @@ from src.data_loader import load_books
 from src.vector_store import rebuild_vector_store
 
 
-# =========================================================
-# CONFIGURARE - EDITEZI DOAR AICI
-# =========================================================
-# Aici pui subiectele pe care vrei sa le cauti.
-# Fiecare query este trimis catre Google Books API.
+# CONFIGURATION - MANUAL-RUN DEFAULTS ONLY
 
+# These defaults are used only when this file is executed directly with:
+# `python scripts/database_loader_script.py`
+#
+# They are not the values used by the Streamlit import flow.
+# In the Streamlit UI, the selected genres, book count, language, and page
+# limit are passed explicitly from the sidebar settings through
+# `src.catalog_ingestion_service.py`.
+#
+# These constants exist only as fallback defaults for standalone/manual runs.
+# When the application imports books from Streamlit, they are ignored.
+
+
+# These are the seed queries sent to Google Books for standalone execution.
 GOOGLE_BOOKS_QUERIES = [
     "subject:fiction",
     "subject:romance",
     "subject:fantasy",
 ]
 
-# # Cate carti finale vrei sa pastrezi per query.
-# # ATENTIE:
-# # - valoarea asta reprezinta numarul de carti "bune" pe care incerci sa le obtii
-# # - daca API-ul nu intoarce suficiente descrieri utile, este posibil sa ai mai putine
+# Standalone/manual-run target number of final books to keep per query.
 TARGET_RESULTS_PER_QUERY = 20
 
-# # Google Books accepta maxim 40 rezultate per request.
-# # De aceea, scriptul parcurge mai multe "pagini" de rezultate pentru fiecare query
-# # si apoi selecteaza variantele cele mai bune.
+# Standalone/manual-run limit for how many Google Books result pages to scan.
+# Google Books allows at most 40 results per request, so the script pages
+# through multiple result windows and then keeps the best candidates.
 MAX_PAGES_PER_QUERY = 3
 
-# # Restrictie de limba. Poti pune:
-# #   "en" -> doar engleza
-# #   "ro" -> romana
-# #   None -> orice limba
+# Standalone/manual-run language restriction:
+#   "en" -> English only
+#   "ro" -> Romanian only
+#   None -> any language
 LANGUAGE_RESTRICT = "en"
 
-# Fisierul JSON final in care se aduna toate intrarile.
-# Scriptul NU il rescrie de la zero, ci face merge dupa ID.
+# Output JSON file used by the standalone/manual execution path.
+# The script merges by id instead of overwriting the file from scratch.
 OUTPUT_JSON_PATH = "data/book_summaries.json"
 
 
-# =========================================================
-# MAPARI / VOCABULAR CONTROLAT
-# =========================================================
-# Ideea acestei sectiuni:
-# API-ul Google Books iti da mai ales categories + description, nu si campuri curate
-# precum "themes" sau "tone". Ca sa standardizam rezultatul, folosim un vocabular
-# controlat: daca anumite cuvinte apar in categories/description, mapam spre etichete
-# consistente.
+
+# CONTROLLED VOCABULARY
+
+# Google Books mostly exposes free-form `categories` and `description` data.
+# These rules map recurring terms into a consistent internal vocabulary so the
+# rest of the project can rely on stable genres, themes, and tone labels.
 
 GENRE_RULES: List[Tuple[str, List[str]]] = [
     ("fantasy", ["fantasy", "magic", "magical realism"]),
@@ -223,17 +222,14 @@ GENERIC_STOPWORDS = {
 }
 
 
-# =========================================================
-# UTILITARE TEXT
-# =========================================================
+
+# TEXT UTILITIES
 
 def slugify(value: str) -> str:
-    """
-    Transforma un text intr-un slug simplu pentru ID-uri.
-
-    Exemplu:
-        "The Shadow of the Wind" -> "the_shadow_of_the_wind"
-    """
+    # Turn text into a simple slug used for generated identifiers.
+    #
+    # Example:
+    # "The Shadow of the Wind" -> "the_shadow_of_the_wind"
     value = unicodedata.normalize("NFKD", value).encode("ascii", "ignore").decode("ascii")
     value = value.lower()
     value = re.sub(r"[^a-z0-9]+", "_", value).strip("_")
@@ -241,16 +237,14 @@ def slugify(value: str) -> str:
 
 
 def strip_html(value: str) -> str:
-    """
-    Curata HTML-ul simplu intors de API si normalizeaza spatiile.
-
-    Google Books poate intoarce:
-    - <br>
-    - <p>
-    - entitati HTML
-
-    Functia transforma totul intr-un text liniar, usor de analizat.
-    """
+    # Strip light HTML markup returned by the API and normalize spacing.
+    
+    # Google Books may return:
+    # - <br>
+    # - <p>
+    # - HTML entities
+    
+    # The output is plain text that is easier to score and summarize.
     value = html.unescape(value or "")
     value = value.replace("\u00a0", " ")
     value = re.sub(r"<br\s*/?>", ". ", value, flags=re.IGNORECASE)
@@ -261,19 +255,14 @@ def strip_html(value: str) -> str:
 
 
 def normalize_punctuation(text: str) -> str:
-    """
-    Normalizeaza ghilimele, linii si spatii duble ca sa evite rezumate "ciudate".
-    """
+    # Normalize quotes, dashes, and repeated spaces to avoid odd-looking summaries.
     text = (text or "").replace("“", '"').replace("”", '"').replace("’", "'").replace("–", "-")
     text = re.sub(r"\s+", " ", text).strip()
     return text
 
 
 def split_sentences(text: str) -> List[str]:
-    """
-    Sparge un text in propozitii.
-    Este o euristica simpla, suficienta pentru descrieri scurte/medii.
-    """
+    # Split text into sentences.
     text = normalize_punctuation(text)
     if not text:
         return []
@@ -282,9 +271,7 @@ def split_sentences(text: str) -> List[str]:
 
 
 def dedupe_preserve_order(values: List[str]) -> List[str]:
-    """
-    Elimina duplicatele pastrand ordinea initiala.
-    """
+    # Remove duplicates while preserving the original order.
     out: List[str] = []
     seen = set()
     for value in values:
@@ -297,11 +284,9 @@ def dedupe_preserve_order(values: List[str]) -> List[str]:
 
 
 def normalize_title(info: Dict[str, Any]) -> str:
-    """
-    Construieste titlul final:
-    - title
-    - optional subtitle, daca nu este deja inclus
-    """
+    # Build the final title from:
+    # - title
+    # - the optional subtitle when it is not already included
     title = strip_html(str(info.get("title", "")).strip())
     subtitle = strip_html(str(info.get("subtitle", "")).strip())
 
@@ -311,10 +296,9 @@ def normalize_title(info: Dict[str, Any]) -> str:
 
 
 def normalize_author(info: Dict[str, Any]) -> str:
-    """
-    Ia primul autor disponibil.
-    Pentru multe cazuri este suficient sa folosesti primul autor.
-    """
+    # Take the first available author.
+    #
+    # This is enough for the current catalog schema and UI.
     authors = info.get("authors") or []
     if authors:
         return strip_html(str(authors[0]))
@@ -322,23 +306,19 @@ def normalize_author(info: Dict[str, Any]) -> str:
 
 
 def build_book_id(title: str, author: str) -> str:
-    """
-    Construieste ID-ul cartii.
-    Exemplu:
-        "1984" -> "book_1984"
-
-    Nota:
-    - pastrez formatul simplu bazat pe titlu pentru a se apropia de schema ta.
-    - daca ai multe coliziuni de titluri in viitor, poti schimba in:
-        book_{slugify(title)}_{slugify(author)}
-    """
+    # Build the book identifier.
+    #
+    # Example:
+    # "1984" -> "book_1984"
+    #
+    # Note:
+    # - the current format intentionally stays simple and title-based
+    # - if title collisions become common later, include the author slug too
     return f"book_{slugify(title)}"
 
 
 def safe_take_unique(values: List[str], limit: int) -> List[str]:
-    """
-    Ia primele valori unice, fara siruri goale.
-    """
+    # Take the first unique non-empty values up to the requested limit.
     out: List[str] = []
     seen = set()
     for value in values:
@@ -356,22 +336,18 @@ def safe_take_unique(values: List[str], limit: int) -> List[str]:
 
 
 def subject_from_query(query: str) -> str:
-    """
-    Extrage subiectul principal din query.
-
-    Exemplu:
-        "subject:romance" -> "romance"
-    """
+    # Extract the main subject from the source query.
+    
+    # Example:
+    # "subject:romance" -> "romance"
     if "subject:" in query:
         return query.split("subject:", 1)[1].strip().strip('"').strip("'")
     return query.strip()
 
 
 def keyword_match(text: str, keywords: List[str]) -> bool:
-    """
-    Match simplu pe text normalizat.
-    Folosim o varianta simpla si predictibila, nu NLP complex.
-    """
+    # Perform a simple normalized keyword match.
+
     text = f" {text.lower()} "
     for keyword in keywords:
         if f" {keyword.lower()} " in text or keyword.lower() in text:
@@ -379,23 +355,11 @@ def keyword_match(text: str, keywords: List[str]) -> bool:
     return False
 
 
-# =========================================================
-# FUNCTII PENTRU REZUMATE MAI BUNE
-# =========================================================
+
+# SUMMARY-BUILDING HELPERS + CLEANUP ( precum ensure_description_text, sentence_score, build_short_summary, build_full_summary )
 
 def ensure_description_text(description: str) -> str:
-    """
-    Curata descrierea bruta si elimina cat mai mult "zgomot" comercial.
-
-    Problema tipica:
-    unele descrieri din Google Books contin:
-    - marketing ("bestseller", "major motion picture")
-    - informatie de editie
-    - citate promo
-    - review blurbs
-
-    Asta strica short_summary / full_summary.
-    """
+    # Clean the raw description and remove as much marketing noise as possible.
     description = strip_html(description)
     description = normalize_punctuation(description)
 
@@ -426,30 +390,14 @@ def ensure_description_text(description: str) -> str:
 
 
 def sentence_signature(sentence: str) -> str:
-    """
-    Creeaza o semnatura foarte simpla pentru compararea frazelor similare.
-    O folosim ca sa nu alegem 2 fraze aproape identice in rezumat.
-    """
+    # Build a tiny signature for near-duplicate sentence detection.
     tokens = re.findall(r"[a-zA-Z']+", sentence.lower())
     tokens = [t for t in tokens if t not in GENERIC_STOPWORDS]
     return " ".join(tokens[:12])
 
 
 def sentence_score(sentence: str, index_in_description: int) -> int:
-    """
-    Da un scor unei propozitii pentru a decide daca merita folosita in rezumat.
-
-    Ce favorizam:
-    - propozitii narative
-    - propozitii cu personaje / conflict / actiune
-    - propozitii de lungime rezonabila
-    - fraze aflate mai devreme in descriere (de obicei sunt mai utile)
-
-    Ce penalizam:
-    - zgomot promotional
-    - intrebari de marketing
-    - fraze prea lungi sau prea scurte
-    """
+    # Score a sentence to decide whether it deserves a place in the summary.
     lower = sentence.lower()
     score = 0
     length = len(sentence)
@@ -485,16 +433,7 @@ def sentence_score(sentence: str, index_in_description: int) -> int:
 
 
 def choose_best_sentences(description: str, max_sentences: int, max_chars: int) -> List[str]:
-    """
-    Selecteaza cele mai bune propozitii pentru rezumat.
-
-    Logica:
-    1. curata descrierea
-    2. sparge in propozitii
-    3. calculeaza scor pentru fiecare
-    4. alege propozitiile cu scor bun
-    5. pastreaza ordinea originala, ca sa iasa natural
-    """
+    # Select the highest-value sentences for the generated summary.
     cleaned = ensure_description_text(description)
     sentences = split_sentences(cleaned)
     if not sentences:
@@ -558,13 +497,10 @@ def build_support_sentence(
     audience: str,
     detailed: bool = False,
 ) -> str:
-    """
-    Construieste o propozitie suplimentara coerenta, folosita doar cand descrierea
-    este prea scurta si avem nevoie sa completam short/full summary.
-
-    detailed=False  -> pentru short_summary
-    detailed=True   -> pentru full_summary
-    """
+    # Build a fallback support sentence when the source description is too thin.
+    #
+    # detailed=False  -> short_summary fallback
+    # detailed=True   -> full_summary fallback
     genre_text = ", ".join(genres[:3]) if genres else "fiction"
     theme_text = ", ".join(themes[:4]) if themes else "identity, growth"
     tone_text = ", ".join(tone[:3]) if tone else "engaging"
@@ -583,9 +519,7 @@ def build_support_sentence(
 
 
 def trim_to_sentence_boundary(text: str, max_chars: int) -> str:
-    """
-    Taie textul elegant la o limita de caractere, fara sa lase propozitia rupta urat.
-    """
+    # Trim text to a character limit without leaving an ugly / broken sentence.
     text = re.sub(r"\s+", " ", text).strip()
     if len(text) <= max_chars:
         return text
@@ -611,14 +545,7 @@ def build_short_summary(
     tone: List[str],
     audience: str,
 ) -> str:
-    """
-    Construieste un rezumat scurt mai natural.
-
-    Strategia:
-    - incercam sa luam 1-2 fraze bune din descriere
-    - daca descrierea e prea saraca, completam cu o propozitie sintetica
-    - pastram rezumatul relativ compact si coerent
-    """
+    # Build a more natural short summary from the available metadata.
     selected = choose_best_sentences(description, max_sentences=2, max_chars=300)
     candidate = " ".join(selected).strip()
 
@@ -646,15 +573,7 @@ def build_full_summary(
     tone: List[str],
     audience: str,
 ) -> str:
-    """
-    Construieste un rezumat lung mai coerent.
-
-    Strategia:
-    - alegem pana la 4 propozitii bune din descriere
-    - evitam zgomotul de marketing
-    - daca descrierea este prea scurta, completam cu o propozitie mai explicita
-      despre genuri, teme, ton si audience
-    """
+    # Build a more coherent long summary from the available metadata.
     selected = choose_best_sentences(description, max_sentences=4, max_chars=760)
     full_summary = " ".join(selected).strip()
 
@@ -676,13 +595,10 @@ def build_full_summary(
 
 
 def build_content_for_embedding(item: Dict[str, Any]) -> str:
-    """
-    Construieste textul principal trimis in Chroma pentru embeddings.
-
-    Observatie:
-    - in Chroma, "documents" este ce se embedeaza pentru semantic search
-    - de aceea aici punem o combinatie intre campuri structurale + sumarile generate
-    """
+    # Build the main text sent to Chroma for embeddings.
+    
+    # Chroma embeds the `documents` field, so this text combines structural fields
+    # with the generated summaries to maximize semantic recall.
     return (
         f"Title: {item['title']}. "
         f"Author: {item['author']}. "
@@ -696,29 +612,28 @@ def build_content_for_embedding(item: Dict[str, Any]) -> str:
     )
 
 
-# =========================================================
+
 # GOOGLE BOOKS API
-# =========================================================
 
 GOOGLE_BOOKS_VOLUMES_URL = "https://www.googleapis.com/books/v1/volumes"
 
 
 GOOGLE_BOOKS_API_KEY = os.getenv(
     "GOOGLE_BOOKS_API_KEY",
-    "PASTE_YOUR_REAL_GOOGLE_BOOKS_API_KEY_HERE",
 )
 
 RETRYABLE_STATUS_CODES = {429, 500, 502, 503, 504}
 
 def request_json(url: str, params: dict | None = None, timeout: int = 20, max_attempts: int = 5):
+    # Fetch JSON with retries and optional Google Books API key injection.
     params = dict(params or {})
     last_error = None
 
-    # Automatically attach the Google Books API key only for Google Books requests
+    # Attach the Google Books API key only for Google Books requests.
     if (
         url == GOOGLE_BOOKS_VOLUMES_URL
         and GOOGLE_BOOKS_API_KEY
-        and GOOGLE_BOOKS_API_KEY != "PASTE_YOUR_REAL_GOOGLE_BOOKS_API_KEY_HERE"
+        and GOOGLE_BOOKS_API_KEY != "GOOGLE_BOOKS_API_KEY"
         and "key" not in params
     ):
         params["key"] = GOOGLE_BOOKS_API_KEY
@@ -770,10 +685,7 @@ def fetch_google_books_candidates(
     max_pages_per_query: int,
     language_restrict: str | None,
 ) -> List[Dict[str, Any]]:
-    """
-    Nu mai citești din constante globale.
-    Primești explicit valorile din setările salvate de aplicație.
-    """
+    # Fetch raw Google Books candidates using the values provided by the UI settings.
     all_items: List[Dict[str, Any]] = []
     seen_volume_ids = set()
 
@@ -807,18 +719,11 @@ def fetch_google_books_candidates(
     return all_items
 
 
-# =========================================================
-# EXTRAGERE SEMANTICA
-# =========================================================
+
+# SEMANTIC EXTRACTION
 
 def infer_genres(categories: List[str], description: str, query: str) -> List[str]:
-    """
-    Infera genurile principale.
-
-    Ordinea este:
-    1. categories + description
-    2. fallback din query
-    """
+    # Infer the main genres from categories, description, and query fallback.
     text = " | ".join(categories + [description, subject_from_query(query)]).lower()
     genres: List[str] = []
 
@@ -837,9 +742,7 @@ def infer_genres(categories: List[str], description: str, query: str) -> List[st
 
 
 def infer_themes(categories: List[str], description: str) -> List[str]:
-    """
-    Infera temele principale ale cartii din description + categories.
-    """
+    # Infer the main book themes from the description and categories.
     text = " | ".join(categories + [description]).lower()
     themes: List[str] = []
 
@@ -863,9 +766,7 @@ def infer_themes(categories: List[str], description: str) -> List[str]:
 
 
 def infer_tone(categories: List[str], description: str) -> List[str]:
-    """
-    Infera tonul dominant al cartii.
-    """
+    # Infer the dominant tone of the book.
     text = " | ".join(categories + [description]).lower()
     tones: List[str] = []
 
@@ -887,16 +788,7 @@ def infer_tone(categories: List[str], description: str) -> List[str]:
 
 
 def infer_audience(categories: List[str], description: str, maturity_rating: str) -> str:
-    """
-    Infera publicul tinta.
-
-    Valori posibile in schema noastra:
-    - children
-    - young_adult
-    - teen_adult
-    - all_ages
-    - adult
-    """
+    # Infer the target audience for the normalized schema.
     text = " | ".join(categories + [description, maturity_rating or ""]).lower()
 
     if any(term in text for term in ["children", "picture book", "juvenile", "kids"]):
@@ -918,17 +810,7 @@ def infer_audience(categories: List[str], description: str, maturity_rating: str
 
 
 def quality_score(info: Dict[str, Any], description: str, categories: List[str]) -> int:
-    """
-    Calculeaza un scor simplu de calitate.
-
-    De ce e util?
-    Pentru ca nu vrem sa pastram orice intrare slaba.
-    Vrem sa favorizam:
-    - titlu + autor clar
-    - categorii prezente
-    - descrieri mai lungi
-    - ceva semnal de interes (ratinguri)
-    """
+    # Calculate a simple quality score used to rank normalized candidates.
     score = 0
 
     title = normalize_title(info)
@@ -975,24 +857,22 @@ def quality_score(info: Dict[str, Any], description: str, categories: List[str])
 
 
 def normalize_book(raw_item: Dict[str, Any], query: str) -> Dict[str, Any]:
-    """
-    Transforma un item brut din Google Books in schema fixa pe care o vrei tu.
-
-    Schema finala:
-    {
-        id,
-        title,
-        author,
-        genres,
-        themes,
-        tone,
-        audience,
-        language,
-        short_summary,
-        full_summary,
-        content_for_embedding
-    }
-    """
+    # Transform one raw Google Books item into the fixed project schema.
+    #
+    # Final schema:
+    # {
+    # id,
+    # title,
+    # author,
+    # genres,
+    # themes,
+    # tone,
+    # audience,
+    # language,
+    # short_summary,
+    # full_summary,
+    # content_for_embedding
+    # }
     info = raw_item.get("volumeInfo", {})
     search_info = raw_item.get("searchInfo", {}) or {}
 
@@ -1029,31 +909,21 @@ def normalize_book(raw_item: Dict[str, Any], query: str) -> Dict[str, Any]:
     return item
 
 
-# =========================================================
-# JSON
-# =========================================================
+
+# JSON MERGE
 
 def ensure_parent_dir_for_file(file_path: str) -> None:
-    """
-    Creeaza directorul parinte pentru un fisier, daca nu exista.
-    Exemplu:
-        data/book_summaries.json -> creeaza directorul data/
-    """
+    # Create the parent directory for a file path if it does not exist yet.
     path = Path(file_path)
     if path.parent and str(path.parent) not in {"", "."}:
         path.parent.mkdir(parents=True, exist_ok=True)
 
 
 def merge_books_into_json(new_items: List[Dict[str, Any]], output_path: str) -> List[Dict[str, Any]]:
-    """
-    Face merge intre:
-    - intrarile deja existente in JSON
-    - intrarile noi din rularea curenta
-
-    Regula:
-    - cheia este ID-ul cartii
-    - daca acelasi ID apare din nou, noua varianta il suprascrie pe cel vechi
-    """
+    # Merge the current run into the existing JSON catalog.
+    #
+    # The book id is the primary key, so a newly normalized entry replaces the
+    # older version with the same id.
     ensure_parent_dir_for_file(output_path)
 
     path = Path(output_path)
@@ -1091,9 +961,7 @@ def collect_books_for_query(
     max_pages_per_query: int,
     language_restrict: str | None,
 ) -> List[Dict[str, Any]]:
-    """
-    Colectezi cărți folosind exact setările alese în UI.
-    """
+    # Normalize, filter, deduplicate, and rank the best books for one query.
     raw_candidates = fetch_google_books_candidates(
         query=query,
         max_pages_per_query=max_pages_per_query,
@@ -1125,13 +993,13 @@ def collect_books_for_query(
 
 
 def main() -> None:
-    """
-    Fluxul global:
-    - colecteaza rezultate pentru fiecare query
-    - elimina duplicatele intre query-uri
-    - face merge in JSON
-    - face upsert in Chroma
-    """
+    # Run the standalone import flow from Google Books to JSON to Chroma.
+    # This entry point uses only the manual-run defaults defined at the top of
+    # the file. 
+    # 
+    # The Streamlit app does not call `main()` and does not rely on
+    # `GOOGLE_BOOKS_QUERIES`, `TARGET_RESULTS_PER_QUERY`, `MAX_PAGES_PER_QUERY`,
+    # or `LANGUAGE_RESTRICT` from this section.
     all_new_items: List[Dict[str, Any]] = []
 
     print("[1/4] Colectez carti din Google Books API")
@@ -1172,3 +1040,4 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
+

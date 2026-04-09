@@ -1,3 +1,5 @@
+# Logging bootstrap used by both the UI layers and the core services.
+
 import logging
 from logging.handlers import RotatingFileHandler
 
@@ -5,10 +7,9 @@ from src.config import LOG_DIR, LOG_LEVEL
 
 
 def configure_logging() -> logging.Logger:
-    """
-    Configureaza loggerul aplicatiei.
-    Folosim rotatie simpla de fisiere ca sa nu creasca logul la infinit.
-    """
+    # Configure the shared application logger.
+    #
+    # A rotating file handler keeps the local log file from growing forever.
     LOG_DIR.mkdir(parents=True, exist_ok=True)
 
     logger = logging.getLogger("smart_librarian")
@@ -38,3 +39,4 @@ def configure_logging() -> logging.Logger:
     logger.propagate = False
 
     return logger
+

@@ -1,8 +1,11 @@
+# Tests for the exact-title summary tool cache behavior.
+
 from src.data_loader import BookSummary
 from src.tools import get_summary_by_title
 
 
 def _book(title: str, full_summary: str) -> BookSummary:
+    # Build a minimal valid catalog entry for tool-cache tests.
     return BookSummary(
         id=f"book_{title.lower().replace(' ', '_')}",
         title=title,

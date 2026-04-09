@@ -1,3 +1,5 @@
+# Tests for image prompt creation and generated-image payload handling.
+
 import base64
 from types import SimpleNamespace
 
@@ -9,6 +11,7 @@ from src.book_image_generation import (
 
 
 def _assistant_message() -> dict:
+    # Create a representative assistant payload used across image tests.
     return {
         "role": "assistant",
         "kind": "assistant",
@@ -32,7 +35,11 @@ def test_build_book_image_prompt_for_cover():
     assert "book-cover concept" in prompt
     assert "The Hobbit by J.R.R. Tolkien" in prompt
     assert "Visual direction:" in prompt
-    assert "no readable text" in prompt
+    assert 'include the exact title text "The Hobbit"' in prompt
+    assert 'the exact author text "J.R.R. Tolkien"' in prompt
+    assert "upper-middle area" in prompt
+    assert "author name is visibly smaller" in prompt
+    assert "do not add any extra text" in prompt
     assert "fully clothed characters" in prompt
 
 
@@ -42,6 +49,7 @@ def test_build_book_image_prompt_for_scene():
     assert "representative scene" in prompt
     assert "wide landscape composition" in prompt
     assert "The Hobbit by J.R.R. Tolkien" in prompt
+    assert "no readable text" in prompt
 
 
 def test_build_book_image_filename_uses_title_and_variant():
@@ -129,3 +137,4 @@ def test_generate_book_image_retries_with_safer_prompt_after_safety_block(monkey
     assert "My Scandalous Bride" in prompts[0]
     assert "dramatic" in prompts[1].casefold()
     assert "fully clothed characters" in prompts[1]
+

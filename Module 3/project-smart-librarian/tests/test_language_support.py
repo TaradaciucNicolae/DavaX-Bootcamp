@@ -1,3 +1,5 @@
+# Tests for language detection and output normalization helpers.
+
 from src.language_support import detect_user_language, normalize_text_to_target_language
 
 
@@ -39,3 +41,4 @@ def test_normalize_text_to_target_language_forces_romanian(monkeypatch):
     )
 
     assert result == "[ro] I recommend 1984 by George Orwell."
+

@@ -1,14 +1,15 @@
+# SQLite-backed persistence for the Streamlit catalog import settings.
+
 import json
 import sqlite3
 from dataclasses import dataclass, field
-from datetime import datetime, UTC
+from datetime import UTC, datetime
 
 from src.config import BASE_DIR
 
 SETTINGS_DB_PATH = BASE_DIR / "data" / "app_state.db"
 
-# În UI afișezi etichete prietenoase.
-# În spate le mapezi la query-urile reale pentru Google Books.
+# Friendly labels are shown in the UI, but they map to real Google Books queries.
 GENRE_QUERY_MAP = {
     "Ficțiune": "subject:fiction",
     "Romance": "subject:romance",
@@ -32,6 +33,7 @@ LANGUAGE_CODE_BY_LABEL = {
 
 
 def normalize_language_restrict(value: str) -> str:
+    # Accept either stored language codes or legacy human-readable labels.
     cleaned_value = str(value).strip()
     if cleaned_value in ALLOWED_LANGUAGES:
         return cleaned_value
@@ -41,37 +43,42 @@ def normalize_language_restrict(value: str) -> str:
 
 @dataclass
 class CatalogImportSettings:
-    # Valorile default sunt folosite la prima rulare.
+    # Validated settings object used by the sidebar import form.
+
+    # Default values are used the first time the application runs.
     selected_labels: list[str] = field(default_factory=lambda: ["Ficțiune", "Romance"])
     books_per_genre: int = 20
     language_restrict: str = "en"
     max_pages_per_query: int = 3
 
     def validate(self) -> None:
+        # Validate the UI-provided settings before calling external services.
         self.language_restrict = normalize_language_restrict(self.language_restrict)
-        # Validare strictă - foarte importantă pentru securitate și stabilitate.
+
+        # Strict validation protects both the UI and the Google Books requests.
         if not self.selected_labels:
-            raise ValueError("Trebuie să alegi cel puțin un gen.")
+            raise ValueError("At least one genre must be selected.")
 
         invalid = [label for label in self.selected_labels if label not in GENRE_QUERY_MAP]
         if invalid:
-            raise ValueError(f"Genuri invalide: {invalid}")
+            raise ValueError(f"Invalid genres: {invalid}")
 
         if not 1 <= self.books_per_genre <= 40:
-            raise ValueError("books_per_genre trebuie să fie între 1 și 40.")
+            raise ValueError("books_per_genre must be between 1 and 40.")
 
         if not 1 <= self.max_pages_per_query <= 10:
-            raise ValueError("max_pages_per_query trebuie să fie între 1 și 10.")
+            raise ValueError("max_pages_per_query must be between 1 and 10.")
 
         if self.language_restrict not in ALLOWED_LANGUAGES:
-            raise ValueError("language_restrict invalid.")
+            raise ValueError("language_restrict is invalid.")
 
     def build_queries(self) -> list[str]:
-        # Transformă selecția din UI în query-uri reale pentru Google Books.
+        # Translate the selected UI labels into Google Books search queries.
         return [GENRE_QUERY_MAP[label] for label in self.selected_labels]
 
 
 def get_connection() -> sqlite3.Connection:
+    # Open the local SQLite database used for app state persistence.
     SETTINGS_DB_PATH.parent.mkdir(parents=True, exist_ok=True)
     conn = sqlite3.connect(SETTINGS_DB_PATH)
     conn.row_factory = sqlite3.Row
@@ -79,6 +86,7 @@ def get_connection() -> sqlite3.Connection:
 
 
 def init_settings_table() -> None:
+    # Create the settings table if this is the first run.
     with get_connection() as conn:
         conn.execute(
             """
@@ -96,6 +104,7 @@ def init_settings_table() -> None:
 
 
 def load_catalog_settings() -> CatalogImportSettings:
+    # Load persisted import settings, creating defaults on first use.
     init_settings_table()
 
     with get_connection() as conn:
@@ -116,6 +125,7 @@ def load_catalog_settings() -> CatalogImportSettings:
     )
     settings.validate()
 
+    # Rewrite legacy label values back to canonical language codes when detected.
     if row["language_restrict"] != settings.language_restrict:
         save_catalog_settings(settings)
 
@@ -123,6 +133,7 @@ def load_catalog_settings() -> CatalogImportSettings:
 
 
 def save_catalog_settings(settings: CatalogImportSettings) -> None:
+    # Persist the sidebar settings as a single-row SQLite record.
     init_settings_table()
     settings.validate()
 
@@ -155,3 +166,4 @@ def save_catalog_settings(settings: CatalogImportSettings) -> None:
             ),
         )
         conn.commit()
+

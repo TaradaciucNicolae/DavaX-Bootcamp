@@ -1,3 +1,5 @@
+# Local guardrails for profanity filtering and domain scoping.
+
 import re
 import unicodedata
 from dataclasses import asdict, dataclass
@@ -16,6 +18,8 @@ from src.data_loader import load_books
 
 @dataclass
 class GuardrailResult:
+    # Structured validation result returned before any OpenAI calls are made.
+
     is_allowed: bool
     cleaned_text: str
     reason: str | None = None
@@ -133,7 +137,7 @@ BOOK_CONTENT_MARKERS = {
 }
 
 BOOK_CONTENT_ALIASES = {
-    "mistery": "mystery",
+    "mistery": "mystery", # :))) ( Personal mistake, idk if it's a common one. )
 }
 
 ROMANIAN_BOOK_PREFERENCE_PATTERNS = (
@@ -152,25 +156,63 @@ ENGLISH_BOOK_PREFERENCE_PATTERNS = (
 )
 
 
+def _rewrite_inferred_book_preference(topic: str, language_code: str) -> str:
+    # Turn loose preference fragments into cleaner retrieval queries.
+    cleaned_topic = re.sub(r"\s+", " ", topic).strip(" .!?;,:-")
+    if not cleaned_topic:
+        return ""
+
+    if language_code == "ro":
+        if re.fullmatch(r"sf(?:-ul)?", cleaned_topic):
+            return "Vreau o carte science fiction."
+
+        match = re.match(r"^carti(?:le)?\s+cu\s+(.+)$", cleaned_topic)
+        if match:
+            return f"Vreau o carte cu {match.group(1).strip()}."
+
+        match = re.match(r"^carti(?:le)?\s+despre\s+(.+)$", cleaned_topic)
+        if match:
+            return f"Vreau o carte despre {match.group(1).strip()}."
+
+        match = re.match(r"^genul\s+(.+)$", cleaned_topic)
+        if match:
+            return f"Vreau o carte din genul {match.group(1).strip()}."
+
+        return f"Vreau o carte despre {cleaned_topic}."
+
+    if re.fullmatch(r"(?:sf|sci[- ]?fi|science fiction)", cleaned_topic):
+        return "I want a science fiction book."
+
+    match = re.match(r"^books?\s+with\s+(.+)$", cleaned_topic)
+    if match:
+        return f"I want a book with {match.group(1).strip()}."
+
+    match = re.match(r"^books?\s+about\s+(.+)$", cleaned_topic)
+    if match:
+        return f"I want a book about {match.group(1).strip()}."
+
+    match = re.match(r"^(?:the\s+)?genre\s+(.+)$", cleaned_topic)
+    if match:
+        return f"I want a book in the genre {match.group(1).strip()}."
+
+    return f"I want a book about {cleaned_topic}."
+
+
 def normalize_user_text(text: str) -> str:
-    """
-    Normalizeaza textul:
-    - unifica forma Unicode
-    - reduce spatiile multiple
-    - elimina spatii la inceput/final
-    """
+    # Normalize user input by:
+    # - unifying the Unicode representation
+    # - collapsing repeated spaces
+    # - trimming leading and trailing whitespace
     normalized = unicodedata.normalize("NFKC", text)
     normalized = re.sub(r"\s+", " ", normalized).strip()
     return normalized
 
 
 def _normalize_for_filter(text: str) -> str:
-    """
-    Normalizeaza textul pentru comparatii robuste:
-    - elimina diacriticele
-    - transforma punctuatia in spatii
-    - unifica spatiile
-    """
+    # Normalize text for robust comparisons by:
+    # - removing diacritics
+    # - converting punctuation to spaces
+    # - collapsing repeated spaces
     normalized = unicodedata.normalize("NFKD", text.casefold())
     normalized = "".join(
         char for char in normalized if not unicodedata.combining(char)
@@ -181,10 +223,9 @@ def _normalize_for_filter(text: str) -> str:
 
 
 def _load_terms_from_file(file_path: Path) -> list[str]:
-    """
-    Incarca termenii blocati exclusiv din fisierul text indicat.
-    Fisierul accepta comentarii si linii goale.
-    """
+    # Load blocked terms from one plain-text file.
+    #
+    # The file supports comments and blank lines.
     if not file_path.exists():
         return []
 
@@ -211,6 +252,7 @@ def load_blocked_terms_en() -> list[str]:
 
 
 def _find_matches_in_text(text: str, blocked_terms: list[str]) -> list[str]:
+    # Return every blocked term that matches the normalized input text.
     if not blocked_terms:
         return []
 
@@ -232,10 +274,12 @@ def _find_matches_in_text(text: str, blocked_terms: list[str]) -> list[str]:
 
 
 def _contains_phrase(normalized_text: str, phrase: str) -> bool:
+    # Check for a whole-phrase match inside normalized text.
     return bool(re.search(rf"(^|\s){re.escape(phrase)}(\s|$)", normalized_text))
 
 
 def normalize_book_query_aliases(text: str) -> str:
+    # Fix common user typos or aliases before retrieval happens.
     normalized = normalize_user_text(text)
     if not normalized:
         return normalized
@@ -253,6 +297,7 @@ def normalize_book_query_aliases(text: str) -> str:
 
 @lru_cache(maxsize=1)
 def _get_catalog_scope_data() -> dict[str, set[str]]:
+    # Cache normalized title and author terms extracted from the catalog.
     books = load_books(DATA_FILE)
 
     titles: set[str] = set()
@@ -280,10 +325,8 @@ def _get_catalog_scope_data() -> dict[str, set[str]]:
 
 
 def is_book_related_query(text: str) -> bool:
-    """
-    Verifica local daca intrebarea pare sa fie despre carti, autori,
-    recomandari sau titluri din catalogul aplicatiei.
-    """
+    # Decide locally whether a question is about books, authors, recommendations,
+    # or known titles from this application catalog.
     normalized_text = _normalize_for_filter(normalize_book_query_aliases(text))
     if not normalized_text:
         return False
@@ -312,6 +355,7 @@ def is_book_related_query(text: str) -> bool:
 
 
 def infer_book_query_from_preference(text: str, language_code: str) -> str | None:
+    # Rewrite fragments like `I love dragons` into explicit book requests.
     cleaned_text = normalize_user_text(text)
     if not cleaned_text:
         return None
@@ -339,6 +383,10 @@ def infer_book_query_from_preference(text: str, language_code: str) -> str | Non
         if len(topic) < 2:
             continue
 
+        rewritten_query = _rewrite_inferred_book_preference(topic, candidate_language)
+        if rewritten_query:
+            return rewritten_query
+
         if candidate_language == "ro":
             return f"Vreau o carte despre {topic}."
 
@@ -348,11 +396,9 @@ def infer_book_query_from_preference(text: str, language_code: str) -> str | Non
 
 
 def find_blocked_terms(text: str) -> list[str]:
-    """
-    Intoarce termenii ofensatori gasiti in text.
-    Detectia se face exclusiv local, pe baza celor doua fisiere txt:
-    unul pentru romana si unul pentru engleza.
-    """
+    # Return the offensive terms detected in the input text.
+    #
+    # Detection happens fully locally using the Romanian and English term lists.
     if not ENABLE_INPUT_FILTER:
         return []
 
@@ -361,11 +407,9 @@ def find_blocked_terms(text: str) -> list[str]:
 
 
 def validate_user_query(raw_text: str) -> GuardrailResult:
-    """
-    Verifica daca inputul poate intra in flow-ul aplicatiei.
-    IMPORTANT:
-    Blocam local, inainte de retrieval si inainte de orice apel OpenAI.
-    """
+    # Validate whether the input may enter the application flow.
+    #
+    # This local block happens before retrieval and before any OpenAI request.
     cleaned = normalize_user_text(raw_text)
 
     if not cleaned:

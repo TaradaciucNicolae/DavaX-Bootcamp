@@ -1,12 +1,9 @@
-"""
-rebuild_index.py
-
-Reconstruieste indexul Chroma din datele locale.
-Script util pentru:
-- setup initial
-- reset dupa schimbari in JSON
-- reset dupa schimbari de embeddings / metadata
-"""
+# Utility entry point that rebuilds the Chroma index from the local catalog.
+#
+# Typical uses:
+# - initial setup
+# - a reset after JSON catalog changes
+# - a reset after embedding or metadata changes
 
 from pathlib import Path
 import sys
@@ -21,6 +18,7 @@ from src.vector_store import rebuild_vector_store
 
 
 def main() -> None:
+    # Load the validated catalog and rebuild the persistent Chroma collection.
     books = load_books(DATA_FILE)
     total = rebuild_vector_store(books)
     print(f"Index reconstruit. Carti indexate: {total}")
@@ -28,3 +26,4 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
+

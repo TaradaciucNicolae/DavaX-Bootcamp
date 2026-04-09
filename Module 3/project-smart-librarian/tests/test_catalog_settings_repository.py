@@ -1,3 +1,5 @@
+# Tests for loading and saving persisted catalog import settings.
+
 import sqlite3
 from pathlib import Path
 
@@ -12,6 +14,7 @@ TEST_DB_PATH = Path("tests") / "catalog_settings_test.db"
 
 
 def _prepare_test_db(monkeypatch) -> Path:
+    # Reset the temporary SQLite database used by persistence tests.
     if TEST_DB_PATH.exists():
         try:
             TEST_DB_PATH.unlink()
@@ -25,6 +28,7 @@ def _prepare_test_db(monkeypatch) -> Path:
 
 
 def _cleanup_test_db(db_path: Path) -> None:
+    # Best-effort cleanup for the temporary settings database.
     if db_path.exists():
         try:
             db_path.unlink()
@@ -89,3 +93,4 @@ def test_load_catalog_settings_migrates_legacy_language_label(monkeypatch):
         assert stored_value == "any"
     finally:
         _cleanup_test_db(db_path)
+

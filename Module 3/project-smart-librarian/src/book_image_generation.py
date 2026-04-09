@@ -1,3 +1,5 @@
+# Image prompt construction and OpenAI image generation helpers.
+
 import base64
 import re
 import unicodedata
@@ -35,10 +37,12 @@ IMAGE_SAFETY_REPLACEMENTS = (
 
 
 def _normalize_spaces(text: str) -> str:
+    # Collapse repeated whitespace before prompt assembly.
     return re.sub(r"\s+", " ", (text or "")).strip()
 
 
 def _trim_context_text(text: str, max_chars: int = MAX_IMAGE_CONTEXT_CHARS) -> str:
+    # Trim long context while preserving as much sentence structure as possible.
     cleaned_text = _normalize_spaces(text)
     if len(cleaned_text) <= max_chars:
         return cleaned_text
@@ -62,18 +66,21 @@ def _trim_context_text(text: str, max_chars: int = MAX_IMAGE_CONTEXT_CHARS) -> s
 
 
 def _get_variant_size(variant: str) -> str:
+    # Return the configured image size for each supported variant.
     if variant == "cover":
         return IMAGE_COVER_SIZE
     return IMAGE_SCENE_SIZE
 
 
 def _get_variant_slug(variant: str) -> str:
+    # Return the filename slug used for the selected image variant.
     if variant == "cover":
         return "cover"
     return "scene"
 
 
 def _sanitize_image_prompt_text(text: str) -> str:
+    # Replace unsafe romance-heavy wording with milder visual descriptors.
     sanitized = _normalize_spaces(text)
     for pattern, replacement in IMAGE_SAFETY_REPLACEMENTS:
         sanitized = re.sub(pattern, replacement, sanitized, flags=re.IGNORECASE)
@@ -81,6 +88,7 @@ def _sanitize_image_prompt_text(text: str) -> str:
 
 
 def _is_image_safety_block_error(exc: Exception) -> bool:
+    # Detect safety-blocked image errors so the flow can retry in safe mode.
     error_body = getattr(exc, "body", None) or {}
     error_data = error_body.get("error", {}) if isinstance(error_body, dict) else {}
     error_code = str(error_data.get("code", "")).casefold()
@@ -95,10 +103,12 @@ def _is_image_safety_block_error(exc: Exception) -> bool:
 
 
 def get_image_mime_type(output_format: str = IMAGE_OUTPUT_FORMAT) -> str:
+    # Map the configured image format to the correct MIME type.
     return IMAGE_MIME_TYPES.get(output_format, "image/png")
 
 
 def build_book_image_filename(message: dict, variant: str) -> str:
+    # Generate a stable image filename based on the chosen title and variant.
     display = message.get("display") or {}
     title = str(display.get("recommended_title") or "smart-librarian")
     normalized = unicodedata.normalize("NFKD", title).encode("ascii", "ignore").decode("ascii")
@@ -108,6 +118,7 @@ def build_book_image_filename(message: dict, variant: str) -> str:
 
 
 def build_book_image_prompt(message: dict, variant: str, *, safe_mode: bool = False) -> str:
+    # Build a cover or scene prompt from the assistant recommendation payload.
     if variant not in IMAGE_VARIANTS:
         raise ValueError(f"Unsupported image variant: {variant}")
 
@@ -153,11 +164,16 @@ def build_book_image_prompt(message: dict, variant: str, *, safe_mode: bool = Fa
             f"Visual direction: {IMAGE_STYLE}\n"
             "Style/medium: premium editorial illustration, cinematic, high-detail, visually striking\n"
             "Composition/framing: portrait composition, centered focal subject, strong silhouette, clear depth, cover-ready layout\n"
+            "Typography/layout: design this as a believable printed book cover with readable, professionally typeset text already embedded in the artwork.\n"
+            f'Typography requirement: include the exact title text "{title}" and the exact author text "{author}".\n'
+            "Text placement: place the title and author in the upper-middle area, centered horizontally, like a real trade book cover; keep the author directly beneath the title.\n"
+            "Text hierarchy: make the title dominant and much larger, while the author name is visibly smaller, secondary, and less prominent than the title.\n"
+            "Text styling: keep the lettering crisp, elegant, high-contrast, correctly spelled, and clearly legible at thumbnail size.\n"
             "Lighting/mood: dramatic and evocative, matched to the book's themes\n"
             "Scene/backdrop: draw from the story world and emotional tone described below\n"
             f"{safety_constraints}"
             f"Subject: {shared_context}\n"
-            "Constraints: no readable text, no title lettering, no author lettering, no watermark, no logo, no UI elements"
+            "Constraints: do not add any extra text beyond the exact title and author, and do not include a watermark, logo, publisher mark, sticker, price burst, or UI elements"
         )
 
     return (
@@ -176,6 +192,7 @@ def build_book_image_prompt(message: dict, variant: str, *, safe_mode: bool = Fa
 
 
 def generate_book_image(message: dict, variant: str) -> dict[str, str | bytes]:
+    # Generate an image, retrying with a safer prompt if moderation blocks it.
     prompt = build_book_image_prompt(message, variant)
     client = get_openai_client()
 
@@ -217,3 +234,4 @@ def generate_book_image(message: dict, variant: str) -> dict[str, str | bytes]:
             else "Scena reprezentativa generata pentru carte"
         ),
     }
+

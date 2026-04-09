@@ -1,3 +1,5 @@
+# Centralized application settings loaded from the local environment.
+
 from pathlib import Path
 import os
 
@@ -37,19 +39,19 @@ LOG_LEVEL = os.getenv("LOG_LEVEL", "INFO").upper()
 
 
 def validate_settings() -> None:
-    """
-    Verifica setarile esentiale.
-    """
+
+    #   Validate the minimum configuration required to run the project safely.
+
     if not OPENAI_API_KEY:
         raise RuntimeError(
-            "Lipseste OPENAI_API_KEY. Pune cheia in fisierul .env."
+            "Missing OPENAI_API_KEY. Add the key to the .env file."
         )
 
     if TOP_K <= 0:
-        raise RuntimeError("TOP_K trebuie sa fie mai mare decat 0.")
+        raise RuntimeError("TOP_K must be greater than 0.")
 
     if MAX_USER_QUERY_CHARS < 20:
-        raise RuntimeError("MAX_USER_QUERY_CHARS este prea mic.")
+        raise RuntimeError("MAX_USER_QUERY_CHARS is too small.")
 
     if MAX_TOOL_ROUNDS <= 0:
-        raise RuntimeError("MAX_TOOL_ROUNDS trebuie sa fie mai mare decat 0.")
+        raise RuntimeError("MAX_TOOL_ROUNDS must be greater than 0.")

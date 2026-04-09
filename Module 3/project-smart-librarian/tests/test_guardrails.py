@@ -1,3 +1,5 @@
+# Tests for local profanity filtering and in-scope query detection.
+
 from pathlib import Path
 from uuid import uuid4
 
@@ -143,6 +145,21 @@ def test_normalize_book_query_aliases_fixes_mystery_typo():
 def test_infer_book_query_from_romanian_preference_fragment():
     inferred = infer_book_query_from_preference("imi place pompierii", "ro")
     assert inferred == "Vreau o carte despre pompierii."
+
+
+def test_infer_book_query_from_romanian_books_with_fragment():
+    inferred = infer_book_query_from_preference("imi plac cartile cu drama", "ro")
+    assert inferred == "Vreau o carte cu drama."
+
+
+def test_infer_book_query_from_romanian_genre_fragment():
+    inferred = infer_book_query_from_preference("ador genul razboi", "ro")
+    assert inferred == "Vreau o carte din genul razboi."
+
+
+def test_infer_book_query_from_romanian_sf_fragment():
+    inferred = infer_book_query_from_preference("imi place SF-ul", "ro")
+    assert inferred == "Vreau o carte science fiction."
 
 
 def test_infer_book_query_from_english_preference_fragment():

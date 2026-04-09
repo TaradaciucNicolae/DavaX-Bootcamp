@@ -1,22 +1,21 @@
+# Catalog import orchestration used by the Streamlit admin sidebar.
+
+from src.catalog_settings_repository import CatalogImportSettings
 from src.config import DATA_FILE
 from src.data_loader import load_books
-from src.vector_store import rebuild_vector_store
-from src.catalog_settings_repository import CatalogImportSettings
 from src.tools import set_books_cache
+from src.vector_store import rebuild_vector_store
 from scripts.database_loader_script import (
     collect_books_for_query,
     merge_books_into_json,
 )
 
+
 def import_books_from_settings(settings: CatalogImportSettings) -> dict:
-    """
-    Fluxul complet de ingestie:
-    1. citește setările selectate în UI
-    2. caută cărți noi pentru fiecare gen
-    3. face merge în JSON
-    4. validează JSON-ul final
-    5. reconstruiește vector store-ul real folosit de chatbot
-    """
+    # Run the complete ingestion flow driven by the saved sidebar settings.
+    
+    # The JSON file remains the source of truth, while Chroma is rebuilt from that
+    # validated JSON so the chatbot and the exact-title tool stay in sync.
     settings.validate()
 
     all_new_items = []
@@ -30,7 +29,7 @@ def import_books_from_settings(settings: CatalogImportSettings) -> dict:
         )
         all_new_items.extend(items)
 
-    # dedupe global după id
+    # Keep only the best normalized version for each generated book id.
     best_by_id = {}
     for item in all_new_items:
         current = best_by_id.get(item["id"])
@@ -39,10 +38,10 @@ def import_books_from_settings(settings: CatalogImportSettings) -> dict:
 
     deduped_items = list(best_by_id.values())
 
-    # JSON-ul rămâne sursa locală pentru get_summary_by_title().
+    # Merge into the local JSON catalog before re-validating the full dataset.
     final_json_items = merge_books_into_json(deduped_items, str(DATA_FILE))
 
-    # Validezi și reconstruiești indexul semantic folosit de chat.
+    # Refresh both the tool cache and the semantic index used by chat_once().
     validated_books = load_books(DATA_FILE)
     set_books_cache(validated_books)
     indexed_total = rebuild_vector_store(validated_books)
@@ -52,3 +51,4 @@ def import_books_from_settings(settings: CatalogImportSettings) -> dict:
         "total_items_in_json": len(final_json_items),
         "indexed_total": indexed_total,
     }
+

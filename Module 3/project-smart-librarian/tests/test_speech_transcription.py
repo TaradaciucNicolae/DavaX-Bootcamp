@@ -1,3 +1,5 @@
+# Tests for speech transcription, retry logic, and language restrictions.
+
 from types import SimpleNamespace
 
 import pytest
@@ -59,6 +61,27 @@ def test_transcribe_uploaded_audio_uses_uploaded_file_name(monkeypatch):
     assert captured_calls == [(b"webm-bytes", "spoken-question.webm", "en")]
 
 
+def test_transcribe_uploaded_audio_adds_extension_from_mime_type(monkeypatch):
+    captured_calls = []
+
+    def _fake_transcribe_audio_bytes(audio_bytes, *, file_name, preferred_language):
+        captured_calls.append((audio_bytes, file_name, preferred_language))
+        return "Transcript gata"
+
+    uploaded_audio = SimpleNamespace(
+        name="voice-note",
+        type="audio/webm",
+        getvalue=lambda: b"webm-bytes",
+    )
+
+    monkeypatch.setattr("src.speech_transcription.transcribe_audio_bytes", _fake_transcribe_audio_bytes)
+
+    transcript = transcribe_uploaded_audio(uploaded_audio, preferred_language="ro")
+
+    assert transcript == "Transcript gata"
+    assert captured_calls == [(b"webm-bytes", "voice-note.webm", "ro")]
+
+
 def test_transcribe_audio_bytes_retries_with_other_supported_language(monkeypatch):
     captured_languages = []
     responses = iter(
@@ -89,6 +112,39 @@ def test_transcribe_audio_bytes_retries_with_other_supported_language(monkeypatc
 
     assert transcript == "recommend me something about dragons"
     assert captured_languages == ["ro", "en"]
+
+
+def test_transcribe_audio_bytes_falls_back_to_auto_detect_when_forced_languages_return_empty(monkeypatch):
+    captured_languages = []
+    responses = iter(
+        [
+            SimpleNamespace(text=""),
+            SimpleNamespace(text=""),
+            SimpleNamespace(output_text="Vreau o carte despre razboi."),
+        ]
+    )
+
+    class DummyTranscriptionsApi:
+        def create(self, **kwargs):
+            captured_languages.append(kwargs.get("language"))
+            return next(responses)
+
+    class DummyClient:
+        def __init__(self):
+            self.audio = SimpleNamespace(transcriptions=DummyTranscriptionsApi())
+
+    monkeypatch.setattr("src.speech_transcription.get_openai_client", lambda: DummyClient())
+    monkeypatch.setattr("src.speech_transcription.STT_MODEL", "gpt-4o-mini-transcribe")
+    monkeypatch.setattr("src.speech_transcription.STT_RESPONSE_FORMAT", "text")
+
+    transcript = transcribe_audio_bytes(
+        b"fake-audio",
+        file_name="question.wav",
+        preferred_language="ro",
+    )
+
+    assert transcript == "Vreau o carte despre razboi."
+    assert captured_languages == ["ro", "en", None]
 
 
 def test_transcribe_audio_bytes_rejects_unsupported_language(monkeypatch):

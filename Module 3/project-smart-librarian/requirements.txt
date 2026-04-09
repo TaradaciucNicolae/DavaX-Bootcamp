@@ -1,9 +1,19 @@
+# OpenAI SDK and model integrations
 openai
+
+# Local vector storage
 chromadb
+
+# Configuration and validation
 python-dotenv
 pydantic
-rich
+
+# User interface
 streamlit
+
+# Testing
 pytest
+
+# External API access and language detection
 requests>=2.32.0
 langdetect

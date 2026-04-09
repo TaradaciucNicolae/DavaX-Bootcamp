@@ -1,3 +1,5 @@
+# Streamlit web interface for chatting, browsing the catalog, and media extras.
+
 from base64 import b64encode
 from html import escape
 from hashlib import sha1
@@ -39,6 +41,7 @@ logger = configure_logging()
 
 
 def _ensure_streamlit_runner() -> None:
+    # Restart this file through `streamlit run` when launched as plain Python.
     if get_script_run_ctx(suppress_warning=True) is not None:
         return
 
@@ -72,81 +75,61 @@ ASSISTANT_AVATAR_PATH = Path(__file__).resolve().parent / "assets" / "avatar_rob
 
 
 def inject_custom_styles() -> None:
+    # Inject custom CSS for the floating voice controls and rich message cards.
     css = """
         <style>
         :root {
-            --voice-button-width: 14.5rem;
-            --voice-panel-padding: 0.15rem;
-            --voice-button-height: calc(3rem - (var(--voice-panel-padding) * 2));
-            --voice-status-gap: 0.4rem;
-            --voice-status-size: 2.4rem;
+            --voice-button-size: 3.7rem;
         }
 
         div[data-testid="stChatInput"] {
             width: auto !important;
             max-width: none !important;
             margin-left: 0 !important;
-            margin-right: calc(
-                var(--voice-button-width) +
-                var(--voice-status-size) +
-                var(--voice-status-gap) +
-                (var(--voice-panel-padding) * 2)
-            ) !important;
+            margin-right: calc(var(--voice-button-size) + 1.25rem) !important;
         }
 
         .st-key-bottom-voice-recorder {
             position: fixed;
-            right: 1rem;
-            bottom: 3.25rem;
-            width: calc(
-                var(--voice-button-width) +
-                var(--voice-status-size) +
-                var(--voice-status-gap) +
-                (var(--voice-panel-padding) * 2)
-            );
-            padding: var(--voice-panel-padding);
+            right: 3rem;
+            bottom: 3.7rem;
+            width: var(--voice-button-size);
+            height: var(--voice-button-size);
+            padding: 0.00rem;
             box-sizing: border-box;
-            background: rgba(15, 23, 42, 0.82);
+            background: rgba(15, 23, 42, 0.96);
             border: 1px solid rgba(148, 163, 184, 0.28);
-            border-radius: 1rem;
-            box-shadow: 0 10px 24px rgba(15, 23, 42, 0.18);
-            backdrop-filter: blur(10px);
+            border-radius: 0.95rem;
+            box-shadow: 0 14px 30px rgba(15, 23, 42, 0.24);
+            transition: background 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
             z-index: 120;
         }
 
+        .st-key-bottom-voice-recorder[data-voice-panel-mode="start"] {
+            background: rgba(15, 23, 42, 0.96);
+            border-color: rgba(148, 163, 184, 0.28);
+        }
+
+        .st-key-bottom-voice-recorder[data-voice-panel-mode="start"]:hover {
+            background: rgba(30, 41, 59, 0.98);
+            border-color: rgba(148, 163, 184, 0.45);
+            box-shadow: 0 16px 32px rgba(15, 23, 42, 0.28);
+        }
+
         .st-key-bottom-voice-recorder[data-voice-panel-mode="stop"] {
-            background: rgba(220, 38, 38, 0.22);
-            border-color: rgba(220, 38, 38, 0.58);
-            box-shadow: 0 10px 24px rgba(185, 28, 28, 0.22);
+            background: #dc2626;
+            border-color: #dc2626;
+        }
+
+        .st-key-bottom-voice-recorder[data-voice-panel-mode="stop"]:hover {
+            background: #b91c1c;
+            border-color: #b91c1c;
+            box-shadow: 0 16px 32px rgba(127, 29, 29, 0.32);
         }
 
         .st-key-bottom-voice-recorder > div {
             width: 100%;
-        }
-
-        .st-key-bottom-voice-recorder [data-testid="stHorizontalBlock"] {
-            align-items: center;
-            gap: var(--voice-status-gap);
-        }
-
-        .st-key-bottom-voice-recorder [data-testid="column"] {
-            display: flex;
-            align-items: center;
-        }
-
-        .voice-status-badge {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: var(--voice-status-size);
-            height: var(--voice-status-size);
-            padding: 0;
-            border-radius: 999px;
-            background: rgba(15, 23, 42, 0.88);
-            border: 1px solid rgba(148, 163, 184, 0.25);
-            box-shadow: 0 10px 22px rgba(15, 23, 42, 0.16);
-            color: #ffffff;
-            backdrop-filter: blur(8px);
+            height: 100%;
         }
 
         .voice-status-spinner {
@@ -191,6 +174,7 @@ def inject_custom_styles() -> None:
 
         .st-key-bottom-voice-recorder [data-testid="stAudioInput"] {
             width: 100%;
+            height: 100%;
         }
 
         .st-key-bottom-voice-recorder [data-testid="stAudioInput"] > div {
@@ -200,40 +184,49 @@ def inject_custom_styles() -> None:
             background: transparent !important;
             border: none !important;
             overflow: visible !important;
+            width: 100% !important;
+            height: 100% !important;
         }
 
         .st-key-bottom-voice-recorder [data-testid="stAudioInputActionButton"] {
             width: 100% !important;
             min-width: 100% !important;
+            height: 100% !important;
         }
 
-        .st-key-bottom-voice-recorder [data-testid="stAudioInputActionButton"] > button,
-        .st-key-bottom-voice-recorder [data-testid="stAudioInputActionButton"] {
-            min-height: var(--voice-button-height) !important;
-            height: var(--voice-button-height) !important;
+        .st-key-bottom-voice-recorder [data-testid="stAudioInputActionButton"] > button {
+            min-height: 100% !important;
+            height: 100% !important;
             width: 100% !important;
-            border-radius: 0.75rem !important;
+            min-width: 100% !important;
+            padding: 0 !important;
+            border-radius: 0.72rem !important;
+            background: transparent !important;
+            border: none !important;
+            box-shadow: none !important;
         }
 
         .st-key-bottom-voice-recorder [data-voice-mode="start"] {
-            background: var(--secondary-background-color, #262730) !important;
-            border-color: rgba(250, 250, 250, 0.2) !important;
-            color: inherit !important;
+            background: transparent !important;
+            border-color: transparent !important;
+            color: #ffffff !important;
         }
 
         .st-key-bottom-voice-recorder [data-voice-mode="start"]:hover {
-            border-color: rgba(250, 250, 250, 0.32) !important;
+            background: transparent !important;
+            border-color: transparent !important;
+            color: #ffffff !important;
         }
 
         .st-key-bottom-voice-recorder [data-voice-mode="stop"] {
-            background: #dc2626 !important;
-            border-color: #dc2626 !important;
+            background: transparent !important;
+            border-color: transparent !important;
             color: #ffffff !important;
         }
 
         .st-key-bottom-voice-recorder [data-voice-mode="stop"]:hover {
-            background: #b91c1c !important;
-            border-color: #b91c1c !important;
+            background: transparent !important;
+            border-color: transparent !important;
             color: #ffffff !important;
         }
 
@@ -250,43 +243,34 @@ def inject_custom_styles() -> None:
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 0.45rem;
             width: 100%;
+            height: 100%;
         }
 
         .st-key-bottom-voice-recorder .voice-button-icon {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            width: 1.05rem;
-            height: 1.05rem;
+            width: 1.2rem;
+            height: 1.2rem;
             flex: 0 0 auto;
         }
 
         .st-key-bottom-voice-recorder .voice-button-icon svg {
-            width: 100%;
+            width: 190%;
             height: 100%;
             display: block;
         }
 
-        .st-key-bottom-voice-recorder .voice-button-text {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            white-space: nowrap;
-        }
-
         @media (max-width: 900px) {
             :root {
-                --voice-button-width: 9rem;
+                --voice-button-size: 3.1rem;
             }
         }
 
         @media (max-width: 720px) {
             :root {
-                --voice-button-width: 8.25rem;
-                --voice-status-gap: 0.25rem;
-                --voice-status-size: 2.15rem;
+                --voice-button-size: 2.95rem;
             }
         }
 
@@ -314,6 +298,7 @@ def inject_custom_styles() -> None:
 
 
 def ensure_session_state() -> None:
+    # Initialize every session key expected by the application.
     defaults = {
         "messages": [],
         "vector_store_ready": False,
@@ -348,17 +333,20 @@ def ensure_session_state() -> None:
 
 
 def create_message_id() -> str:
+    # Create a stable per-session message id used for cached media assets.
     st.session_state.message_counter += 1
     return f"msg_{st.session_state.message_counter}"
 
 
 def get_chat_avatar(role: str) -> str:
+    # Return the avatar SVG path for the requested chat role.
     if role == "user":
         return str(USER_AVATAR_PATH)
     return str(ASSISTANT_AVATAR_PATH)
 
 
 def bootstrap_vector_store() -> None:
+    # Validate settings and keep the semantic index aligned with the JSON catalog.
     if st.session_state.app_bootstrapped:
         return
 
@@ -368,8 +356,8 @@ def bootstrap_vector_store() -> None:
         expected_count = len(books)
         current_count = get_collection_size()
 
-        # Daca JSON-ul local si indexul semantic nu mai au acelasi numar de carti,
-        # refacem indexul ca sa evitam rezultate stale dupa stergeri/importuri.
+        # If the local JSON catalog and the semantic index diverge, rebuild the
+        # index so retrieval never works with stale vectors after imports/deletes.
         if current_count != expected_count:
             current_count = rebuild_vector_store(books)
 
@@ -391,6 +379,7 @@ def build_error_message(
     display: dict | None = None,
     response_language: str = "ro",
 ) -> dict:
+    # Build the assistant payload used for UI-level error rendering.
     return {
         "role": "assistant",
         "kind": "error",
@@ -410,6 +399,7 @@ def build_summary_only_message(
     genres: list[str] | None = None,
     response_language: str = "ro",
 ) -> dict:
+    # Build the assistant payload used when the user clicks a catalog title.
     return {
         "role": "assistant",
         "kind": "summary_only",
@@ -428,6 +418,7 @@ def build_summary_only_message(
 
 
 def build_assistant_message(result: dict) -> dict:
+    # Translate the chatbot core payload into the UI message schema.
     status = result.get("status")
     response_language = result.get("response_language", "ro")
 
@@ -485,6 +476,7 @@ def build_assistant_message(result: dict) -> dict:
 
 
 def get_response_labels(language: str) -> dict[str, str]:
+    # Return localized labels for recommendation cards.
     if language == "en":
         return {
             "recommendation": "Recommendation",
@@ -508,6 +500,7 @@ def get_response_labels(language: str) -> dict[str, str]:
 
 
 def get_audio_labels(language: str) -> dict[str, str]:
+    # Return localized labels for the audio generation controls.
     if language == "en":
         return {
             "generate": "Listen to this recommendation",
@@ -527,12 +520,16 @@ def get_audio_labels(language: str) -> dict[str, str]:
 
 
 def get_voice_labels(language: str) -> dict[str, str]:
+    # Return localized labels for the voice recording controls.
     if language == "en":
         return {
             "toggle_open": "Vorbeste / Speak",
             "toggle_close": "Stop & Send",
             "recorder_label": "Record your question",
             "recorder_help": "Press the microphone, speak your question, then submit the recording.",
+            "spinner": "Transcribing your voice message...",
+            "permission_denied": "Microphone access was blocked. Allow access and try again.",
+            "browser_unsupported": "This browser cannot record audio in the current app.",
             "unsupported_language": "I can transcribe only Romanian or English voice messages.",
             "error": "I couldn't transcribe the audio right now. Please try again.",
         }
@@ -542,12 +539,16 @@ def get_voice_labels(language: str) -> dict[str, str]:
         "toggle_close": "Stop & Send",
         "recorder_label": "Inregistreaza intrebarea la microfon",
         "recorder_help": "Apasa pe microfon, spune intrebarea, apoi trimite inregistrarea pentru transcriere.",
+        "spinner": "Transcriu mesajul vocal...",
+        "permission_denied": "Accesul la microfon a fost blocat. Permite accesul si incearca din nou.",
+        "browser_unsupported": "Browserul nu poate inregistra audio in aceasta aplicatie.",
         "unsupported_language": "Pot transcrie doar mesaje vocale in romana sau engleza.",
         "error": "Nu am putut transcrie mesajul audio momentan. Incearca din nou.",
     }
 
 
 def get_image_labels(language: str) -> dict[str, str]:
+    # Return localized labels for the image generation controls.
     if language == "en":
         return {
             "cover_button": "Generate cover",
@@ -573,6 +574,7 @@ def get_image_labels(language: str) -> dict[str, str]:
 
 
 def render_full_summary(summary_text: str) -> None:
+    # Render the full summary inside a styled card component.
     safe_summary = escape(summary_text).replace("\n", "<br>")
     st.markdown(
         f"""
@@ -585,6 +587,7 @@ def render_full_summary(summary_text: str) -> None:
 
 
 def render_centered_cover_image(image_payload: dict, caption: str) -> None:
+    # Render the generated cover image centered inside the chat message.
     image_base64 = b64encode(image_payload["image_bytes"]).decode("ascii")
     safe_caption = escape(caption)
     st.markdown(
@@ -603,6 +606,7 @@ def render_centered_cover_image(image_payload: dict, caption: str) -> None:
 
 
 def render_centered_scene_image(image_payload: dict, caption: str) -> None:
+    # Render the generated scene image centered inside the chat message.
     image_base64 = b64encode(image_payload["image_bytes"]).decode("ascii")
     safe_caption = escape(caption)
     st.markdown(
@@ -621,6 +625,7 @@ def render_centered_scene_image(image_payload: dict, caption: str) -> None:
 
 
 def get_interface_language() -> str:
+    # Infer the preferred interface language from recent conversation state.
     for message in reversed(st.session_state.get("messages", [])):
         if message.get("role") == "user":
             return detect_user_language(message.get("content", ""))
@@ -633,23 +638,22 @@ def get_interface_language() -> str:
 
 
 def render_voice_input_controls() -> None:
+    # Render the microphone widget and process a submitted audio recording.
     language = get_interface_language()
     labels = get_voice_labels(language) or get_voice_labels("ro")
     is_ready = st.session_state.vector_store_ready
     preferred_language = language if language in {"ro", "en"} else "ro"
 
-    button_column, status_column = st.columns([17, 3], gap="small")
-
     recorder_key = f"voice_input_recorder_{st.session_state.voice_input_nonce}"
-    with button_column:
-        recorded_audio = st.audio_input(
-            labels["recorder_label"],
-            help=labels["recorder_help"],
-            key=recorder_key,
-            disabled=not is_ready,
-            label_visibility="collapsed",
-            width="stretch",
-        )
+    recorded_audio = st.audio_input(
+        labels["recorder_label"],
+        help=labels["recorder_help"],
+        key=recorder_key,
+        disabled=not is_ready,
+        label_visibility="collapsed",
+        width="stretch",
+    )
+
     if recorded_audio is None:
         return
 
@@ -660,16 +664,6 @@ def render_voice_input_controls() -> None:
     audio_hash = sha1(audio_bytes).hexdigest()
     if audio_hash == st.session_state.last_voice_audio_hash:
         return
-
-    with status_column:
-        st.markdown(
-            f"""
-            <div class="voice-status-badge">
-                <span class="voice-status-spinner" aria-hidden="true"></span>
-            </div>
-            """,
-            unsafe_allow_html=True,
-        )
 
     try:
         transcript = transcribe_uploaded_audio(
@@ -693,6 +687,7 @@ def render_voice_input_controls() -> None:
 
 
 def render_voice_recorder_bridge() -> None:
+    # Keep the native Streamlit recorder but restyle its action button like the original UI.
     labels = get_voice_labels(get_interface_language())
     bridge_html = f"""
     <script>
@@ -703,6 +698,11 @@ def render_voice_recorder_bridge() -> None:
         const micIcon = `
             <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
                 <path fill="currentColor" d="M12 14a3 3 0 0 0 3-3V5a3 3 0 1 0-6 0v6a3 3 0 0 0 3 3Zm5-3a1 1 0 1 0-2 0 3 3 0 1 1-6 0 1 1 0 1 0-2 0 5 5 0 0 0 4 4.9V21a1 1 0 1 0 2 0v-2.1A5 5 0 0 0 17 11Z"/>
+            </svg>
+        `;
+        const stopIcon = `
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path fill="currentColor" d="M9 7a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2H9Z"/>
             </svg>
         `;
 
@@ -716,15 +716,16 @@ def render_voice_recorder_bridge() -> None:
             const ariaLabel = button.getAttribute("aria-label") || "";
             const isStopMode = ariaLabel === "Stop recording";
             const targetText = isStopMode ? stopText : startText;
+            const targetIcon = isStopMode ? stopIcon : micIcon;
             const panel = root.closest(".st-key-bottom-voice-recorder");
 
             button.setAttribute("data-voice-mode", isStopMode ? "stop" : "start");
             panel?.setAttribute("data-voice-panel-mode", isStopMode ? "stop" : "start");
+            button.setAttribute("title", targetText);
             button.innerHTML =
                 '<span class="voice-button-label">' +
                     '<span class="voice-button-content">' +
-                        '<span class="voice-button-icon">' + micIcon + '</span>' +
-                        '<span class="voice-button-text">' + targetText + '</span>' +
+                        '<span class="voice-button-icon">' + targetIcon + '</span>' +
                     '</span>' +
                 '</span>';
 
@@ -776,6 +777,7 @@ def render_voice_recorder_bridge() -> None:
 
 @st.fragment
 def render_voice_controls() -> None:
+    # Render the floating voice recorder.
     with st.container(key="bottom-voice-recorder"):
         render_voice_input_controls()
 
@@ -784,6 +786,7 @@ def render_voice_controls() -> None:
 
 @st.fragment
 def render_audio_controls(message: dict) -> None:
+    # Render on-demand TTS generation and audio download controls.
     display = message.get("display") or {}
     if not display:
         return
@@ -838,6 +841,7 @@ def render_audio_controls(message: dict) -> None:
 
 @st.fragment
 def render_image_controls(message: dict) -> None:
+    # Render buttons and previews for cover and scene image generation.
     display = message.get("display") or {}
     if not display:
         return
@@ -932,6 +936,7 @@ def render_image_controls(message: dict) -> None:
 
 
 def render_assistant_message(message: dict) -> None:
+    # Render one assistant message according to its semantic message kind.
     kind = message.get("kind", "assistant")
 
     if kind == "error":
@@ -988,6 +993,7 @@ def render_assistant_message(message: dict) -> None:
 
 
 def render_history() -> None:
+    # Replay the current conversation history in chat order.
     for message in st.session_state.messages:
         role = message.get("role", "assistant")
 
@@ -999,6 +1005,7 @@ def render_history() -> None:
 
 
 def render_catalog_list_sidebar() -> None:
+    # Render the searchable catalog browser inside the sidebar.
     try:
         books = sorted(
             load_books(DATA_FILE),
@@ -1076,6 +1083,7 @@ def render_catalog_list_sidebar() -> None:
 
 
 def render_starter_prompts() -> None:
+    # Render one-click starter questions for first-time users.
     outer_left, center_column, outer_right = st.columns([1, 2.4, 1])
     del outer_left, outer_right
 
@@ -1089,6 +1097,7 @@ def render_starter_prompts() -> None:
 
 
 def render_catalog_admin() -> None:
+    # Render the Google Books import controls and persist the chosen settings.
     st.subheader("Administrare catalog (Google Books API)")
 
     current_settings = load_catalog_settings()
@@ -1161,6 +1170,7 @@ def render_catalog_admin() -> None:
 
 
 def render_sidebar() -> None:
+    # Render sidebar controls for reset, catalog admin, and catalog browsing.
     with st.sidebar:
         if st.button("Sterge conversatia", use_container_width=True):
             st.session_state.messages = []
@@ -1182,6 +1192,7 @@ def render_sidebar() -> None:
 
 
 def process_user_prompt(prompt: str) -> None:
+    # Append the user prompt, call the chatbot core, and render the reply.
     prompt_language = detect_user_language(prompt)
     loading_text = "Finding the best recommendation for you..." if prompt_language == "en" else (
         "Caut cea mai buna recomandare pentru tine..."
@@ -1215,6 +1226,7 @@ def process_user_prompt(prompt: str) -> None:
 
 
 def process_catalog_summary_request(title: str, author: str, genres: list[str] | None = None) -> None:
+    # Load and display the full summary for a title clicked in the sidebar.
     response_language = get_interface_language()
     loading_text = "Loading full summary..." if response_language == "en" else "Incarc rezumatul complet..."
 
@@ -1264,6 +1276,12 @@ def process_catalog_summary_request(title: str, author: str, genres: list[str] |
 
 
 def main() -> None:
+    # Initialize the app, render the layout, and process pending interactions.
+    logger.info(
+        "streamlit_runtime_started | python=%s | streamlit=%s",
+        sys.executable,
+        getattr(st, "__file__", "unknown"),
+    )
     ensure_session_state()
     inject_custom_styles()
 
@@ -1303,6 +1321,7 @@ def main() -> None:
 
     if pending_catalog_summary:
         st.session_state.pending_catalog_summary = None
+        # Sidebar clicks bypass retrieval and show the exact local summary directly.
         process_catalog_summary_request(
             pending_catalog_summary["title"],
             pending_catalog_summary["author"],
@@ -1316,6 +1335,7 @@ def main() -> None:
         return
 
     if pending_prompt:
+        # Consume queued prompts generated by voice transcription or starter buttons.
         st.session_state.pending_prompt = None
 
     process_user_prompt(active_prompt)

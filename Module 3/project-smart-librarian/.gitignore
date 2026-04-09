@@ -6,6 +6,7 @@
 # Virtual environments
 .venv/
 venv/
+.venv_test314/
 
 # Python cache / build artifacts
 __pycache__/
@@ -27,6 +28,12 @@ htmlcov/
 .vscode/
 .DS_Store
 Thumbs.db
+.chrome-pdf-profile/
+.edge-pdf-profile/
+.deepeval/
+
+# Local debug artifacts
+tmp_streamlit_*.log
 
 # Ignore only disposable local test databases
 tests/catalog_settings*.db
